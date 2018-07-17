@@ -7,6 +7,8 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>dto.Grupo</class>
 		<class>dto.Material</class>
+		<class>dto.AreaNegocio</class>
+				
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/dbcaso?zeroDateTimeBehavior=convertToNull" />

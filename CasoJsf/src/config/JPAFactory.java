@@ -6,11 +6,13 @@ import javax.persistence.Persistence;
 
 public class JPAFactory{
 
-	private static final String PERSISTENCE_UNIT_NAME = "casojpa";
+	private static final String PERSISTENCE_UNIT_NAME = "casojpa"; //por que es el nombre de la base de datos
 
 	private static EntityManagerFactory entityManagerFactory;
 	private static EntityManager entityManager;
 
+	//patron Singleton que te permite crear un objeto,no permite que se creen nuevas instancias
+	
 	public static EntityManager createEntityManager() {
 
 		if (entityManager == null || !entityManager.isOpen()) {
