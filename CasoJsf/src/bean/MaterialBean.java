@@ -33,7 +33,7 @@ public class MaterialBean implements Serializable {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
-	
+
 	public GrupoBean getGrupoBean() {
 		return grupoBean;
 	}
@@ -71,7 +71,7 @@ public class MaterialBean implements Serializable {
 		materialImpl.delete(deleteId);
 		return "/pages/material/index.xhtml?faces-redirect=true";
 	}
-	
+
 	public String unsuscribe() {
 		Long unsuscribeId = this.material.getId();
 		this.material = new Material();
@@ -85,7 +85,7 @@ public class MaterialBean implements Serializable {
 		this.material = new Material();
 		long max = materialImpl.getMaxId();
 		this.material.setId(max);
-		return "add";
+		return "add"; //muestra la vista
 	}
 
 	public String edit() {
@@ -94,9 +94,9 @@ public class MaterialBean implements Serializable {
 		this.material = (Material) materialImpl.getById(editId);
 		return "edit";
 	}
-	
 
-	
+
+
 
 	public String show() {
 		Long id = this.material.getId();
@@ -104,10 +104,10 @@ public class MaterialBean implements Serializable {
 		this.material = (Material) materialImpl.getById(id);
 		return "show";
 	}
-	
-	
 
-	
+
+
+
 	public String index() {
 		return "/pages/material/index";
 	}

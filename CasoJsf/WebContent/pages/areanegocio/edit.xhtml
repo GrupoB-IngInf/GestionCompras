@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Editar Area de Negocio</title>
+</h:head>
+<body>
+	<f:view>
+		<center>
+			<p:panel id="pane" header="Crear Area de Negocio" style="width:300px">
+				<h:form id="areaNegocioBeanForm">
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="tid" value="Id:" />
+						<p:inputText id="tid" value="#{areaNegocioBean.area.id}"
+							disabled="true" />
+						<h:message for="tid"></h:message>
+
+						<p:outputLabel for="tnombre" value="Nombre:" />
+						<p:inputText id="tnombre" value="#{areaNegocioBean.area.nombre}" />
+						<h:message for="tnombre"></h:message>
+						
+						<p:outputLabel for="tprefijo" value="Prefijo:" />
+						<p:inputText id="tprefijo" value="#{areaNegocioBean.area.prefijo}" />
+						<h:message for="tprefijo"></h:message>
+						
+					</h:panelGrid>
+					<p:commandButton action="#{areaNegocioBean.create}" type="submit"
+						value="Añadir" />
+					<p:commandButton action="#{areaNegocioBean.index}" type="submit"
+						value="Regresar" />
+				</h:form>
+			</p:panel>
+		</center>
+	</f:view>
+</body>
+</html>

@@ -8,10 +8,18 @@
 		<managed-bean-class>bean.GrupoBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	
 	<managed-bean>
 		<managed-bean-name>materialBean</managed-bean-name>
 		<managed-bean-class>bean.MaterialBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	
+		<managed-bean>
+		<managed-bean-name>areaNegocioBean</managed-bean-name>
+		<managed-bean-class>bean.AreaNegocioBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
 	
 </faces-config>
