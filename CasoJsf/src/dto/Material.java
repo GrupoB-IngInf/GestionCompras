@@ -6,7 +6,7 @@ import java.io.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Material")
+@Table(name = "material")
 public class Material implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class Material implements Serializable {
 	private String estado;
 
 	@ManyToOne
-	@JoinColumn(name = "grupo_id")
+	@JoinColumn(name = "Grupo_id")
 	private Grupo  grupo;
 
 	public Long getId() {
@@ -58,8 +58,6 @@ public class Material implements Serializable {
 		this.descripcion = descripcion;
 	}
 	
-	
-
 	public String getEstado() {
 		return estado;
 	}

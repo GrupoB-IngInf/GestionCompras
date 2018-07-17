@@ -21,7 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbcaso`
 --
-
+DROP DATABASE IF EXISTS dbcaso;
+CREATE DATABASE dbcaso;
+USE dbcaso;
 -- --------------------------------------------------------
 
 --
@@ -107,6 +109,7 @@ CREATE TABLE `material` (
   `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `descripcion` text,
+  `estado` enum('Activo','Baja') NOT NULL,
   `UnidadMedida_id` int(11) NOT NULL,
   `Grupo_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -18,7 +18,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 public class PDFGenerator {
 	
-	public static void PDF(Map<String, Object> params, String jasperPath, List<?> dataSource, String fileName) throws JRException, IOException {
+	public static void downloadPDF(Map<String, Object> params, String jasperPath, List<?> dataSource, String fileName) throws JRException, IOException {
 		String relativeWebPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(jasperPath);
 		File file = new File(relativeWebPath);
 		
@@ -34,7 +34,7 @@ public class PDFGenerator {
 		FacesContext.getCurrentInstance().responseComplete();
 	}
 	
-	public static void verPDF(Map<String, Object> params, String jasperPath, List<?> dataSource, String fileName) throws JRException, IOException {
+	public static void showPDF(Map<String, Object> params, String jasperPath, List<?> dataSource, String fileName) throws JRException, IOException {
 		String relativeWebPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(jasperPath);
 		File file = new File(relativeWebPath);
 		
