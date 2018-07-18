@@ -43,12 +43,24 @@ public class ReportesBean implements Serializable {
 		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
 	
-	public void proyectos() {
+	public void proyectos() throws JRException, IOException {
+		//ProyectoImpl proyectoImpl = new ProyectoImpl();
+		//List<Proyecto> dataSource = proyectoImpl.getAll();	
+				
+		String filename = "reporte_proyectos.pdf";
+		String jasperPath = "/resources/proyectos.jasper";
 		
+		PDFGenerator.showPDF(null, jasperPath, null, filename);
 	}
 	
-	public void usuarios() {
+	public void usuarios() throws JRException, IOException {
+		//UsuarioImpl usuarioImpl = new UsuarioImpl();
+		//List<Usuario> dataSource = usuarioImpl.getAll();	
+				
+		String filename = "reporte_usuarios.pdf";
+		String jasperPath = "/resources/usuarios.jasper";
 		
+		PDFGenerator.showPDF(null, jasperPath, null, filename);
 	}
 
 	public MaterialBean getMaterialBean() {
