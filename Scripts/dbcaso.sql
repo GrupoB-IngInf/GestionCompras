@@ -130,7 +130,8 @@ CREATE TABLE `ordendecompra` (
   `tipo_pago` varchar(45) DEFAULT NULL,
   `moneda` varchar(45) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
-  `observaciones` varchar(45) DEFAULT NULL
+  `observaciones` varchar(45) DEFAULT NULL,
+  `id_proveedor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -512,6 +513,18 @@ ALTER TABLE `requerimientodetalle`
   ADD CONSTRAINT `fk_RequerimientoDetalle_Material1` FOREIGN KEY (`Material_id`) REFERENCES `material` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_RequerimientoDetalle_OrdendeCompraDetalle1` FOREIGN KEY (`OrdendeCompraDetalle_id`) REFERENCES `ordendecompradetalle` (`id`),
   ADD CONSTRAINT `fk_RequerimientoDetalle_Requerimiento1` FOREIGN KEY (`Requerimiento_id`) REFERENCES `requerimiento` (`id`);
+
+--
+-- Constraints for table `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD CONSTRAINT `fk_ProveedorBanco`FOREIGN KEY (`id_banco`) REFERENCES `banco` (`id`) on DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `ordendecompra`
+--
+ALTER TABLE `ordendecompra`
+  ADD CONSTRAINT `fk_OrdenDeCompra_proveedor`FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id`) on DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `roles_permisos`
