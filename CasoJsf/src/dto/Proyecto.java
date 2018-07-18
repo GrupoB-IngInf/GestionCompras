@@ -26,7 +26,7 @@ public class Proyecto implements Serializable {
 	private String nombre;
 	
 	@Column(name = "ubicacion")
-	private String ubicacion;
+	private Long ubicacion;
 /*
 	 @OneToMany(
         cascade = CascadeType.ALL, 
@@ -52,13 +52,6 @@ public class Proyecto implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getUbicacion() {
-		return ubicacion;
-	}
-
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
-	}
 
 	public List<Etapa> getEtapas() {
 		return etapas;
@@ -78,6 +71,14 @@ public class Proyecto implements Serializable {
 	{
 		etapas.remove(etapa);
 		etapa.setProyecto(null);
+	}
+
+	public Long getUbicacion() {
+		return ubicacion;
+	}
+
+	public void setUbicacion(Long duracion) {
+		this.ubicacion = duracion;
 	}
 
 	

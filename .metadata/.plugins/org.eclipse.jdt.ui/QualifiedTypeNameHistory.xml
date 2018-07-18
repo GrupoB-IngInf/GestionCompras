@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.eclipse.persistence.internal.oxm.schema.model.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 </qualifiedTypeNameHistroy>

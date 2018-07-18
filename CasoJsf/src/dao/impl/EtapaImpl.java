@@ -47,7 +47,7 @@ public class EtapaImpl  extends JPA implements DAO<Etapa>{
 			t.begin();
 		}
 		updateObj.setDenominacion(DTO.getDenominacion());
-		updateObj.setUbicacion(DTO.getUbicacion());
+		updateObj.setDuracion(DTO.getDuracion());
 		updateObj.setProyecto(DTO.getProyecto());
 		
 		t.commit();

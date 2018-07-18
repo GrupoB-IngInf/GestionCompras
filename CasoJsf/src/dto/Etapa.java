@@ -22,8 +22,8 @@ public class Etapa {
 	@Column(name = "denominacion")
 	private String denominacion;
 
-	@Column(name = "ubicacion")
-	private String ubicacion;
+	@Column(name = "duracion")
+	private Long duracion;
 
 	@ManyToOne
 	@JoinColumn(name = "proyecto_id")
@@ -45,13 +45,6 @@ public class Etapa {
 		this.denominacion = denominacion;
 	}
 
-	public String getUbicacion() {
-		return ubicacion;
-	}
-
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
-	}
 
 	public Proyecto getProyecto() {
 		return proyecto;
@@ -59,6 +52,14 @@ public class Etapa {
 
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
+	}
+
+	public Long getDuracion() {
+		return duracion;
+	}
+
+	public void setDuracion(Long duracion) {
+		this.duracion = duracion;
 	}
 	
 	

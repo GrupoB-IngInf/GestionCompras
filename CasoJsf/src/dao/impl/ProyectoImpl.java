@@ -7,6 +7,7 @@ import base.*;
 import dao.*;
 import dto.*;
 public class ProyectoImpl extends JPA implements DAO<Proyecto> {
+	
 	@Override
 	public Proyecto getById(Long id) {
 		Proyecto result = getEntityManager().find(Proyecto.class, id);
