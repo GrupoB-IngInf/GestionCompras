@@ -19,9 +19,16 @@
 					<p:outputLabel for="tdescripcion" value="Descripcion:" />
 					<p:inputText id="tdescripcion" value="#{materialBean.material.descripcion}" />
 					<h:message for="tdescripcion"></h:message>
+					
+					<p:outputLabel for="cbunidadmedida" value="Unidad:" />
+					<p:selectOneMenu id="cbunidadmedida" value="#{materialBean.material.unidadMedida.id}" effect="fold" filter="true" filterMatchMode="startsWith" converter="omnifaces.SelectItemsConverter" style="width:150px">
+						<f:selectItem itemLabel="[Seleccionar Registro]" itemValue="0" />
+						<f:selectItems value="#{unidadMedidaBean.all}" var="g" itemLabel="#{g.nombre}" itemValue="#{g.id}" />
+					</p:selectOneMenu>
+					<h:message for="cbunidades"></h:message>
 
 					<p:outputLabel for="cbgrupo" value="Grupo:" />
-					<p:selectOneMenu id="cbgrupo" value="#{materialBean.material.grupo.id}" converter="omnifaces.SelectItemsConverter" style="width:150px">
+					<p:selectOneMenu id="cbgrupo" value="#{materialBean.material.grupo.id}" effect="fold" filter="true" filterMatchMode="startsWith" converter="omnifaces.SelectItemsConverter" style="width:150px">
 						<f:selectItem itemLabel="[Seleccionar Registro]" itemValue="0" />
 						<f:selectItems value="#{grupoBean.all}" var="g" itemLabel="#{g.nombre}" itemValue="#{g.id}" />
 					</p:selectOneMenu>

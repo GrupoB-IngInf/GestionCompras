@@ -1,9 +1,9 @@
 USE dbcaso;
 
 /*Unidad de medida*/
-INSERT INTO `unidadmedida` (`id`,`nombre`) VALUES (1,'UND');
-INSERT INTO `unidadmedida` (`id`,`nombre`) VALUES (2,'KG');
-INSERT INTO `unidadmedida` (`id`,`nombre`) VALUES (3,'BLD');
+INSERT INTO `unidadmedida` (`nombre`) VALUES ('UND');
+INSERT INTO `unidadmedida` (`nombre`) VALUES ('KG');
+INSERT INTO `unidadmedida` (`nombre`) VALUES ('BLD');
 
 /*Grupo*/
 INSERT INTO `grupo` (`id`,`nombre`,`descripcion`) VALUES (1,'CLAVOS','CLAVOS DE TODO TAMA脩O');
@@ -16,6 +16,7 @@ INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`
 INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`Grupo_id`) VALUES (3,'CEMENTO ANTISALITRE','','Activo',1,3);
 
 /* Area de negocio */
+DELETE FROM `areanegocio`;
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AC', 'Atenci贸n al Cliente');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AI', 'Administraci贸n Ica');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AL', 'Administraci贸n Lima');
@@ -27,13 +28,13 @@ INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('SE', 'Segurida
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('VC', 'Ventas/Cr茅dito y Cobranza');
 
 /* Centro de Costo */
-INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (1, 'Administraci髇 y Finanzas', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (1, 'Administraci贸n y Finanzas', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (2, 'Contabilidad', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (3, 'Tesoreria', 'Activo');
-INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (5, 'Administraci髇', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (5, 'Administraci贸n', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (6, 'RRHH', 'Activo');
-INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (8, 'Administraci髇 Ica', 'Activo');
-INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (9, 'Administraci髇 Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (8, 'Administraci贸n Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (9, 'Administraci贸n Piura', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (10, 'Legal', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (11, 'Legal Ica', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (12, 'Legal Piura', 'Activo');

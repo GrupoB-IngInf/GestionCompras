@@ -7,6 +7,7 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>dto.Grupo</class>
 		<class>dto.Material</class>
+		<class>dto.UnidadMedida</class>
 		<class>dto.AreaNegocio</class>
 		<class>dto.Proyecto</class>
 		<class>dto.Etapa</class>
