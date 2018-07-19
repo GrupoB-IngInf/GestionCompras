@@ -17,16 +17,31 @@ public class PermisosBean implements Serializable{
 
 	// DAO Implementation
 	private PermisoImpl permisoImpl = new PermisoImpl();
+	
+	// Bean 
+	@ManagedProperty(value = "#{rolbean}")
+	private RolBean rolbean;
+
 
 	// Getters & Setters
-	public Permiso getpermiso() {
+		
+	public Permiso getPermisos() {
 		return permisos;
 	}
 
-	public void setpermiso(Permiso permisos) {
+	public void setPermisos(Permiso permisos) {
 		this.permisos = permisos;
 	}
 
+	public RolBean getRolbean() {
+		return rolbean;
+	}
+
+	public void setRolbean(RolBean rolbean) {
+		this.rolbean = rolbean;
+	}
+
+	
 	// CRUD
 	public String create() {
 		permisoImpl.create(permisos);
@@ -80,4 +95,5 @@ public class PermisosBean implements Serializable{
 	// Routes
 	public String index() {
 		return "/pages/permisos/index";
-	}}
+	}
+	}
