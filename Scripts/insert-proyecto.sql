@@ -13,7 +13,7 @@ INSERT INTO `etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES
 (5, 'Etapa2', 12, 2),
 (6, 'Etapa3', 162, 2),
 (7, 'Etapa4', 65, 2),
-(8, 'Etapa1', 151, 3);
-(9, 'Etapa1', 155, 4);
-(10, 'Etapa2', 125, 4);
+(8, 'Etapa1', 151, 3),
+(9, 'Etapa1', 155, 4),
+(10, 'Etapa2', 125, 4),
 (11, 'Etapa1', 156, 5);
