@@ -10,6 +10,7 @@
 		<class>dto.AreaNegocio</class>
 		<class>dto.Proyecto</class>
 		<class>dto.Etapa</class>
+		<class>dto.Banco</class>
 				
 		<properties>
 			<property name="javax.persistence.jdbc.url"

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<h:head>
+	<title>Editar Banco</title>
+</h:head>
+<body>
+	<f:view>
+		<center>
+			<p:panel id="pane" header="Editar Banco" style="width:300px">
+				<h:form id="bancoBeanForm">
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="tid" value="Id:" />
+						<p:inputText id="tid" value="#{bancoBean.banco.id}" disabled="true" />
+						<h:message for="tid"></h:message>
+
+						<p:outputLabel for="tnombre" value="Nombre:" />
+						<p:inputText id="tnombre" value="#{bancoBean.banco.nombre}" />
+						<h:message for="tnombre"></h:message>
+						
+						<p:outputLabel for="testado" value="Estado:" />
+						<p:inputText id="testado" value="#{bancoBean.banco.estado}" />
+						<h:message for="testado"></h:message>
+
+					
+					</h:panelGrid>
+					<p:commandButton action="#{grupoBean.update}" type="submit" value="Editar" />
+					<p:commandButton action="#{grupoBean.index}" type="submit" value="Regresar" />
+				</h:form>
+			</p:panel>
+		</center>
+	</f:view>
+</body>
+</html>
