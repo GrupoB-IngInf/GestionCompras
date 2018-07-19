@@ -25,14 +25,23 @@
 						<h:outputText id="tid" value="#{a.id}" />
 					</p:column>
 
-					<p:column style="width:300px; text-align: center;">
+					<p:column style="width:140px; text-align: center;">
 						<f:facet name="header">
 							<h:outputText value="Nombre" />
 						</f:facet>
 						<h:outputText id="tnombre" value="#{a.nombre}" />
 					</p:column>
+					
+					<p:column style="width:180px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Descripcion" />
+						</f:facet>
+						<h:outputText id="tdescripcion" value="#{a.descripcion}" />
+					</p:column>
+					
+					
 
-					<p:column tyle="width:10px; text-align: center;">
+					<p:column tyle="width:220px; text-align: center;">
 						<f:facet name="header">
 							<h:outputText value="Operacion" />
 						</f:facet>
