@@ -1,29 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
-<h:head>
-	<title>Editar Centro de Costo</title>
-</h:head>
-<body>
-	<f:view>
-		<center>
-			<p:panel id="pane" header="Editar Centro de Costo" style="width:300px">
-				<h:form id="centrocostoBeanForm">
-					<h:panelGrid columns="3" cellpadding="5">
-						<p:outputLabel for="tid" value="Id:" />
-						<p:inputText id="tid" value="#{centrocostoBean.centrocosto.id}" disabled="true" />
-						<h:message for="tid"></h:message>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<f:view contentType="text/html">
+	<h:body>
 
-						<p:outputLabel for="tnombre" value="Nombre:" />
-						<p:inputText id="tnombre" value="#{centrocostoBean.centrocosto.nombre}" />
-						<h:message for="tnombre"></h:message>
+		<ui:composition template="/template/base.xhtml">
 
-					
-					</h:panelGrid>
-					<p:commandButton action="#{centrocostoBean.update}" type="submit" value="Editar" />
-					<p:commandButton action="#{centrocostoBean.index}" type="submit" value="Regresar" />
-				</h:form>
-			</p:panel>
-		</center>
-	</f:view>
-</body>
+			<ui:define name="content">
+				<center>
+					p:panel id="pane" header="Editar Centro de Costo"
+					style="width:300px">
+					<h:form id="centrocostoBeanForm">
+						<h:panelGrid columns="3" cellpadding="5">
+							<p:outputLabel for="tid" value="Id:" />
+							<p:inputText id="tid" value="#{centrocostoBean.centrocosto.id}"
+								disabled="true" />
+							<h:message for="tid"></h:message>
+
+							<p:outputLabel for="tnombre" value="Nombre:" />
+							<p:inputText id="tnombre"
+								value="#{centrocostoBean.centrocosto.nombre}" />
+							<h:message for="tnombre"></h:message>
+
+
+						</h:panelGrid>
+						<p:commandButton action="#{centrocostoBean.update}" type="submit"
+							value="Editar" />
+						<p:commandButton action="#{centrocostoBean.index}" type="submit"
+							value="Regresar" />
+					</h:form>
+					</p:panel>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
 </html>

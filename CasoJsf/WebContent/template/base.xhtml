@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<f:view contentType="text/html">
+
+	<h:head>
+		<title>CASO DE ESTUDIO</title>
+
+
+	</h:head>
+	<h:body style="font-size: 12px; background-color: #edf0f5;">
+
+		<p:layout fullPage="true">
+			<p:layoutUnit position="north" size="0" resizable="true"
+				header="CASO DE ESTUDIO"
+				style="font-size: 19px; font-family:  sans-serif; text-align:  center; max-height:35px;     padding: 0px;" />
+			<p:layoutUnit position="south" size="30" resizable="true"
+				style="font-style: italic;font-size: 10px;text-align:  center; background-color: #edf0f5;">
+        	Desarrollado por el VII ciclo Ingenieria de Informacion - UNS
+        </p:layoutUnit>
+			<p:layoutUnit position="west" size="250" header="Menu"
+				resizable="true" collapsible="true">
+				<div
+					style="padding-top: 10px; padding-bottom: 10px; padding-right: 3px; width: 240px;">
+
+					<h:graphicImage value="/images/profile.png" />
+
+					Usuario
+					<hr />
+				</div>
+
+				<h:form>
+					<p:growl id="messages" showDetail="false" />
+
+					<p:menu size="250" style="width: 99%;     border: 0px;">
+						<p:menuitem value="Home" outcome="/index"  update="messages" icon="ui-icon-home" />
+						<p:submenu label="Gestion de Materiales">
+							<p:menuitem value="Grupos de Materiales" outcome="/pages/grupo/index"
+								update="messages" icon="ui-icon-person" />
+							<p:menuitem value="Materiales" outcome="/pages/material/index"
+								update="messages" icon="ui-icon-contact" />
+							<p:menuitem value="Unidades de Medida" outcome="/pages/material/index"
+								update="messages" icon="ui-icon-clipboard" />
+						</p:submenu>
+						<p:submenu label="Gestion de Proveedores">
+							<p:menuitem value="Proveedores" outcome="/pages/material/index"
+								update="messages" icon="ui-icon-disk" />
+							<p:menuitem value="Bancos"
+								outcome="/pages/material/index" update="messages"
+								icon="ui-icon-disk" />
+						</p:submenu>
+						<p:submenu label="Otros">
+							<p:menuitem value="Cerrar Session" update="messages"
+								icon="ui-icon-close" />
+						</p:submenu>
+					</p:menu>
+				</h:form>
+
+			</p:layoutUnit>
+			<p:layoutUnit position="center">
+				<ui:insert name="content">
+                	APLICACION CASO DE ESTUDIO
+            </ui:insert>
+			</p:layoutUnit>
+		</p:layout>
+
+	</h:body>
+
+</f:view>
+</html>
+
+
+
+
+
+
+
+

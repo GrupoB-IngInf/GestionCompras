@@ -5,61 +5,71 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
-<h:head>
-	<title>Unidades</title>
-</h:head>
-<body>
-	<f:view>
-		<center>
-			<p:panel id="pane" header="Listado de Unidades" style="width:655px">
-				<p:dataTable id="dtGrupo" var="a" value="#{unidadmedidaBean.all}" rows="10"
-					paginator="true"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15">
+<f:view contentType="text/html">
+	<h:body>
 
-									
-					<p:column style="width:20px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Id" />
-						</f:facet>
-						<h:outputText id="tid" value="#{a.id}" />
-					</p:column>
+		<ui:composition template="/template/base.xhtml">
 
-					<p:column style="width:300px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Nombre" />
-						</f:facet>
-						<h:outputText id="tnombre" value="#{a.nombre}" />
-					</p:column>
+			<ui:define name="content">
+				<center>
+					<p:panel id="pane" header="Listado de Unidades" style="width:655px">
+						<p:dataTable id="dtGrupo" var="a" value="#{unidadmedidaBean.all}"
+							rows="10" paginator="true"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="5,10,15">
 
-					<p:column tyle="width:10px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Operacion" />
-						</f:facet>
-						<h:form>
-							<p:commandButton action="#{unidadMedidaBean.show}" value="Mostrar">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{unidadMedidaBean.unidadMedida.id}" />
-							</p:commandButton>
-							<p:commandButton action="#{unidadMedidaBean.edit}" value="Editar">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{unidadMedidaBean.unidadMedida.id}" />
-							</p:commandButton>
-							<p:commandButton action="#{unidadMedidaBean.delete}" value="Eliminar"
-								onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{unidadMedidaBean.unidadMedida.id}" />
-							</p:commandButton>
-						</h:form>
-					</p:column>
-				</p:dataTable>
-			</p:panel>
-			<h:form>
-				<p:commandButton action="#{unidadMedidaBean.add}" value="Nueva Unidad" />
-				<p:commandButton value="Volver al Inicio"
-					action="#{usersBean.sessionHome}" />
-			</h:form>
-		</center>
-	</f:view>
-</body>
+
+							<p:column style="width:20px; text-align: center;">
+								<f:facet name="header">
+									<h:outputText value="Id" />
+								</f:facet>
+								<h:outputText id="tid" value="#{a.id}" />
+							</p:column>
+
+							<p:column style="width:300px; text-align: center;">
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText id="tnombre" value="#{a.nombre}" />
+							</p:column>
+
+							<p:column tyle="width:10px; text-align: center;">
+								<f:facet name="header">
+									<h:outputText value="Operacion" />
+								</f:facet>
+								<h:form>
+									<p:commandButton action="#{unidadMedidaBean.show}"
+										value="Mostrar">
+										<f:setPropertyActionListener value="#{a.id}"
+											target="#{unidadMedidaBean.unidadMedida.id}" />
+									</p:commandButton>
+									<p:commandButton action="#{unidadMedidaBean.edit}"
+										value="Editar">
+										<f:setPropertyActionListener value="#{a.id}"
+											target="#{unidadMedidaBean.unidadMedida.id}" />
+									</p:commandButton>
+									<p:commandButton action="#{unidadMedidaBean.delete}"
+										value="Eliminar"
+										onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
+										<f:setPropertyActionListener value="#{a.id}"
+											target="#{unidadMedidaBean.unidadMedida.id}" />
+									</p:commandButton>
+								</h:form>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+					<h:form>
+						<p:commandButton action="#{unidadMedidaBean.add}"
+							value="Nueva Unidad" />
+						<p:commandButton value="Volver al Inicio"
+							action="#{usersBean.sessionHome}" />
+					</h:form>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
 </html>

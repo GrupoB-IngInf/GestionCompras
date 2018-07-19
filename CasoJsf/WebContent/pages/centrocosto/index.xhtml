@@ -5,70 +5,81 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
-<h:head>
-	<title>Centro de Costo</title>
-</h:head>
-<body>
-	<f:view>
-		<center>
-			<p:panel id="pane" header="Listado de Centro de Costo" style="width:655px">
-				<p:dataTable id="dtCentrocosto" var="a" value="#{centrocostoBean.all}" rows="10"
-					paginator="true"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15">
+<f:view contentType="text/html">
+	<h:body>
 
-									
-					<p:column style="width:20px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Id" />
-						</f:facet>
-						<h:outputText id="tid" value="#{a.id}" />
-					</p:column>
+		<ui:composition template="/template/base.xhtml">
 
-					<p:column style="width:140px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Nombre" />
-						</f:facet>
-						<h:outputText id="tnombre" value="#{a.nombre}" />
-					</p:column>
-					
-				   <p:column style="width:70px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Estado" />
-						</f:facet>
-						<h:outputText id="testado" value="#{a.estado}" />
-					</p:column>
+			<ui:define name="content">
+				<center>
+					<p:panel id="pane" header="Listado de Centro de Costo"
+						style="width:655px">
+						<p:dataTable id="dtCentrocosto" var="a"
+							value="#{centrocostoBean.all}" rows="10" paginator="true"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="5,10,15">
 
-					<p:column style="width:200px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Operacion" />
-						</f:facet>
-						<h:form>
-							<p:commandButton action="#{centrocostoBean.show}" value="Mostrar">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{centrocostoBean.centrocosto.id}" />
-							</p:commandButton>
-							<p:commandButton action="#{centrocostoBean.edit}" value="Editar">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{centrocostoBean.centrocosto.id}" />
-							</p:commandButton>
-							
-							<p:commandButton action="#{centrocostoBean.unsuscribe}" value="Baja"
-								onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{centrocostoBean.centrocosto.id}" />
-							</p:commandButton>
-							
-						</h:form>
-					</p:column>
-				</p:dataTable>
-			</p:panel>
-			<h:form>
-				<p:commandButton action="#{centrocostoBean.add}" value="Nuevo Centro Costo" />
-				<p:commandButton value="Volver al Inicio"
-					action="#{usersBean.sessionHome}" />
-			</h:form>
-		</center>
-	</f:view>
-</body>
+
+							<p:column style="width:20px; text-align: center;">
+								<f:facet name="header">
+									<h:outputText value="Id" />
+								</f:facet>
+								<h:outputText id="tid" value="#{a.id}" />
+							</p:column>
+
+							<p:column style="width:140px; text-align: center;">
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText id="tnombre" value="#{a.nombre}" />
+							</p:column>
+
+							<p:column style="width:70px; text-align: center;">
+								<f:facet name="header">
+									<h:outputText value="Estado" />
+								</f:facet>
+								<h:outputText id="testado" value="#{a.estado}" />
+							</p:column>
+
+							<p:column style="width:200px; text-align: center;">
+								<f:facet name="header">
+									<h:outputText value="Operacion" />
+								</f:facet>
+								<h:form>
+									<p:commandButton action="#{centrocostoBean.show}"
+										value="Mostrar">
+										<f:setPropertyActionListener value="#{a.id}"
+											target="#{centrocostoBean.centrocosto.id}" />
+									</p:commandButton>
+									<p:commandButton action="#{centrocostoBean.edit}"
+										value="Editar">
+										<f:setPropertyActionListener value="#{a.id}"
+											target="#{centrocostoBean.centrocosto.id}" />
+									</p:commandButton>
+
+									<p:commandButton action="#{centrocostoBean.unsuscribe}"
+										value="Baja"
+										onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
+										<f:setPropertyActionListener value="#{a.id}"
+											target="#{centrocostoBean.centrocosto.id}" />
+									</p:commandButton>
+
+								</h:form>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+					<h:form>
+						<p:commandButton action="#{centrocostoBean.add}"
+							value="Nuevo Centro Costo" />
+						<p:commandButton value="Volver al Inicio"
+							action="#{usersBean.sessionHome}" />
+					</h:form>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
 </html>
