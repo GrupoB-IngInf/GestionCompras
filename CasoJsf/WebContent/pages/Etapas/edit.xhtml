@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
+<h:head>
+	<title>Editar Material</title>
+</h:head>
+<body>
+	<f:view>
+		<p:panel id="pane" header="Editar Material" style="width:600px">
+			<h:form id="grupoBeanForm">
+				<h:panelGrid columns="3" cellpadding="5">
+					<p:outputLabel for="tid" value="Id:" />
+					<p:inputText id="tid" value="#{materialBean.material.id}" disabled="true" />
+					<h:message for="tid"></h:message>
+					
+					<p:outputLabel for="tnombre" value="Nombre:" />
+					<p:inputText id="tnombre" value="#{materialBean.material.nombre}" />
+					<h:message for="tnombre"></h:message>
+
+					<p:outputLabel for="tdescripcion" value="Descripcion:" />
+					<p:inputText id="tdescripcion" value="#{materialBean.material.descripcion}" />
+					<h:message for="tdescripcion"></h:message>
+
+					<p:outputLabel for="cbgrupo" value="Grupo:" />
+					<p:selectOneMenu id="cbgrupo" value="#{materialBean.material.grupo.id}" converter="omnifaces.SelectItemsConverter" style="width:150px">
+						<f:selectItem itemLabel="[Seleccionar Registro]" itemValue="0" />
+						<f:selectItems value="#{grupoBean.all}" var="g" itemLabel="#{g.nombre}" itemValue="#{g.id}" />
+					</p:selectOneMenu>
+					<h:message for="cbgrupo"></h:message>
+						
+				</h:panelGrid>
+				<p:commandButton action="#{materialBean.update}" type="submit" value="Actualizar" />
+				<p:commandButton action="#{materialBean.index}" type="submit" value="Cancelar" />
+			</h:form>
+		</p:panel>
+	</f:view>
+</body>
+</html>
