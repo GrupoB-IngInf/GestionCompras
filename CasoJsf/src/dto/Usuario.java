@@ -30,8 +30,8 @@ public class Usuario implements Serializable{
 	@Column(name = "correo")
 	private String correo;
 	
-	@Column(name = "contraseña")
-	private String contraseña;
+	@Column(name = "password")
+	private String password;
 	
 	@Column(name = "telefono")
 	private String telefono;
@@ -76,11 +76,11 @@ public class Usuario implements Serializable{
 	}
 
 	public String getPassword() {
-		return contraseña;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		this.contraseña = password;
+		this.password = password;
 	}
 
 	public String getTelefono() {

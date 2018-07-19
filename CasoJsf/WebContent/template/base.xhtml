@@ -50,22 +50,36 @@
 								update="messages" icon="ui-icon-contact" />
 							<p:menuitem value="Unidades de Medida"
 								outcome="/pages/unidades/index" update="messages"
-								icon="ui-icon-clipboard" ><p:submenu label="Gestion de Proveedores">
-							<p:menuitem value="Proveedores" outcome="/pages/proveedor/index" update="messages" icon="ui-icon-disk" />
-							<p:menuitem value="Bancos" outcome="/pages/banco/index" update="messages" icon="ui-icon-disk" />
-						</p:submenu></p:menuitem>
+								icon="ui-icon-clipboard">
+								<p:submenu label="Gestion de Proveedores">
+									<p:menuitem value="Proveedores"
+										outcome="/pages/proveedor/index" update="messages"
+										icon="ui-icon-disk" />
+									<p:menuitem value="Bancos" outcome="/pages/banco/index"
+										update="messages" icon="ui-icon-disk" />
+								</p:submenu>
+							</p:menuitem>
 						</p:submenu>
-						
-						<p:submenu label="Gestion de Áreas de Negocio">
-							<p:menuitem value="Áreas de negocio" outcome="/pages/areanegocio/index"
+
+						<p:submenu label="Gestion de Proveedores">
+							<p:menuitem value="Proveedores" outcome="/pages/proveedor/index"
 								update="messages" icon="ui-icon-disk" />
+							<p:menuitem value="Bancos" outcome="/pages/banco/index"
+								update="messages" icon="ui-icon-disk" />
+						</p:submenu>
+
+						<p:submenu label="Gestion de Áreas de Negocio">
+							<p:menuitem value="Áreas de negocio"
+								outcome="/pages/areanegocio/index" update="messages"
+								icon="ui-icon-disk" />
 						</p:submenu>
 						<p:submenu label="Gestión de Centros de Costo">
-							<p:menuitem value="Centro de Costo" outcome="/pages/centrocosto/index"
-								update="messages" icon="ui-icon-disk" />
+							<p:menuitem value="Centro de Costo"
+								outcome="/pages/centrocosto/index" update="messages"
+								icon="ui-icon-disk" />
 						</p:submenu>
 						<p:submenu label="Gestión de Proyectos y Etapas">
-							<p:menuitem value="Centro de Costo" outcome="/pages/Etapas/index"
+							<p:menuitem value="Proyectos" outcome="/pages/proyecto/index"
 								update="messages" icon="ui-icon-disk" />
 						</p:submenu>
 						<p:submenu label="Gestion de Usuarios">
