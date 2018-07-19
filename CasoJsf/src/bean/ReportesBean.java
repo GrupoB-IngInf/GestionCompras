@@ -2,6 +2,7 @@ package bean;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -10,8 +11,11 @@ import javax.faces.bean.ViewScoped;
 
 import dao.impl.AreaNegocioImpl;
 import dao.impl.MaterialImpl;
+import dao.impl.ProyectoImpl;
 import dto.AreaNegocio;
+import dto.Etapa;
 import dto.Material;
+import dto.Proyecto;
 import net.sf.jasperreports.engine.JRException;
 
 @ManagedBean(name="reportesBean")
@@ -43,12 +47,24 @@ public class ReportesBean implements Serializable {
 		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
 	
-	public void proyectos() {
+	public void proyectos() throws JRException, IOException {
+		ProyectoImpl proyectoImpl = new ProyectoImpl();
+		List<Proyecto> dataSource = proyectoImpl.getAll();
+				
+		String filename = "reporte_proyectos.pdf";
+		String jasperPath = "/resources/proyectos.jasper";
 		
+		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
 	
-	public void usuarios() {
+	public void usuarios() throws JRException, IOException {
+		//UsuarioImpl usuarioImpl = new UsuarioImpl();
+		//List<Usuario> dataSource = usuarioImpl.getAll();	
+				
+		String filename = "reporte_usuarios.pdf";
+		String jasperPath = "/resources/usuarios.jasper";
 		
+		PDFGenerator.showPDF(null, jasperPath, null, filename);
 	}
 
 	public MaterialBean getMaterialBean() {

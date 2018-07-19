@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
+<h:head>
+	<title>Proyecto-Etapa</title>
+</h:head>
+<body>
+	<f:view>
+		<center>
+			<p:panel id="pane" header="Listado de Materiales" style="width:870px">
+				<p:dataTable id="dtGrupo" var="m" value="#{materialBean.all}">
+					<p:column style="width:20px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Id" />
+						</f:facet>
+						<h:outputText id="tid" value="#{m.id}" />
+					</p:column>
+
+					<p:column style="width:140px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Nombre" />
+						</f:facet>
+						<h:outputText id="tnombre" value="#{m.nombre}" />
+					</p:column>
+
+					<p:column style="width:140px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Descripcion" />
+						</f:facet>
+						<h:outputText id="tdescripcion" value="#{m.descripcion}" />
+					</p:column>
+					
+				
+					<p:column style="width:140px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Grupo" />
+						</f:facet>
+						<h:outputText id="tgrupo" value="#{m.grupo.nombre}" />
+					</p:column>
+					
+					<p:column style="width:70px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Estado" />
+						</f:facet>
+						<h:outputText id="testado" value="#{m.estado}" />
+					</p:column>
+
+					<p:column tyle="width:240px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Operacion" />
+						</f:facet>
+						<h:form>
+							<p:commandButton action="#{materialBean.show}" value="Mostrar">
+								<f:setPropertyActionListener value="#{m.id}" target="#{materialBean.material.id}" />
+							</p:commandButton>
+							<p:commandButton action="#{materialBean.edit}" value="Editar">
+								<f:setPropertyActionListener value="#{m.id}" target="#{materialBean.material.id}" />
+							</p:commandButton>
+							<p:commandButton action="#{materialBean.unsuscribe}" value="Baja" onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
+								<f:setPropertyActionListener value="#{m.id}" target="#{materialBean.material.id}" />
+							</p:commandButton>
+						</h:form>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+			<h:form>
+				<p:commandButton action="#{materialBean.add}" value="Nuevo Material" />
+				<p:commandButton value="Volver al Inicio" action="#{usersBean.sessionHome}" />
+			</h:form>
+		</center>
+	</f:view>
+</body>
+</html>

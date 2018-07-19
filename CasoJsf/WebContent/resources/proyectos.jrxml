@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="proyectos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="edf18c65-745a-4a15-90ec-ee417c9bdaed">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="etapas" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="132" y="10" width="291" height="30" uuid="f16b4505-63d9-4132-9598-2734a70b2e7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE PROYECTOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="70" height="14" uuid="5f535d92-57a3-44cb-8273-dbf2e693466a"/>
+				<textElement textAlignment="Right">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Generado el]]></text>
+			</staticText>
+			<textField pattern="d MMM, yyyy h:mm:ss a">
+				<reportElement x="80" y="0" width="238" height="14" uuid="14736df9-038c-4703-a1d2-6e8e2352fdd4"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="100" height="30" uuid="048e9b98-f9e2-4727-a6c9-3b383d264cc4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="450" y="0" width="100" height="30" uuid="22612575-be51-45e4-9738-b5333d2d8b13"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="f892dc67-6469-4c53-b2af-3ca13e240cd7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beff8c4d-a006-4660-acdb-8d098c15591e"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="199" height="20" uuid="480d5167-76c6-4564-bbd8-cf28642b54dd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beff8c4d-a006-4660-acdb-8d098c15591e"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="110" height="20" uuid="b3a615fd-f72f-46fe-bd10-c4497ef2f207">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beff8c4d-a006-4660-acdb-8d098c15591e"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ubicación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="169" height="20" uuid="69172c3a-4b47-4d14-ac72-e4e3731434b4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beff8c4d-a006-4660-acdb-8d098c15591e"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Etapas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="72" splitType="Stretch">
+			<subreport>
+				<reportElement x="380" y="0" width="168" height="63" uuid="4ea30425-90d9-4b6a-aec0-28842852102d"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{etapas})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["etapas.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="-1" y="0" width="40" height="30" uuid="a80d4dd0-51bd-4420-8a22-c2ceaa93b273">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eadc8834-bdf4-42fc-8030-fb2eeefa3024"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="1" width="199" height="30" uuid="f73b07bf-f512-4033-8cf7-05b10f4a4b81">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3fc90d59-dba8-40c3-86d1-f80257af2945"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="1" width="110" height="30" uuid="bc36988d-69e2-42cf-a037-f2ed2bb0c814">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="075888ef-b6c0-4005-a44b-a67fe92e5e96"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ubicacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
