@@ -11,6 +11,8 @@
 		<class>dto.AreaNegocio</class>
 		<class>dto.Proyecto</class>
 		<class>dto.Etapa</class>
+		<class>dto.Banco</class>
+		<class>dto.Proveedor</class>
 		<class>dto.Usuario</class>
 		<class>dto.Rol</class>
 		<class>dto.Permiso</class>

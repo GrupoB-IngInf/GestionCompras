@@ -51,5 +51,16 @@
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 	
+		<managed-bean>
+		<managed-bean-name>bancoBean</managed-bean-name>
+		<managed-bean-class>bean.BancoBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
+		<managed-bean>
+		<managed-bean-name>proveedorBean</managed-bean-name>
+		<managed-bean-class>bean.ProveedorBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
