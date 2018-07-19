@@ -69,7 +69,7 @@ CREATE TABLE `centro_de_costo` (
 CREATE TABLE `etapa` (
   `id` int(11) NOT NULL,
   `denominacion` varchar(45) DEFAULT NULL,
-  `ubicacion` varchar(45) DEFAULT NULL,
+  `duracion` varchar(45) DEFAULT NULL,
   `Proyecto_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
