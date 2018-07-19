@@ -19,44 +19,11 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<columnHeader>
-		<band height="18">
-			<staticText>
-				<reportElement x="0" y="0" width="100" height="15" uuid="0019b5ad-2b7f-4f42-904f-5542050d80a1">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beff8c4d-a006-4660-acdb-8d098c15591e"/>
-				</reportElement>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Denominación]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="100" y="0" width="70" height="15" uuid="2e9ab809-4cd2-4fe9-829f-70e8595b4b35">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beff8c4d-a006-4660-acdb-8d098c15591e"/>
-				</reportElement>
-				<box>
-					<pen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Duración]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="100" height="16" uuid="c5d6b8cd-e044-454c-b656-a50ee6229c41"/>
-				<textFieldExpression><![CDATA[$F{denominacion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="0" width="70" height="16" uuid="a65f2c86-b127-4439-aa04-6017b792303b"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{duracion}]]></textFieldExpression>
+				<reportElement x="0" y="0" width="140" height="16" uuid="c5d6b8cd-e044-454c-b656-a50ee6229c41"/>
+				<textFieldExpression><![CDATA[$F{denominacion} + " (" + $F{duracion} + " días)"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

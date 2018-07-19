@@ -15,6 +15,18 @@ INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`
 INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`Grupo_id`) VALUES (2,'PINTURA LATEX LAVABLE','','Activo',3,2);
 INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`Grupo_id`) VALUES (3,'CEMENTO ANTISALITRE','','Activo',1,3);
 
+/* Proyectos*/
+INSERT INTO `dbcaso`.`proyecto` (`id`, `nombre`, `ubicacion`) VALUES ('1', 'Proyecto Las Palmas', 'Chimbote');
+INSERT INTO `dbcaso`.`proyecto` (`id`, `nombre`, `ubicacion`) VALUES ('2', 'Proyecto Los PInos', 'Trujillo');
+
+/* Etapas*/
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('1', 'Etapa 1', '20', '1');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('2', 'Etapa 2', '23', '1');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('3', 'Etapa 3', '43', '1');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('4', 'Primera Etapa', '12', '2');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('5', 'Segunda Etapa', '23', '2');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('6', 'Tercera Etapa', '34', '2');
+
 /* Area de negocio */
 DELETE FROM `areanegocio`;
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AC', 'Atención al Cliente');

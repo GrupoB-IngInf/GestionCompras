@@ -27,16 +27,13 @@ import net.sf.jasperreports.engine.JRException;
 public class ReportesBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@ManagedProperty(value = "#{materialBean}")
-	private MaterialBean materialBean;
-		
+			
 	public void materiales() throws JRException, IOException {
 		MaterialImpl materialImpl = new MaterialImpl();
 		List<Material> dataSource = materialImpl.getAll();	
 				
 		String filename = "reporte_materiales.pdf";
-		String jasperPath = "/resources/report.jasper";
+		String jasperPath = "/resources/materiales.jasper";
 		
 		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
@@ -91,14 +88,4 @@ public class ReportesBean implements Serializable {
 		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
 	
-	
-
-	public MaterialBean getMaterialBean() {
-		return materialBean;
-	}
-
-	public void setMaterialBean(MaterialBean materialBean) {
-		this.materialBean = materialBean;
-	}
-
 }
