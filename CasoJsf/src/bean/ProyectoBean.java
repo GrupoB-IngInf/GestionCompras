@@ -25,7 +25,10 @@ public class ProyectoBean  implements Serializable {
 	private EtapaImpl etapaImpl = new EtapaImpl();
 
 	
-	
+	public void addEtapa()
+	{
+		proyecto.addEtapa(etapa);
+	}
 	public Etapa getEtapa() {
 		return etapa;
 	}

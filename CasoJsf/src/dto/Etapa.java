@@ -26,7 +26,7 @@ public class Etapa {
 	private Long duracion;
 
 	@ManyToOne
-	@JoinColumn(name = "proyecto_id")
+	//@JoinColumn(name = "proyecto_id")
 	private Proyecto proyecto;
 
 	public Long getId() {

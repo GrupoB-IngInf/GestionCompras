@@ -8,22 +8,27 @@
 		<p:panel id="pane" header="Detalle de Material  - Estado: #{materialBean.material.estado}" style="width:600px">
 			<h:form id="grupoBeanForm">
 				<h:panelGrid columns="3" cellpadding="5">
+					
 					<p:outputLabel for="tid" value="Id:" />
 					<p:inputText id="tid" value="#{materialBean.material.id}" disabled="true" />
 					<h:message for="tid"></h:message>
 					
 					<p:outputLabel for="tnombre" value="Nombre:" />
-					<p:inputText id="tnombre" value="#{materialBean.material.nombre}" disabled="true"/>
+					<p:inputText id="tnombre" value="#{materialBean.material.nombre}"  disabled="true"/>
 					<h:message for="tnombre"></h:message>
 
 					<p:outputLabel for="tdescripcion" value="Descripcion:" />
-					<p:inputText id="tdescripcion" value="#{materialBean.material.descripcion}" disabled="true"/>
+					<p:inputText id="tdescripcion" value="#{materialBean.material.descripcion}"  disabled="true"/>
 					<h:message for="tdescripcion"></h:message>
-
+					
+					<p:outputLabel for="tunidadmedida" value="Unidad:" />
+					<p:inputText id="tunidadmedida" value="#{materialBean.material.unidadMedida.nombre}"  disabled="true"/>
+					<h:message for="tunidadmedida"></h:message>
+					
 					<p:outputLabel for="tgrupo" value="Grupo:" />
-					<p:inputText id="tgrupo" value="#{materialBean.material.grupo.nombre}" disabled="true"/>
+					<p:inputText id="tgrupo" value="#{materialBean.material.grupo.nombre}"  disabled="true"/>
 					<h:message for="tgrupo"></h:message>
-						
+				
 				</h:panelGrid>
 				<p:commandButton action="#{materialBean.index}" type="submit" value="Regresar" />
 			</h:form>

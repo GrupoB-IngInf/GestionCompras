@@ -14,6 +14,18 @@
 		<managed-bean-class>bean.MaterialBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>proyectoBean</managed-bean-name>
+		<managed-bean-class>bean.ProyectoBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>etapaBean</managed-bean-name>
+		<managed-bean-class>bean.EtapaBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 
 	<managed-bean>
 		<managed-bean-name>areaNegocioBean</managed-bean-name>

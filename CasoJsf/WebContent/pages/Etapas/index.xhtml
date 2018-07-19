@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
 <h:head>
-	<title>Proyecto-Etapa</title>
+	<title>Proyectos</title>
 </h:head>
 <body>
 	<f:view>
@@ -26,12 +26,10 @@
 						<f:facet name="header">
 							<h:outputText value="Ubicacion" />
 						</f:facet>
-						<h:outputText id="tdescripcion" value="#{m.descripcion}" />
+						<h:outputText id="tubicacion" value="#{m.ubicacion}" />
 					</p:column>
 					
 				
-					
-
 					<p:column tyle="width:240px; text-align: center;">
 						<f:facet name="header">
 							<h:outputText value="Operacion" />
@@ -40,18 +38,18 @@
 							<p:commandButton action="#{proyectoBean.show}" value="Mostrar">
 								<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.id}" />
 							</p:commandButton>
-							<p:commandButton action="#{materialBean.edit}" value="Editar">
-								<f:setPropertyActionListener value="#{m.id}" target="#{materialBean.material.id}" />
+							<p:commandButton action="#{proyectoBean.edit}" value="Editar">
+								<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.id}" />
 							</p:commandButton>
-							<p:commandButton action="#{materialBean.unsuscribe}" value="Baja" onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
-								<f:setPropertyActionListener value="#{m.id}" target="#{materialBean.material.id}" />
+							<p:commandButton action="#{proyectoBean.unsuscribe}" value="Baja" onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
+								<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.id}" />
 							</p:commandButton>
 						</h:form>
 					</p:column>
 				</p:dataTable>
 			</p:panel>
 			<h:form>
-				<p:commandButton action="#{materialBean.add}" value="Nuevo Material" />
+				<p:commandButton action="#{proyectoBean.add}" value="Nuevo Proyecto" />
 				<p:commandButton value="Volver al Inicio" action="#{usersBean.sessionHome}" />
 			</h:form>
 		</center>
