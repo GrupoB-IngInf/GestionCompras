@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
 
-<h:head>
-	<title>Nuevo Proveedor</title>
-</h:head>
+<f:view contentType="text/html">
+	<h:body>
 
-<body>
-	<f:view>
-		<center>
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
 		 <p:panel id="pane" header="Crear proveedor" style="width:500px">
 			    <h:form id="fproveedor">
 				<h:panelGrid columns="2" cellpadding="8">
@@ -85,6 +85,11 @@
 			</h:form>
 		</p:panel> 
 		</center>
-	</f:view>
-	</body>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
 </html>

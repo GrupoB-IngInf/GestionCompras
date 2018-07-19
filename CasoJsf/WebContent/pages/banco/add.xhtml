@@ -4,12 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Nuevo Banco</title>
-</h:head>
-<body>
-	<f:view>
-		<center>
+<f:view contentType="text/html">
+	<h:body>
+
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
 			<p:panel id="pane" header="Crear Banco" style="width:300px">
 				<h:form id="bancoBeanForm">
 					<h:panelGrid columns="3" cellpadding="5">
@@ -35,7 +36,12 @@
 						value="Regresar" />
 				</h:form>
 			</p:panel>
-		</center>
-	</f:view>
-</body>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
 </html>

@@ -11,15 +11,12 @@
 		<class>dto.AreaNegocio</class>
 		<class>dto.Proyecto</class>
 		<class>dto.Etapa</class>
-<<<<<<< HEAD
 		<class>dto.Banco</class>
 		<class>dto.Proveedor</class>
-=======
 		<class>dto.Usuario</class>
 		<class>dto.Rol</class>
 		<class>dto.Permiso</class>
 		<class>dto.Centrocosto</class>
->>>>>>> 78e5c3aaf8c1fa741e74dc5d112ab93641c574e2
 				
 		<properties>
 			<property name="javax.persistence.jdbc.url"

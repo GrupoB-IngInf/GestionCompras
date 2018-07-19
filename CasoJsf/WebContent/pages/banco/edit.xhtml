@@ -5,12 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
-<h:head>
-	<title>Editar Banco</title>
-</h:head>
-<body>
-	<f:view>
-		<center>
+<f:view contentType="text/html">
+	<h:body>
+
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
 			<p:panel id="pane" header="Editar Banco" style="width:300px">
 				<h:form id="bancoBeanForm">
 					<h:panelGrid columns="3" cellpadding="5">
@@ -32,7 +33,12 @@
 					<p:commandButton action="#{grupoBean.index}" type="submit" value="Regresar" />
 				</h:form>
 			</p:panel>
-		</center>
-	</f:view>
-</body>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
 </html>
