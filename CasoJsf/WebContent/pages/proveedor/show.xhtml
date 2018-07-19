@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
+<h:head>
+	<title>Mostrar Proveedor</title>
+</h:head>
+<body>
+	<f:view>
+	<center>
+		<p:panel id="pane" header="Detalle de Proveeedor  - Estado: #{proveedorBean.proveedor.estado}" style="width:600px">
+			<h:form id="proveedorBeanForm">
+				<h:panelGrid columns="2" cellpadding="8">
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="tid" value="Id: " />
+					<p:inputText id="tid" value="#{proveedorBean.proveedor.id}" disabled="true" />
+					<h:message for="tid"></h:message>
+					</p:column>
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="tnombre" value="Nombre: " />
+					<p:inputText id="tnombre" value="#{proveedorBean.proveedor.nombre}" disabled="true"/>
+					<h:message for="tnombre"></h:message>
+					</p:column>
+
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="truc" value="Ruc:" />
+					<p:inputText id="truc" value="#{proveedorBean.proveedor.ruc}" disabled="true"/>
+					<h:message for="truc"></h:message>
+					</p:column>
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="tdireccion" value="Direccion:" />
+					<p:inputText id="tdireccion" value="#{proveedorBean.proveedor.direccion}" disabled="true"/>
+					<h:message for="tdireccion"></h:message>
+					</p:column>
+					
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="cbbanco" value="Banco:" />
+					<p:selectOneMenu id="cbbanco" value="#{proveedorBean.proveedor.banco.id}" converter="omnifaces.SelectItemsConverter" style="width:150px" disabled="true">
+					<f:selectItem itemLabel="[Seleccionar Banco]" itemValue="0" />
+					<f:selectItems value="#{bancoBean.all}" var="b" itemLabel="#{b.nombre}" itemValue="#{b.id}" />
+					</p:selectOneMenu >
+					<h:message for="cbbanco"></h:message>
+					</p:column>
+					
+					<p:column style="width:20px; text-align: center;">
+					<p:outputLabel for="tcontacto" value="Contacto: " />
+					<p:inputText id="tcontacto" value="#{proveedorBean.proveedor.contacto}" disabled="true"/>
+					<h:message for="tcontacto"></h:message>
+					</p:column>
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="tcorreo" value="Correo:" />
+					<p:inputText id="tcorreo" value="#{proveedorBean.proveedor.correo}" disabled="true"/>
+					<h:message for="tcorreo"></h:message>
+					</p:column>
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="tcuenta_corriente" value="Cuenta:" />
+					<p:inputText id="tcuenta_corriente" value="#{proveedorBean.proveedor.cuenta_corriente}" disabled="true"/>
+					<h:message for="tcuenta_corriente"></h:message>
+					</p:column>
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="ttelefono" value="Teléfono:" />
+					<p:inputText id="ttelefono" value="#{proveedorBean.proveedor.telefono}" disabled="true"/>
+					<h:message for="ttelefono"></h:message>
+					</p:column>
+					
+					<p:column style="width:20px; text-align: left;">
+					<p:outputLabel for="testado" value="Estado:" />
+					<p:inputText id="testado" value="#{proveedorBean.proveedor.estado}" disabled="true"/>
+					<h:message for="testado"></h:message>
+					</p:column>
+				
+				</h:panelGrid>
+				<p:commandButton action="#{materialBean.index}" type="submit" value="Regresar" />
+			</h:form>
+		</p:panel>
+		</center>
+	</f:view>
+</body>
+</html>

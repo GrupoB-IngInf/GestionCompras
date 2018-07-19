@@ -13,6 +13,7 @@
 		<class>dto.Etapa</class>
 <<<<<<< HEAD
 		<class>dto.Banco</class>
+		<class>dto.Proveedor</class>
 =======
 		<class>dto.Usuario</class>
 		<class>dto.Rol</class>
