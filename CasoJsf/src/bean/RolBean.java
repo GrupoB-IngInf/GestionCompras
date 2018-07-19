@@ -25,8 +25,7 @@ public class RolBean implements Serializable{
 		private RolesImpl rolesimpl = new RolesImpl();
 		
 		// Bean 
-		@ManagedProperty(value = "#{mpermisoBean}")
-		private PermisosBean permisobean;
+		
 
 
 		// Getters & Setters
@@ -39,13 +38,7 @@ public class RolBean implements Serializable{
 			this.rol = rol;
 		}
 
-		public PermisosBean getPermisobean() {
-			return permisobean;
-		}
-
-		public void setPermisobean(PermisosBean permisobean) {
-			this.permisobean = permisobean;
-		}
+	
 		
 		// CRUD
 		public String create() {
