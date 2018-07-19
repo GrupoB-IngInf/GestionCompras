@@ -39,7 +39,6 @@ INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('PC', 'Producci
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('SE', 'Seguridad');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('VC', 'Ventas/Crédito y Cobranza');
 
-<<<<<<< HEAD
 /*Banco*/
 INSERT INTO  `banco` (`id`,`nombre`,`estado`) VALUES (1,'BBVA Continental','Activo');
 INSERT INTO  `banco` (`id`,`nombre`,`estado`) VALUES (2,'Banco de Crédito del Perú','Activo');
@@ -58,7 +57,7 @@ INSERT INTO  `proveedor` (`id`,`nombre`,`ruc`, `direccion`,`contacto`,`correo`,`
 VALUES (4,'Cementos Indu','20785649102','Av. Pizarro 608, Cercado de Lima','Ernesto Josue Moreno Saavedra','indu_ce@gmail.com','321-88675462-0-32','956996433','Activo',1);
 INSERT INTO  `proveedor` (`id`,`nombre`,`ruc`, `direccion`,`contacto`,`correo`,`cuenta_corriente`,`telefono`,`estado`,`id_banco`) 
 VALUES (5,'Viesgo Ligth Empresa','87556366210','Av. Faucet 564, Surquillo','Jose Luis Rojas Ruiz','ligth_viesgo.10@gmail.com','361-76843109-0-34','971988832','Activo',5);
-=======
+
 /* Centro de Costo */
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (1, 'Administración y Finanzas', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (2, 'Contabilidad', 'Activo');
@@ -83,4 +82,4 @@ INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (22, 'Utilidad P
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (24, 'Comercial Ica', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (25, 'Comercial Piura', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (26, 'Comercial', 'Activo');
->>>>>>> 78e5c3aaf8c1fa741e74dc5d112ab93641c574e2
+
