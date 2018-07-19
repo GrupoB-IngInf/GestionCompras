@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="area_de_negocio" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e4c85fb3-2aec-471f-bb1f-b1958511b052">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -120,23 +121,17 @@
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="8" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="5" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
 		<band height="60" splitType="Stretch">
 			<textField>
-				<reportElement x="70" y="0" width="140" height="18" uuid="8540d207-c65b-4884-8200-d1a9fbcfd0b7"/>
+				<reportElement x="90" y="10" width="160" height="18" uuid="8540d207-c65b-4884-8200-d1a9fbcfd0b7"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="0" width="60" height="19" uuid="ac23c691-3b7d-4bed-ab95-e525368dea0f"/>
+				<reportElement x="0" y="10" width="80" height="19" uuid="ac23c691-3b7d-4bed-ab95-e525368dea0f"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
