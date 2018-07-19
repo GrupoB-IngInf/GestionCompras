@@ -9,14 +9,10 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import dao.impl.AreaNegocioImpl;
-import dao.impl.CentrocostoImpl;
-import dao.impl.GrupoImpl;
 import dao.impl.MaterialImpl;
 import dao.impl.ProyectoImpl;
 import dao.impl.UsuarioImpl;
 import dto.AreaNegocio;
-import dto.Centrocosto;
-import dto.Grupo;
 import dto.Material;
 import dto.Proyecto;
 import dto.Usuario;
@@ -70,28 +66,6 @@ public class ReportesBean implements Serializable {
 		
 		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
-	
-	public void centroCosto() throws JRException, IOException {
-		CentrocostoImpl centroCostoImpl = new CentrocostoImpl();
-		List<Centrocosto> dataSource = centroCostoImpl.getAll();	
-				
-		String filename = "reporte_centro_de_costos.pdf";
-		String jasperPath = "/resources/centro_de_costo.jasper";
-		
-		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
-	}
-	
-	public void grupos() throws JRException, IOException {
-		GrupoImpl gruposImpl = new GrupoImpl();
-		List<Grupo> dataSource = gruposImpl.getAll();	
-				
-		String filename = "reporte_grupos.pdf";
-		String jasperPath = "/resources/grupos.jasper";
-		
-		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
-	}
-	
-	
 
 	public MaterialBean getMaterialBean() {
 		return materialBean;

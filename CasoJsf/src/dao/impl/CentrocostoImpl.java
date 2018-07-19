@@ -16,7 +16,7 @@ public class CentrocostoImpl extends JPA implements DAO<Centrocosto> {
 		return result;
 	}
 
-	//@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Centrocosto> getAll() {
 		String sql = "SELECT g FROM Centrocosto g";

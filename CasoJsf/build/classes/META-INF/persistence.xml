@@ -14,7 +14,6 @@
 		<class>dto.Usuario</class>
 		<class>dto.Rol</class>
 		<class>dto.Permiso</class>
-		<class>dto.Centrocosto</class>
 				
 		<properties>
 			<property name="javax.persistence.jdbc.url"
