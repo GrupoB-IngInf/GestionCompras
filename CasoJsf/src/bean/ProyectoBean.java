@@ -25,9 +25,20 @@ public class ProyectoBean  implements Serializable {
 	private EtapaImpl etapaImpl = new EtapaImpl();
 
 	
-	public void addEtapa()
+	public String addEtapa()
 	{
-		proyecto.addEtapa(etapa);
+		etapa.setProyecto(proyecto);
+		etapaImpl.create(etapa);
+
+		return "index";
+	}
+	
+	public String removeEtapa()
+	{
+		Long deleteId = this.proyecto.getId();
+		this.etapa= new Etapa();
+		etapaImpl.delete(deleteId);
+		return "index";
 	}
 	public Etapa getEtapa() {
 		return etapa;
@@ -68,7 +79,7 @@ public class ProyectoBean  implements Serializable {
 		Long deleteId = this.proyecto.getId();
 		this.proyecto = new Proyecto();
 		proyectoImpl.delete(deleteId);
-		return "/pages/proyecto/index.xhtml?faces-redirect=true";
+		return "/pages/proyecto/index.xhtml?faces-redirect=true\"";
 	}
 
 	
@@ -78,6 +89,8 @@ public class ProyectoBean  implements Serializable {
 	public String add() {
 		this.proyecto = new Proyecto();
 		long max = proyectoImpl.getMaxId();
+		long maxEtapa = etapaImpl.getMaxId();
+		this.etapa.setId(maxEtapa);
 		this.proyecto.setId(max);
 		return "add"; //muestra la vista
 	}
@@ -86,6 +99,8 @@ public class ProyectoBean  implements Serializable {
 		Long editId = this.proyecto.getId();
 		this.proyecto = new Proyecto();
 		this.proyecto = (Proyecto) proyectoImpl.getById(editId);
+		long maxEtapa = etapaImpl.getMaxId();
+		this.etapa.setId(maxEtapa);
 		return "edit";
 	}
 

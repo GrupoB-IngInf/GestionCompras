@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
 <h:head>
-	<title>Nuevo Proyecto y etapas</title>
+	<title>Editar Proyecto</title>
 </h:head>
 <body>
 	<f:view>
@@ -9,6 +9,8 @@
 			<p:panel id="pane" header="Crear proyecto" style="width:500px">
 				<h:form id="fproyecto">
 					<h:panelGrid columns="3" cellpadding="5">
+					
+					
 						<p:outputLabel for="tid" value="Id:" />
 						<p:inputText id="tid" value="#{proyectoBean.proyecto.id}" disabled="true" />
 						<h:message for="tid"></h:message>
@@ -20,12 +22,11 @@
 						<p:outputLabel for="tubicacion" value="ubicacion:" />
 						<p:inputText id="tubicacion" value="#{proyectoBean.proyecto.ubicacion}" />
 						<h:message for="tubicacion"></h:message>
-			
-						<h:message for="cbproyecto"></h:message>
+				
 						
 						
 					</h:panelGrid>
-					<p:commandButton action="#{proyectoBean.create}" type="submit" value="Añadir" />
+					<p:commandButton action="#{proyectoBean.update}" value="Actualizar" />
 					<p:commandButton action="#{proyectoBean.index}" type="submit" value="Regresar" />
 				</h:form>
 			</p:panel>
@@ -35,10 +36,10 @@
 					<h:panelGrid columns="3" cellpadding="5">
 						
 						
-						<p:outputLabel for="tidetapa" value="IdEtapa:" />
-						<p:inputText id="tidetapa" value="#{proyectoBean.etapa.id}" disabled="true" />
-						<h:message for="tidetapa"></h:message>
-						
+				
+						<p:outputLabel for="tId" value="ID:" />
+						<p:inputText id="tId" value="#{proyectoBean.etapa.id}" disabled="true"/>
+						<h:message for="tID"></h:message>
 						
 						<p:outputLabel for="tdenominacion" value="Denominacion:" />
 						<p:inputText id="tdenominacion" value="#{proyectoBean.etapa.denominacion}" />
@@ -48,12 +49,12 @@
 						<p:inputText id="tduracion" value="#{proyectoBean.etapa.duracion}" />
 						<h:message for="tduracion"></h:message>
 						
-						<h:message for="cbproyecto"></h:message>
 						
+						
+											
 						
 					</h:panelGrid>
-					<p:commandButton action="#{proyectoBean.create}" type="submit" value="Añadir" />
-					<p:commandButton action="#{proyectoBean.index}" type="submit" value="Regresar" />
+					<p:commandButton action="#{proyectoBean.addEtapa}" type="submit" value="Añadir" />
 				</h:form>
 			</p:panel>
 		</h:panelGrid>
@@ -68,21 +69,20 @@
 							</f:facet>
 							<h:outputText id="tid" value="#{m.id}" />
 						</p:column>
-	
+		
 						<p:column style="width:140px; text-align: center;">
 							<f:facet name="header">
-								<h:outputText value="Nombre" />
+								<h:outputText value="Denominacion" />
 							</f:facet>
-							<h:outputText id="tdenominacion" value="#{m.nombre}" />
+							<h:outputText id="tdenominacion" value="#{m.denominacion}" />
 						</p:column>
-	
+		
 						<p:column style="width:140px; text-align: center;">
 							<f:facet name="header">
 								<h:outputText value="Duracion" />
 							</f:facet>
 							<h:outputText id="tduracion" value="#{m.duracion}" />
 						</p:column>
-						
 					
 	
 						<p:column tyle="width:240px; text-align: center;">
@@ -90,16 +90,16 @@
 								<h:outputText value="Operacion" />
 							</f:facet>
 							<h:form>
-								<p:commandButton action="#{proyectoBean.removeEtapa()}" value="Baja" onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
-									<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.etapas.id}" />
+								<p:commandButton action="#{proyectoBean.removeEtapa}" value="Eliminar" onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
+									<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.id}" />
 								</p:commandButton>
 							</h:form>
 						</p:column>
 					</p:dataTable>
 				</p:panel>
 				<h:form>
-					<p:commandButton action="#{materialBean.add}" value="Nuevo Proyecto" />
-					<p:commandButton value="Volver al Inicio" action="#{usersBean.sessionHome}" />
+					<p:commandButton action="#{proyectoBean.update}" value="Actualizar" style="display:none;" />
+					<p:commandButton value="Volver al Inicio" action="#{usersBean.sessionHome}" style="display:none;"/>
 				</h:form>
 			</center>
 		</h:panelGrid>

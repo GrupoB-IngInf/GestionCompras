@@ -41,7 +41,7 @@
 							<p:commandButton action="#{proyectoBean.edit}" value="Editar">
 								<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.id}" />
 							</p:commandButton>
-							<p:commandButton action="#{proyectoBean.unsuscribe}" value="Baja" onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
+							<p:commandButton action="#{proyectoBean.delete}" value="Baja" onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
 								<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.id}" />
 							</p:commandButton>
 						</h:form>

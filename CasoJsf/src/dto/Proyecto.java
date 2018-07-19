@@ -29,13 +29,8 @@ public class Proyecto implements Serializable {
 	
 	@Column(name = "ubicacion")
 	private String ubicacion;
-/*
-	 @OneToMany(
-        cascade = CascadeType.ALL, 
-        orphanRemoval = true
-    )
- */
-	@OneToMany
+
+	@OneToMany( targetEntity = Etapa.class, cascade = CascadeType.ALL)
 	@JoinColumn(name="proyecto_id")
     private List<Etapa> etapas = new ArrayList<>();
     

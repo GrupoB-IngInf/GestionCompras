@@ -4,4 +4,6 @@
 <fullyQualifiedTypeName name="org.eclipse.persistence.internal.oxm.schema.model.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+<fullyQualifiedTypeName name="dao.impl.EtapaImpl"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>
