@@ -40,21 +40,31 @@
 					<p:growl id="messages" showDetail="false" />
 
 					<p:menu size="250" style="width: 99%;     border: 0px;">
-						<p:menuitem value="Home" outcome="/index"  update="messages" icon="ui-icon-home" />
+						<p:menuitem value="Home" outcome="/index" update="messages"
+							icon="ui-icon-home" />
 						<p:submenu label="Gestion de Materiales">
-							<p:menuitem value="Grupos de Materiales" outcome="/pages/grupo/index"
-								update="messages" icon="ui-icon-person" />
+							<p:menuitem value="Grupos de Materiales"
+								outcome="/pages/grupo/index" update="messages"
+								icon="ui-icon-person" />
 							<p:menuitem value="Materiales" outcome="/pages/material/index"
 								update="messages" icon="ui-icon-contact" />
-							<p:menuitem value="Unidades de Medida" outcome="/pages/material/index"
-								update="messages" icon="ui-icon-clipboard" />
+							<p:menuitem value="Unidades de Medida"
+								outcome="/pages/unidades/index" update="messages"
+								icon="ui-icon-clipboard" />
 						</p:submenu>
 						<p:submenu label="Gestion de Proveedores">
 							<p:menuitem value="Proveedores" outcome="/pages/material/index"
 								update="messages" icon="ui-icon-disk" />
-							<p:menuitem value="Bancos"
-								outcome="/pages/material/index" update="messages"
-								icon="ui-icon-disk" />
+							<p:menuitem value="Bancos" outcome="/pages/material/index"
+								update="messages" icon="ui-icon-disk" />
+						</p:submenu>
+						<p:submenu label="Gestion de Usuarios">
+							<p:menuitem value="Usuarios" outcome="/pages/Usuarios/index"
+								update="messages" icon="ui-icon-disk" />
+							<p:menuitem value="Roles" outcome="/pages/rol/index"
+								update="messages" icon="ui-icon-disk" />
+							<p:menuitem value="Permisos" outcome="/pages/permisos/index"
+								update="messages" icon="ui-icon-disk" />
 						</p:submenu>
 						<p:submenu label="Otros">
 							<p:menuitem value="Cerrar Session" update="messages"

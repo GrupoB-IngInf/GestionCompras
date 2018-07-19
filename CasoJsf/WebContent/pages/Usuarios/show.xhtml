@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<f:view contentType="text/html">
+	<h:body>
+
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
+					<p:panel id="pane"
+						header="Detalle de Usuario  - Estado: #{usuarioBean.usuario.estado}"
+						style="width:600px">
+						<h:form id="usuarioBeanform">
+							<h:panelGrid columns="3" cellpadding="5">
+
+								<p:outputLabel for="tid" value="Id:" />
+								<p:inputText id="tid" value="#{usuarioBean.usuario.id}"
+									disabled="true" />
+								<h:message for="tid"></h:message>
+
+								<p:outputLabel for="tnombre" value="Nombre:" />
+								<p:inputText id="tnombre" value="#{usuarioBean.usuario.nombres}"
+									disabled="true" />
+								<h:message for="tnombre"></h:message>
+
+								<p:outputLabel for="tapellido" value="Apellido:" />
+								<p:inputText id="tapellido"
+									value="#{usuarioBean.usuario.apellidos}" disabled="true" />
+								<h:message for="tapellido"></h:message>
+
+								<p:outputLabel for="tcorreo" value="Email :" />
+								<p:inputText id="tcorreo" value="#{usuarioBean.usuario.correo}"
+									disabled="true" />
+								<h:message for="tcorreo"></h:message>
+
+								<p:outputLabel for="tpass" value="Contraseña :" />
+								<p:inputText id="tpass" value="#{usuarioBean.usuario.password}"
+									disabled="true" />
+								<h:message for="tpass"></h:message>
+
+
+								<p:outputLabel for="tphone" value="Telefono :" />
+								<p:inputText id="tphone" value="#{usuarioBean.usuario.telefono}"
+									disabled="true" />
+								<h:message for="tphone"></h:message>
+
+								<p:outputLabel for="trol" value="Rol :" />
+								<p:inputText id="trol" value="#{usuarioBean.usuario.rol.nombre}"
+									disabled="true" />
+								<h:message for="trol"></h:message>
+
+							</h:panelGrid>
+							<p:commandButton action="#{usuariobBean.index}" type="submit"
+								value="Atras" />
+						</h:form>
+					</p:panel>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
+</html>

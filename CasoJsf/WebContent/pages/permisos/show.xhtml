@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<f:view contentType="text/html">
+	<h:body>
+
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
+					<p:panel id="pane" header="Mostrar Permiso" style="width:300px">
+						<h:form id="permisoBeanForm">
+							<h:panelGrid columns="3" cellpadding="5">
+								<p:outputLabel for="tid" value="Id:" />
+								<p:inputText id="tid" value="#{permisosBean.permisos.id}"
+									disabled="true" />
+								<h:message for="tid"></h:message>
+								<p:outputLabel for="tnombre" value="Nombre:" />
+								<p:inputText id="tnombre"
+									value="#{permisosBean.permisos.nombre}" disabled="true" />
+								<h:message for="tnombre"></h:message>
+							</h:panelGrid>
+							<p:commandButton action="#{permisosBean.index}" type="submit"
+								value="Regresar" />
+						</h:form>
+					</p:panel>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
+</html>
+>
