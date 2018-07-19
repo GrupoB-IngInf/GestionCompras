@@ -11,7 +11,7 @@ import dao.impl.*;
 import dto.Usuario;
 
 
-@ManagedBean(name = "usuariosBean")
+@ManagedBean(name = "usuarioBean")
 @SessionScoped
 public class UsuarioBean implements Serializable{
 
