@@ -16,6 +16,7 @@ public class Rol implements Serializable {
 		super();
 		permisos = new ArrayList<Permiso>();
 	}
+	
 	@Id
 	@Basic
 	@Column(name = "id")
@@ -42,7 +43,13 @@ public class Rol implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-	
+
+	public List<Permiso> getPermisos() {
+		return permisos;
+	}
+
+	public void setPermisos(List<Permiso> permisos) {
+		this.permisos = permisos;
+	}
+		
 }

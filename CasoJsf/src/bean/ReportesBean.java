@@ -2,7 +2,6 @@ package bean;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -12,10 +11,11 @@ import javax.faces.bean.ViewScoped;
 import dao.impl.AreaNegocioImpl;
 import dao.impl.MaterialImpl;
 import dao.impl.ProyectoImpl;
+import dao.impl.UsuarioImpl;
 import dto.AreaNegocio;
-import dto.Etapa;
 import dto.Material;
 import dto.Proyecto;
+import dto.Usuario;
 import net.sf.jasperreports.engine.JRException;
 
 @ManagedBean(name="reportesBean")
@@ -58,13 +58,13 @@ public class ReportesBean implements Serializable {
 	}
 	
 	public void usuarios() throws JRException, IOException {
-		//UsuarioImpl usuarioImpl = new UsuarioImpl();
-		//List<Usuario> dataSource = usuarioImpl.getAll();	
+		UsuarioImpl usuarioImpl = new UsuarioImpl();
+		List<Usuario> dataSource = usuarioImpl.getAll();	
 				
 		String filename = "reporte_usuarios.pdf";
 		String jasperPath = "/resources/usuarios.jasper";
 		
-		PDFGenerator.showPDF(null, jasperPath, null, filename);
+		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
 
 	public MaterialBean getMaterialBean() {

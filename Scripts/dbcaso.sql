@@ -262,8 +262,9 @@ CREATE TABLE `usuario` (
   `nombres` varchar(250) NOT NULL,
   `apellidos` varchar(250) NOT NULL,
   `correo` varchar(250) NOT NULL,
-  `contraseña` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `telefono` varchar(20) NOT NULL,
+  `estado` enum('Activo','Baja') NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

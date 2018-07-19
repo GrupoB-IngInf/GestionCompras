@@ -41,8 +41,8 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 		if (!t.isActive()) {
 			t.begin();
 		}
-		updateObj.setNombre(DTO.getNombre());
-		updateObj.setApellido(DTO.getApellido());
+		updateObj.setNombres(DTO.getNombres());
+		updateObj.setApellidos(DTO.getApellidos());
 		updateObj.setCorreo(DTO.getCorreo());
 		updateObj.setPassword(DTO.getPassword());
 		updateObj.setTelefono(DTO.getTelefono());
@@ -107,12 +107,12 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 		if (!t.isActive()) {
 			t.begin();
 		}
-		updateObj.setNombre(DTO.getNombre());
-		updateObj.setApellido(DTO.getApellido());
+		updateObj.setNombres(DTO.getNombres());
+		updateObj.setApellidos(DTO.getApellidos());
 		updateObj.setCorreo(DTO.getCorreo());
 		updateObj.setPassword(DTO.getPassword());
 		updateObj.setTelefono(DTO.getTelefono());
-		updateObj.setEstado("desabilitado");
+		updateObj.setEstado("Baja");
 		updateObj.setRol(DTO.getRol());
 		
 		

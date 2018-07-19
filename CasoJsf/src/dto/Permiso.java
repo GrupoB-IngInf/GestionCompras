@@ -49,4 +49,14 @@ public class Permiso implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+	
+	
 }

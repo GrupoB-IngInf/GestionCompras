@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name ="usuarios")
+@Table(name ="usuario")
 
 public class Usuario implements Serializable{
 
@@ -21,16 +21,16 @@ public class Usuario implements Serializable{
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "nombre")
-	private String nombre;
+	@Column(name = "nombres")
+	private String nombres;
 	
-	@Column(name = "apellido")
-	private String apellido;
+	@Column(name = "apellidos")
+	private String apellidos;
 	
 	@Column(name = "correo")
 	private String correo;
 	
-	@Column(name = "contraseña")
+	@Column(name = "password")
 	private String password;
 	
 	@Column(name = "telefono")
@@ -40,7 +40,7 @@ public class Usuario implements Serializable{
 	private String estado;
 	
 	@ManyToOne
-	@JoinColumn(name = "Rol_id")
+	@JoinColumn(name = "id_rol")
 	private Rol rol;
 
 	public Long getId() {
@@ -51,20 +51,20 @@ public class Usuario implements Serializable{
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getNombres() {
+		return nombres;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getApellidos() {
+		return apellidos;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	public String getCorreo() {
