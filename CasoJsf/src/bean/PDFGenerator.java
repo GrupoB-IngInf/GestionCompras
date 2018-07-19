@@ -37,7 +37,7 @@ public class PDFGenerator {
 	public static void showPDF(Map<String, Object> params, String jasperPath, List<?> dataSource, String fileName) throws JRException, IOException {
 		String relativeWebPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(jasperPath);
 		File file = new File(relativeWebPath);
-		
+		System.out.println(file.getPath());
 		JRBeanCollectionDataSource source = new JRBeanCollectionDataSource(dataSource, false);
 		byte[] bytes = JasperRunManager.runReportToPdf(file.getPath(), params, source);
 		HttpServletResponse response = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
