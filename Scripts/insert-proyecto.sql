@@ -3,8 +3,8 @@
 
 INSERT INTO `proyecto` (`id`, `nombre`, `ubicacion`) VALUES
 (2, 'Proyecto 1', 'Los Pinos'),
-(3, 'Proyecto 2', 'Las Malvinas');
-(4, 'Proyecto 3', 'Lima');
+(3, 'Proyecto 2', 'Las Malvinas'),
+(4, 'Proyecto 3', 'Lima'),
 (5, 'Proyecto 4', 'Mendoza');
 
 
