@@ -179,17 +179,23 @@
 			</textField>
 		</band>
 	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch"/>
+	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="20" width="60" height="19" uuid="87560ae9-abac-41cb-8cd0-6bf2b4479312"/>
+				<reportElement x="0" y="0" width="60" height="19" uuid="87560ae9-abac-41cb-8cd0-6bf2b4479312"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="70" y="20" width="140" height="18" uuid="04f535aa-4f98-42f0-8698-888a75228f79"/>
+				<reportElement x="70" y="0" width="140" height="18" uuid="04f535aa-4f98-42f0-8698-888a75228f79"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
