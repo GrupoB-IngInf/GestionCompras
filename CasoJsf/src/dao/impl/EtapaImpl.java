@@ -72,6 +72,7 @@ public class EtapaImpl  extends JPA implements DAO<Etapa>{
 	@Override
 	public boolean delete(Long id) 
 	{
+		System.out.println(id);
 		if (id == 0) {
 			return false;
 		}

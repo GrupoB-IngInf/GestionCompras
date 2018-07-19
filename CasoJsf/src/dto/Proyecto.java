@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import dao.impl.EtapaImpl;
+
 
 @Entity
 @Table(name = "proyecto")
@@ -27,13 +29,9 @@ public class Proyecto implements Serializable {
 	
 	@Column(name = "ubicacion")
 	private String ubicacion;
-/*
-	 @OneToMany(
-        cascade = CascadeType.ALL, 
-        orphanRemoval = true
-    )
- */
-	@OneToMany(mappedBy="proyecto")
+
+	@OneToMany( targetEntity = Etapa.class, cascade = CascadeType.ALL)
+	@JoinColumn(name="proyecto_id")
     private List<Etapa> etapas = new ArrayList<>();
     
 	public Long getId() {
@@ -63,14 +61,17 @@ public class Proyecto implements Serializable {
 
 	public void addEtapa(Etapa etapa)
 	{
-		etapas.add(etapa);
 		etapa.setProyecto(this);
+		etapas.add(etapa);
 	}
 	
-	public void removeEtapa(Etapa etapa)
+	public void removeEtapa(long idEtapa)
 	{
-		etapas.remove(etapa);
+		
+		EtapaImpl etapaImpl = new EtapaImpl();
+		Etapa etapa = etapaImpl.getById(idEtapa);
 		etapa.setProyecto(null);
+		etapas.remove(etapa);
 	}
 
 	public String getUbicacion() {

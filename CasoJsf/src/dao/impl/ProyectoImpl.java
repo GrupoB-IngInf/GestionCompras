@@ -44,11 +44,14 @@ public class ProyectoImpl extends JPA implements DAO<Proyecto> {
 		if (!t.isActive()) {
 			t.begin();
 		}
+		System.out.print(DTO.getNombre());
+		System.out.print(DTO.getUbicacion());
 		updateObj.setNombre(DTO.getNombre());
 		updateObj.setUbicacion(DTO.getUbicacion());
 		
 		t.commit();
 		closeEntityManager();
+
 		return DTO;
 	}
 
