@@ -26,7 +26,7 @@ INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('PC', 'Producci
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('SE', 'Seguridad');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('VC', 'Ventas/Crédito y Cobranza');
 
-<<<<<<< HEAD
+
 /* Usuario */
 INSERT INTO `dbcaso`.`usuarios` (`id`, `nombres`,`apellidos`,`correo`,`contraseña`,`telefono`,`id_rol`,`estado`) VALUES (1, 'Luis','Chirinos Carranza','Chirinos@gmail.com','123456','123456789',1,'Activo');
 INSERT INTO `dbcaso`.`usuarios` (`id`, `nombres`,`apellidos`,`correo`,`contraseña`,`telefono`,`id_rol`,`estado`) VALUES (2, 'Axel','Gutierrez Lopez','axl@gmail.com','123456','123456789',2,'Activo');
@@ -47,7 +47,7 @@ insert into `dbcaso`.`roles_permisos` (`id`, `id_rol`,`id_permiso`) VALUES (1, 1
 insert into `dbcaso`.`roles_permisos` (`id`, `id_rol`,`id_permiso`) VALUES (2, 1,2);
 insert into `dbcaso`.`roles_permisos` (`id`, `id_rol`,`id_permiso`) VALUES (3, 1,3);
 insert into `dbcaso`.`roles_permisos` (`id`, `id_rol`,`id_permiso`) VALUES (4, 2,1);
-=======
+
 /*Banco*/
 INSERT INTO  `banco` (`id`,`nombre`,`estado`) VALUES (1,'BBVA Continental','Activo');
 INSERT INTO  `banco` (`id`,`nombre`,`estado`) VALUES (2,'Banco de Crédito del Perú','Activo');
@@ -92,4 +92,4 @@ INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (24, 'Comercial 
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (25, 'Comercial Piura', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (26, 'Comercial', 'Activo');
 
->>>>>>> faaa6c93e2b46aad263eb07358f5f222538bcf89
+
