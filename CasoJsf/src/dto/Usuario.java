@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name ="usuario")
+@Table(name ="usuarios")
 
 public class Usuario implements Serializable{
 
@@ -30,8 +30,8 @@ public class Usuario implements Serializable{
 	@Column(name = "correo")
 	private String correo;
 	
-	@Column(name = "password")
-	private String password;
+	@Column(name = "contraseña")
+	private String contraseña;
 	
 	@Column(name = "telefono")
 	private String telefono;
@@ -76,11 +76,11 @@ public class Usuario implements Serializable{
 	}
 
 	public String getPassword() {
-		return password;
+		return contraseña;
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.contraseña = password;
 	}
 
 	public String getTelefono() {

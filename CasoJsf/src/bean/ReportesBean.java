@@ -12,12 +12,14 @@ import dao.impl.AreaNegocioImpl;
 import dao.impl.CentrocostoImpl;
 import dao.impl.GrupoImpl;
 import dao.impl.MaterialImpl;
+import dao.impl.ProveedorImpl;
 import dao.impl.ProyectoImpl;
 import dao.impl.UsuarioImpl;
 import dto.AreaNegocio;
 import dto.Centrocosto;
 import dto.Grupo;
 import dto.Material;
+import dto.Proveedor;
 import dto.Proyecto;
 import dto.Usuario;
 import net.sf.jasperreports.engine.JRException;
@@ -87,5 +89,16 @@ public class ReportesBean implements Serializable {
 		
 		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
 	}
+	
+	public void proveedores() throws JRException, IOException {
+		ProveedorImpl proveedoresImpl = new ProveedorImpl();
+		List<Proveedor> dataSource = proveedoresImpl.getAll();	
+				
+		String filename = "reporte_proveedores.pdf";
+		String jasperPath = "/resources/proveedores.jasper";
+		
+		PDFGenerator.showPDF(null, jasperPath, dataSource, filename);
+	}
+	
 	
 }
