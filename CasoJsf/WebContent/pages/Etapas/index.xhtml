@@ -6,8 +6,8 @@
 <body>
 	<f:view>
 		<center>
-			<p:panel id="pane" header="Listado de Materiales" style="width:870px">
-				<p:dataTable id="dtGrupo" var="m" value="#{materialBean.all}">
+			<p:panel id="pane" header="Listado de Proyectos" style="width:870px">
+				<p:dataTable id="dtProyecto" var="m" value="#{proyectoBean.all}">
 					<p:column style="width:20px; text-align: center;">
 						<f:facet name="header">
 							<h:outputText value="Id" />
@@ -24,33 +24,21 @@
 
 					<p:column style="width:140px; text-align: center;">
 						<f:facet name="header">
-							<h:outputText value="Descripcion" />
+							<h:outputText value="Ubicacion" />
 						</f:facet>
 						<h:outputText id="tdescripcion" value="#{m.descripcion}" />
 					</p:column>
 					
 				
-					<p:column style="width:140px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Grupo" />
-						</f:facet>
-						<h:outputText id="tgrupo" value="#{m.grupo.nombre}" />
-					</p:column>
 					
-					<p:column style="width:70px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Estado" />
-						</f:facet>
-						<h:outputText id="testado" value="#{m.estado}" />
-					</p:column>
 
 					<p:column tyle="width:240px; text-align: center;">
 						<f:facet name="header">
 							<h:outputText value="Operacion" />
 						</f:facet>
 						<h:form>
-							<p:commandButton action="#{materialBean.show}" value="Mostrar">
-								<f:setPropertyActionListener value="#{m.id}" target="#{materialBean.material.id}" />
+							<p:commandButton action="#{proyectoBean.show}" value="Mostrar">
+								<f:setPropertyActionListener value="#{m.id}" target="#{proyectoBean.proyecto.id}" />
 							</p:commandButton>
 							<p:commandButton action="#{materialBean.edit}" value="Editar">
 								<f:setPropertyActionListener value="#{m.id}" target="#{materialBean.material.id}" />

@@ -20,6 +20,18 @@
 					<p:inputText id="tubicacion" value="#{proyectoBean.proyecto.ubicacion}" />
 					<h:message for="tubicacion"></h:message>
 					
+					<p:outputLabel for="tidetapa" value="IdEtapa:" />
+					<p:inputText id="tidetapa" value="#{proyectoBean.etapa.id}" disabled="true" />
+					<h:message for="tidetapa"></h:message>
+					
+					
+					<p:outputLabel for="tdenominacion" value="Denominacion:" />
+					<p:inputText id="tdenominacion" value="#{proyectoBean.etapa.denominacion}" />
+					<h:message for="tdenominacion"></h:message>
+
+					<p:outputLabel for="tduracion" value="duracion:" />
+					<p:inputText id="tduracion" value="#{proyectoBean.etapa.duracion}" />
+					<h:message for="tduracion"></h:message>
 					
 					<h:message for="cbproyecto"></h:message>
 					

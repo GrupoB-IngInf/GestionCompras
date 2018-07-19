@@ -1,35 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui" xmlns:of="http://omnifaces.org/functions">
 <h:head>
-	<title>Editar Material</title>
+	<title>Editar Proyecto</title>
 </h:head>
 <body>
 	<f:view>
-		<p:panel id="pane" header="Editar Material" style="width:600px">
-			<h:form id="grupoBeanForm">
+		<p:panel id="pane" header="Editar Proyecto" style="width:600px">
+			<h:form id="proyectoBeanForm">
 				<h:panelGrid columns="3" cellpadding="5">
 					<p:outputLabel for="tid" value="Id:" />
-					<p:inputText id="tid" value="#{materialBean.material.id}" disabled="true" />
+					<p:inputText id="tid" value="#{proyectoBean.proyecto.id}" disabled="true" />
 					<h:message for="tid"></h:message>
 					
 					<p:outputLabel for="tnombre" value="Nombre:" />
-					<p:inputText id="tnombre" value="#{materialBean.material.nombre}" />
+					<p:inputText id="tnombre" value="#{proyectoBean.proyecto.nombre}" />
 					<h:message for="tnombre"></h:message>
 
-					<p:outputLabel for="tdescripcion" value="Descripcion:" />
-					<p:inputText id="tdescripcion" value="#{materialBean.material.descripcion}" />
-					<h:message for="tdescripcion"></h:message>
+					<p:outputLabel for="tubicacion" value="Ubicacion:" />
+					<p:inputText id="tubicacion" value="#{proyectoBean.proyecto.ubicacion}" />
+					<h:message for="tubicacion"></h:message>
+					
+					
+					<p:outputLabel for="tidetapa" value="IdEtapa:" />
+					<p:inputText id="tidetapa" value="#{proyectoBean.etapa.id}" disabled="true" />
+					<h:message for="tidetapa"></h:message>
+					
+					<p:outputLabel for="tdenominacion" value="Denominacion:" />
+					<p:inputText id="tdenominacion" value="#{proyectoBean.etapa.denominacion}" />
+					<h:message for="tdenominacion"></h:message>
 
-					<p:outputLabel for="cbgrupo" value="Grupo:" />
-					<p:selectOneMenu id="cbgrupo" value="#{materialBean.material.grupo.id}" converter="omnifaces.SelectItemsConverter" style="width:150px">
-						<f:selectItem itemLabel="[Seleccionar Registro]" itemValue="0" />
-						<f:selectItems value="#{grupoBean.all}" var="g" itemLabel="#{g.nombre}" itemValue="#{g.id}" />
-					</p:selectOneMenu>
-					<h:message for="cbgrupo"></h:message>
+					<p:outputLabel for="tduracion" value="Duracion:" />
+					<p:inputText id="tduracion" value="#{proyectoBean.etapa.duracion}" />
+					<h:message for="tduracion"></h:message>
+					
+					
+					
+					<h:message for="cbproyecto"></h:message>
 						
 				</h:panelGrid>
-				<p:commandButton action="#{materialBean.update}" type="submit" value="Actualizar" />
-				<p:commandButton action="#{materialBean.index}" type="submit" value="Cancelar" />
+				<p:commandButton action="#{proyectoBean.update}" type="submit" value="Actualizar" />
+				<p:commandButton action="#{proyectoBean.index}" type="submit" value="Cancelar" />
 			</h:form>
 		</p:panel>
 	</f:view>
