@@ -2,27 +2,28 @@ package dao.impl;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
-import base.*;
-import dao.*;
-import dto.*;
+import base.JPA;
+import dao.DAO;
+import dto.UnidadMedida;
 
-public class MaterialImpl extends JPA implements DAO<Material>{
+public class UnidadMedidaImpl extends JPA implements DAO<UnidadMedida>{
 
 	@Override
-	public Material getById(Long id) {
-		Material result = getEntityManager().find(Material.class, id);
+	public UnidadMedida getById(Long id) {
+		UnidadMedida result = getEntityManager().find(UnidadMedida.class, id);
 		closeEntityManager();
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
-	public List<Material> getAll() {
-		String sql = "SELECT g FROM Material g";
+	public List<UnidadMedida> getAll() {
+		String sql = "SELECT g FROM UnidadMedida g";
 		Query query = getEntityManager().createQuery(sql, Long.class);
-		List<Material> list = query.getResultList();
+		List<UnidadMedida> list = query.getResultList();
 		if (list.size() != 0) {
 			closeEntityManager();
 			return list;
@@ -32,22 +33,20 @@ public class MaterialImpl extends JPA implements DAO<Material>{
 		}
 	}
 
-	@SuppressWarnings("null")
+	
 	@Override
-	public Material update(Material DTO) {
+	public UnidadMedida update(UnidadMedida DTO) {
 		if (DTO == null && DTO.getId() != 0) {
 			return null;
 		}
 
 		EntityTransaction t = getEntityManager().getTransaction();
-		Material updateObj = getEntityManager().find(Material.class, DTO.getId());
+		UnidadMedida updateObj = getEntityManager().find(UnidadMedida.class, DTO.getId());
 		if (!t.isActive()) {
 			t.begin();
 		}
 		updateObj.setNombre(DTO.getNombre());
-		updateObj.setDescripcion(DTO.getDescripcion());
-		updateObj.setEstado(DTO.getEstado());
-		updateObj.setGrupo(DTO.getGrupo());
+	
 		
 		t.commit();
 		closeEntityManager();
@@ -55,12 +54,11 @@ public class MaterialImpl extends JPA implements DAO<Material>{
 	}
 
 	@Override
-	public Material create(Material DTO) {
+	public UnidadMedida create(UnidadMedida DTO) {
 		EntityTransaction t = getEntityManager().getTransaction();
 		if (!t.isActive()) {
 			t.begin();
 		}
-		DTO.setEstado("Activo");
 		getEntityManager().persist(DTO);
 		t.commit();
 		closeEntityManager();
@@ -73,7 +71,7 @@ public class MaterialImpl extends JPA implements DAO<Material>{
 			return false;
 		}
 
-		Material obj = getById(id);
+		UnidadMedida obj = getById(id);
 		if (obj == null) {
 			return false;
 		}
@@ -90,31 +88,11 @@ public class MaterialImpl extends JPA implements DAO<Material>{
 
 	@Override
 	public Long getMaxId() {
-		String sql = "SELECT max(g.id) + 1 FROM Material g";
+		String sql = "SELECT max(g.id) + 1 FROM UnidadMedida g";
 		Query query = getEntityManager().createQuery(sql, Long.class);
 		Long maxId = (query.getSingleResult() == null) ? 1L : (Long) query.getSingleResult();
 		closeEntityManager();
 		return maxId;
-	}
-	
-	public Material unSuscribe(Material DTO) {
-		if (DTO == null && DTO.getId() != 0) {
-			return null;
-		}
-
-		EntityTransaction t = getEntityManager().getTransaction();
-		Material updateObj = getEntityManager().find(Material.class, DTO.getId());
-		if (!t.isActive()) {
-			t.begin();
-		}
-		updateObj.setNombre(DTO.getNombre());
-		updateObj.setDescripcion(DTO.getDescripcion());
-		updateObj.setEstado("Baja");
-		updateObj.setGrupo(DTO.getGrupo());
-		
-		t.commit();
-		closeEntityManager();
-		return DTO;
 	}
 	
 }

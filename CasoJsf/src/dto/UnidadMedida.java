@@ -1,19 +1,24 @@
 package dto;
 
-import java.io.*;
+import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "grupo")
-public class Grupo implements Serializable{
+@Table(name = "unidadmedida")
+public class UnidadMedida implements Serializable{
+
 	
 	private static final long serialVersionUID = 1L;
-
-	public Grupo() {
+	
+	
+	public UnidadMedida() {
 		super();
 	}
-
 	@Id
 	@Basic
 	@Column(name = "id")
@@ -37,4 +42,5 @@ public class Grupo implements Serializable{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}}
+	}
+}

@@ -14,6 +14,12 @@
 		<managed-bean-class>bean.MaterialBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>unidadMedidaBean</managed-bean-name>
+		<managed-bean-class>bean.UnidadMedidaBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 
 	<managed-bean>
 		<managed-bean-name>areaNegocioBean</managed-bean-name>
