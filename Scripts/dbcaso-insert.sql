@@ -28,7 +28,6 @@ INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) V
 INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('6', 'Tercera Etapa', '34', '2');
 
 /* Area de negocio */
-DELETE FROM `areanegocio`;
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AC', 'Atención al Cliente');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AI', 'Administración Ica');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AL', 'Administración Lima');
