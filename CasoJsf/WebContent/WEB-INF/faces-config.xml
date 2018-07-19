@@ -39,5 +39,17 @@
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 	
+	<managed-bean>
+		<managed-bean-name>permisosBean</managed-bean-name>
+		<managed-bean-class>bean.PermisosBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>rolBean</managed-bean-name>
+		<managed-bean-class>bean.RolBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
 
 </faces-config>
