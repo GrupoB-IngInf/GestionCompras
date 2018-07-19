@@ -4,13 +4,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Nuevo Usuario</title>
-</h:head>
-<body>
-	<f:view>
-		<center>
-			<p:panel id="pane" header="Crear Usuario" style="width:300px">
+<f:view contentType="text/html">
+	<h:body>
+
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
+				<p:panel id="pane" header="Crear Usuario" style="width:300px">
 				<h:form id="usuarioBeanForm">
 					<h:panelGrid columns="3" cellpadding="5">
 						<p:outputLabel for="tid" value="Id:" />
@@ -61,7 +62,12 @@
 						value="Salir" />
 				</h:form>
 			</p:panel>
-		</center>
-	</f:view>
-</body>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
 </html>
