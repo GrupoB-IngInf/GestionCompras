@@ -38,6 +38,18 @@
 						<p:outputLabel for="tphone" value="Telefono :" />
 						<p:inputText id="tphone" value="#{usuarioBean.usuario.telefono}" />
 						<h:message for="tphone"></h:message>
+						
+							<p:outputLabel for="crol" value="Rol:" />
+					<p:selectOneMenu id="crol" value="#{usuarioBean.usuario.rol.id}" effect="fold" filter="true" filterMatchMode="startsWith" converter="omnifaces.SelectItemsConverter" style="width:150px">
+						<f:selectItem itemLabel="[Seleccionar Rol]" itemValue="0" />
+						<f:selectItems value="#{rolbean.all}" var="g" itemLabel="#{g.nombre}" itemValue="#{g.id}" />
+					</p:selectOneMenu>
+					<h:message for="crol"></h:message>
+					
+					<p:outputLabel for="testado" value="Estado :"  />
+						<p:inputText id="testado" value="Activo"  disabled="true"/>
+						<h:message for="tphone"></h:message>
+						
 					</h:panelGrid>
 					<p:commandButton action="#{usuarioBean.create}" type="submit"
 						value="Editar" />

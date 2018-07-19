@@ -6,13 +6,13 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
 <h:head>
-	<title>Unidades</title>
+	<title>Usuarios</title>
 </h:head>
 <body>
 	<f:view>
 		<center>
-			<p:panel id="pane" header="Listado de Unidades" style="width:655px">
-				<p:dataTable id="dtGrupo" var="a" value="#{unidadmedidaBean.all}" rows="10"
+			<p:panel id="pane" header="Listado de Usuarios" style="width:655px">
+				<p:dataTable id="dtusuario" var="a" value="#{usuarioBean.all}" rows="10"
 					paginator="true"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15">
@@ -25,37 +25,58 @@
 						<h:outputText id="tid" value="#{a.id}" />
 					</p:column>
 
-					<p:column style="width:300px; text-align: center;">
+					<p:column style="width:140px; text-align: center;">
 						<f:facet name="header">
 							<h:outputText value="Nombre" />
 						</f:facet>
-						<h:outputText id="tnombre" value="#{a.nombre}" />
+						<h:outputText id="tnombre" value="#{a.nombres}" />
 					</p:column>
-
-					<p:column tyle="width:10px; text-align: center;">
+					
+					<p:column style="width:140px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Apellido " />
+						</f:facet>
+						<h:outputText id="tapellido" value="#{a.apellidos}" />
+					</p:column>
+					
+					<p:column style="width:140px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText id="tcorreo" value="#{a.correo}" />
+					</p:column>
+					
+					<p:column style="width:140px; text-align: center;">
+						<f:facet name="header">
+							<h:outputText value="Rol" />
+						</f:facet>
+						<h:outputText id="trol" value="#{a.rol.nombre}" />
+					</p:column>		
+					
+					<p:column style="width:100px; text-align: center;">
 						<f:facet name="header">
 							<h:outputText value="Operacion" />
 						</f:facet>
 						<h:form>
-							<p:commandButton action="#{unidadMedidaBean.show}" value="Mostrar">
+							<p:commandButton action="#{usuarioBean.show}" value="Mostrar">
 								<f:setPropertyActionListener value="#{a.id}"
-									target="#{unidadMedidaBean.unidadMedida.id}" />
+									target="#{usuarioBean.usuario.id}" />
 							</p:commandButton>
-							<p:commandButton action="#{unidadMedidaBean.edit}" value="Editar">
+							<p:commandButton action="#{usuarioBean.edit}" value="Editar">
 								<f:setPropertyActionListener value="#{a.id}"
-									target="#{unidadMedidaBean.unidadMedida.id}" />
+									target="#{usuarioBean.usuario.id}" />
 							</p:commandButton>
-							<p:commandButton action="#{unidadMedidaBean.delete}" value="Eliminar"
+							<p:commandButton action="#{usuarioBean.delete}" value="Eliminar"
 								onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
 								<f:setPropertyActionListener value="#{a.id}"
-									target="#{unidadMedidaBean.unidadMedida.id}" />
+									target="#{usuarioBean.usuario.id}" />
 							</p:commandButton>
 						</h:form>
 					</p:column>
 				</p:dataTable>
 			</p:panel>
 			<h:form>
-				<p:commandButton action="#{unidadMedidaBean.add}" value="Nueva Unidad" />
+				<p:commandButton action="#{usuarioBean.add}" value="Nueva Unidad" />
 				<p:commandButton value="Volver al Inicio"
 					action="#{usersBean.sessionHome}" />
 			</h:form>
