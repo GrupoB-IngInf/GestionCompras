@@ -21,6 +21,11 @@
 						<p:outputLabel for="tnombre" value="Nombre:" />
 						<p:inputText id="tnombre" value="#{grupoBean.grupo.nombre}" />
 						<h:message for="tnombre"></h:message>
+						
+						<p:outputLabel for="tdescripcion" value="Descripcion:" />
+						<p:inputText id="tdescripcion" value="#{grupoBean.grupo.descripcion}" />
+						<h:message for="tdescripcion"></h:message>
+						
 					</h:panelGrid>
 					<p:commandButton action="#{grupoBean.create}" type="submit"
 						value="Añadir" />

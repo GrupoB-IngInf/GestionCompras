@@ -80,6 +80,4 @@ public class GrupoBean implements Serializable {
 	// Routes
 	public String index() {
 		return "/pages/grupo/index";
-	}
-
-}
+	}}

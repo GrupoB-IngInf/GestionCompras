@@ -22,6 +22,9 @@ public class Grupo implements Serializable{
 	@Column(name = "nombre")
 	private String nombre;
 	
+	@Column(name = "descripcion")
+	private String descripcion;
+	
 	
 	public Long getId() {
 		return id;
@@ -31,6 +34,14 @@ public class Grupo implements Serializable{
 		this.id = id;
 	}
 
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -38,6 +49,4 @@ public class Grupo implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
 }
-

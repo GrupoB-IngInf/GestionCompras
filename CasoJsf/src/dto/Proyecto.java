@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "Proyecto")
+@Table(name = "proyecto")
 public class Proyecto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -26,14 +26,14 @@ public class Proyecto implements Serializable {
 	private String nombre;
 	
 	@Column(name = "ubicacion")
-	private Long ubicacion;
+	private String ubicacion;
 /*
 	 @OneToMany(
         cascade = CascadeType.ALL, 
         orphanRemoval = true
     )
  */
-	@OneToMany
+	@OneToMany(mappedBy="proyecto")
     private List<Etapa> etapas = new ArrayList<>();
     
 	public Long getId() {
@@ -73,12 +73,12 @@ public class Proyecto implements Serializable {
 		etapa.setProyecto(null);
 	}
 
-	public Long getUbicacion() {
+	public String getUbicacion() {
 		return ubicacion;
 	}
 
-	public void setUbicacion(Long duracion) {
-		this.ubicacion = duracion;
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
 	}
 
 	

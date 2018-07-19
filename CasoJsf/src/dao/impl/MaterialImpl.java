@@ -7,7 +7,7 @@ import javax.persistence.*;
 import base.*;
 import dao.*;
 import dto.*;
-			//Controlador
+
 public class MaterialImpl extends JPA implements DAO<Material>{
 
 	@Override
@@ -55,7 +55,7 @@ public class MaterialImpl extends JPA implements DAO<Material>{
 	}
 
 	@Override
-	public Material create(Material DTO) {   //Llega el material con el estado incompleto,le falta el estado
+	public Material create(Material DTO) {
 		EntityTransaction t = getEntityManager().getTransaction();
 		if (!t.isActive()) {
 			t.begin();

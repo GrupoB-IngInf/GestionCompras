@@ -10,12 +10,27 @@
 	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
 </h:head>
 <h:body>
-	<h2>Reportes</h2>
 	<h:form>
-		<p:commandButton ajax="false" value="Materiales" actionListener="#{reportesBean.materiales}"/>
-		<p:commandButton ajax="false" value="Áreas de negocio" actionListener="#{reportesBean.areasNegocio}"/>
-		<p:commandButton ajax="false" value="Proyectos" actionListener="#{reportesBean.proyectos}"/>
-		<p:commandButton ajax="false" value="Usuarios" actionListener="#{reportesBean.usuarios}"/>
+		<h:panelGrid columns="2">
+			<p:outputLabel value="Áreas de negocio" />
+			<p:commandButton ajax="false" value="Ver PDF"
+				actionListener="#{reportesBean.areasNegocio}" />
+			<p:outputLabel value="Proyectos" />
+			<p:commandButton ajax="false" value="Ver PDF"
+				actionListener="#{reportesBean.proyectos}" />
+			<p:outputLabel value="Usuarios" />
+			<p:commandButton ajax="false" value="Ver PDF"
+				actionListener="#{reportesBean.usuarios}" />
+			<p:outputLabel value="Centro de costo" />
+			<p:commandButton ajax="false" value="Ver PDF"
+				actionListener="#{reportesBean.centroCosto}" />
+			<p:outputLabel value="Materiales" />
+			<p:commandButton ajax="false" value="Ver PDF"
+				actionListener="#{reportesBean.materiales}" />
+			<p:outputLabel value="Grupos" />
+			<p:commandButton ajax="false" value="Ver PDF"
+				actionListener="#{reportesBean.grupos}" />		
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>

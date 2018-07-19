@@ -69,7 +69,7 @@ CREATE TABLE `centro_de_costo` (
 CREATE TABLE `etapa` (
   `id` int(11) NOT NULL,
   `denominacion` varchar(45) DEFAULT NULL,
-  `duracion` varchar(45) DEFAULT NULL,
+  `duracion` int(11) NOT NULL,
   `Proyecto_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -258,13 +258,14 @@ CREATE TABLE `unidadmedida` (
 -- Table structure for table `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nombres` varchar(250) NOT NULL,
   `apellidos` varchar(250) NOT NULL,
   `correo` varchar(250) NOT NULL,
-  `contraseña` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `telefono` varchar(20) NOT NULL,
+  `estado` enum('Activo','Baja') NOT NULL,
   `id_rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -393,7 +394,7 @@ ALTER TABLE `unidadmedida`
 --
 -- Indexes for table `usuarios`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_usuario_roles` (`id_rol`);
 
@@ -464,7 +465,7 @@ ALTER TABLE `unidadmedida`
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -482,7 +483,7 @@ ALTER TABLE `etapa`
 --
 ALTER TABLE `factura`
   ADD CONSTRAINT `fk_Factura_OrdendeCompra1` FOREIGN KEY (`OrdendeCompra_id`) REFERENCES `ordendecompra` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Factura_Usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `fk_Factura_Usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 
 --
 -- Constraints for table `material`
@@ -503,7 +504,7 @@ ALTER TABLE `ordendecompradetalle`
 ALTER TABLE `requerimiento`
   ADD CONSTRAINT `fk_requerimientoAreanegocio` FOREIGN KEY (`id_areanegocio`) REFERENCES `areanegocio` (`id`),
   ADD CONSTRAINT `fk_requerimientoCentrocosto` FOREIGN KEY (`id_centrocosto`) REFERENCES `centro_de_costo` (`id`),
-  ADD CONSTRAINT `fk_requerimientoUsuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `fk_requerimientoUsuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 
 --
 -- Constraints for table `requerimientodetalle`

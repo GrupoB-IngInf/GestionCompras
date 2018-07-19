@@ -1,8 +1,6 @@
 package dto;
 
 import java.io.*;
-
-
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +12,7 @@ public class Material implements Serializable {
 	public Material() {
 		super();
 		grupo = new Grupo();
+		unidadMedida=new UnidadMedida();
 	}
 
 	@Id
@@ -33,6 +32,10 @@ public class Material implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "Grupo_id")
 	private Grupo  grupo;
+	
+	@ManyToOne
+	@JoinColumn(name = "UnidadMedida_id")
+	private UnidadMedida  unidadMedida;
 
 	public Long getId() {
 		return id;
@@ -58,6 +61,8 @@ public class Material implements Serializable {
 		this.descripcion = descripcion;
 	}
 	
+	
+
 	public String getEstado() {
 		return estado;
 	}
@@ -72,6 +77,14 @@ public class Material implements Serializable {
 
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
+	}
+	
+	public UnidadMedida getUnidadMedida() {
+		return unidadMedida;
+	}
+
+	public void setUnidadMedida(UnidadMedida unidadMedida) {
+		this.unidadMedida = unidadMedida;
 	}
 
 }

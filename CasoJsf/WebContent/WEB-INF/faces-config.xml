@@ -14,6 +14,12 @@
 		<managed-bean-class>bean.MaterialBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>unidadMedidaBean</managed-bean-name>
+		<managed-bean-class>bean.UnidadMedidaBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 
 	<managed-bean>
 		<managed-bean-name>areaNegocioBean</managed-bean-name>
@@ -26,5 +32,12 @@
 		<managed-bean-class>bean.ReportesBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	
+		<managed-bean>
+		<managed-bean-name>centrocostoBean</managed-bean-name>
+		<managed-bean-class>bean.CentrocostoBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
 
 </faces-config>

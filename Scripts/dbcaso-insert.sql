@@ -1,9 +1,9 @@
 USE dbcaso;
 
 /*Unidad de medida*/
-INSERT INTO `unidadmedida` (`id`,`nombre`) VALUES (1,'UND');
-INSERT INTO `unidadmedida` (`id`,`nombre`) VALUES (2,'KG');
-INSERT INTO `unidadmedida` (`id`,`nombre`) VALUES (3,'BLD');
+INSERT INTO `unidadmedida` (`nombre`) VALUES ('UND');
+INSERT INTO `unidadmedida` (`nombre`) VALUES ('KG');
+INSERT INTO `unidadmedida` (`nombre`) VALUES ('BLD');
 
 /*Grupo*/
 INSERT INTO `grupo` (`id`,`nombre`,`descripcion`) VALUES (1,'CLAVOS','CLAVOS DE TODO TAMAÑO');
@@ -15,7 +15,20 @@ INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`
 INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`Grupo_id`) VALUES (2,'PINTURA LATEX LAVABLE','','Activo',3,2);
 INSERT INTO `material` (`id`,`nombre`,`descripcion`,`estado`,`UnidadMedida_id`,`Grupo_id`) VALUES (3,'CEMENTO ANTISALITRE','','Activo',1,3);
 
+/* Proyectos*/
+INSERT INTO `dbcaso`.`proyecto` (`id`, `nombre`, `ubicacion`) VALUES ('1', 'Proyecto Las Palmas', 'Chimbote');
+INSERT INTO `dbcaso`.`proyecto` (`id`, `nombre`, `ubicacion`) VALUES ('2', 'Proyecto Los PInos', 'Trujillo');
+
+/* Etapas*/
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('1', 'Etapa 1', '20', '1');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('2', 'Etapa 2', '23', '1');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('3', 'Etapa 3', '43', '1');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('4', 'Primera Etapa', '12', '2');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('5', 'Segunda Etapa', '23', '2');
+INSERT INTO `dbcaso`.`etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES ('6', 'Tercera Etapa', '34', '2');
+
 /* Area de negocio */
+DELETE FROM `areanegocio`;
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AC', 'Atención al Cliente');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AI', 'Administración Ica');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('AL', 'Administración Lima');
@@ -26,6 +39,7 @@ INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('PC', 'Producci
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('SE', 'Seguridad');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('VC', 'Ventas/Crédito y Cobranza');
 
+<<<<<<< HEAD
 /*Banco*/
 INSERT INTO  `banco` (`id`,`nombre`,`estado`) VALUES (1,'BBVA Continental','Activo');
 INSERT INTO  `banco` (`id`,`nombre`,`estado`) VALUES (2,'Banco de Crédito del Perú','Activo');
@@ -44,3 +58,29 @@ INSERT INTO  `proveedor` (`id`,`nombre`,`ruc`, `direccion`,`contacto`,`correo`,`
 VALUES (4,'Cementos Indu','20785649102','Av. Pizarro 608, Cercado de Lima','Ernesto Josue Moreno Saavedra','indu_ce@gmail.com','321-88675462-0-32','956996433','Activo',1);
 INSERT INTO  `proveedor` (`id`,`nombre`,`ruc`, `direccion`,`contacto`,`correo`,`cuenta_corriente`,`telefono`,`estado`,`id_banco`) 
 VALUES (5,'Viesgo Ligth Empresa','87556366210','Av. Faucet 564, Surquillo','Jose Luis Rojas Ruiz','ligth_viesgo.10@gmail.com','361-76843109-0-34','971988832','Activo',5);
+=======
+/* Centro de Costo */
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (1, 'Administración y Finanzas', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (2, 'Contabilidad', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (3, 'Tesoreria', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (5, 'Administración', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (6, 'RRHH', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (8, 'Administración Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (9, 'Administración Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (10, 'Legal', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (11, 'Legal Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (12, 'Legal Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (13, 'Operaciones', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (14, 'Operaciones Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (15, 'Planta', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (16, 'Planta Concreto', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (17, 'Urbanismo', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (18, 'Mantenimiento', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (19, 'Proyectos', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (20, 'Logistica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (21, 'Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (22, 'Utilidad Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (24, 'Comercial Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (25, 'Comercial Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (26, 'Comercial', 'Activo');
+>>>>>>> 78e5c3aaf8c1fa741e74dc5d112ab93641c574e2

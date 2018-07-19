@@ -92,7 +92,5 @@ public class GrupoImpl extends JPA implements DAO<Grupo> {
 		Long maxId = (query.getSingleResult() == null) ? 1L : (Long) query.getSingleResult();
 		closeEntityManager();
 		return maxId;
-	}
+	}}
 	
-	
-}
