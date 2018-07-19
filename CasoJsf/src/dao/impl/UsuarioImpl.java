@@ -61,6 +61,7 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 		if (!t.isActive()) {
 			t.begin();
 		}
+		DTO.setEstado("Activo");
 		getEntityManager().persist(DTO);
 		t.commit();
 		closeEntityManager();
