@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 import dao.impl.UnidadMedidaImpl;
 import dto.UnidadMedida;
 
-@ManagedBean(name = "munidadmedidaBean")
+@ManagedBean(name = "unidadMedidaBean")
 @SessionScoped
 public class UnidadMedidaBean implements Serializable {
 

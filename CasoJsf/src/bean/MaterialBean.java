@@ -25,7 +25,7 @@ public class MaterialBean implements Serializable {
 	private GrupoBean grupoBean;
 	
 	// Bean Inyectado
-		@ManagedProperty(value = "#{mUnidadMedidaBean}")
+		@ManagedProperty(value = "#{unidadMedidaBean}")
 		private UnidadMedidaBean unidadMedidaBean;
 
 	// Getters & Setters
