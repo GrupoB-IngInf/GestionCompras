@@ -25,3 +25,28 @@ INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('OS', 'Osi');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('PC', 'ProducciÃ³n/Urbanismo');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('SE', 'Seguridad');
 INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('VC', 'Ventas/CrÃ©dito y Cobranza');
+
+/* Centro de Costo */
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (1, 'Administración y Finanzas', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (2, 'Contabilidad', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (3, 'Tesoreria', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (5, 'Administración', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (6, 'RRHH', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (8, 'Administración Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (9, 'Administración Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (10, 'Legal', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (11, 'Legal Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (12, 'Legal Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (13, 'Operaciones', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (14, 'Operaciones Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (15, 'Planta', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (16, 'Planta Concreto', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (17, 'Urbanismo', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (18, 'Mantenimiento', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (19, 'Proyectos', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (20, 'Logistica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (21, 'Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (22, 'Utilidad Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (24, 'Comercial Ica', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (25, 'Comercial Piura', 'Activo');
+INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (26, 'Comercial', 'Activo');

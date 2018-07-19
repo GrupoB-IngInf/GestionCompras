@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="CasoJsf/src"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/all-themes-1.0.10.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/com.lowagie.text-2.1.7.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/commons-beanutils-1.9.3.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/eclipselink.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/jasperreports-6.6.0.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/javax.persistence_2.1.0.v201304241213.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/jsf-api-2.2.8.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/jsf-impl-2.2.8.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/omnifaces-1.14.1.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/org.eclipse.persistence.jpa.modelgen_2.5.2.v20140319-9ad6abd.jar"/>
+	<classpathentry kind="lib" path="CasoJsf/WebContent/WEB-INF/lib/primefaces-6.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
