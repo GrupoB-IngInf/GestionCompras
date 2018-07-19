@@ -93,7 +93,7 @@ public class ProveedorImpl extends JPA implements DAO<Proveedor>{
 
 	@Override
 	public Long getMaxId() {
-		String sql = "SELECT max(p.id) + 1 FROM Provedor p";
+		String sql = "SELECT max(p.id) + 1 FROM Proveedor p";
 		Query query = getEntityManager().createQuery(sql, Long.class);
 		Long maxId = (query.getSingleResult() == null) ? 1L : (Long) query.getSingleResult();
 		closeEntityManager();
