@@ -1,5 +1,5 @@
 CasoJsf/WebContent/WEB-INF/lib/mysql*.jar
-CasoJsf/build/*
+*.class
 
 /bin/
 
