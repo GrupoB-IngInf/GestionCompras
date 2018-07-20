@@ -65,8 +65,7 @@
 											target="#{materialBean.material.id}" />
 									</p:commandButton>
 									<p:commandButton action="#{materialBean.unsuscribe}"
-										value="Baja"
-										onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
+										value="Baja" message="return confirm('Campo requerido')">
 										<f:setPropertyActionListener value="#{m.id}"
 											target="#{materialBean.material.id}" />
 									</p:commandButton>
