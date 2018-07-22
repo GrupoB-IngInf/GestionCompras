@@ -28,8 +28,8 @@ INSERT INTO `dbcaso`.`areanegocio` (`prefijo`, `nombre`) VALUES ('VC', 'Ventas/C
 
 
 /* Usuario */
-INSERT INTO `dbcaso`.`usuarios` (`id`, `nombres`,`apellidos`,`correo`,`contraseña`,`telefono`,`id_rol`,`estado`) VALUES (1, 'Luis','Chirinos Carranza','Chirinos@gmail.com','123456','123456789',1,'Activo');
-INSERT INTO `dbcaso`.`usuarios` (`id`, `nombres`,`apellidos`,`correo`,`contraseña`,`telefono`,`id_rol`,`estado`) VALUES (2, 'Axel','Gutierrez Lopez','axl@gmail.com','123456','123456789',2,'Activo');
+INSERT INTO `dbcaso`.`usuario` (`id`, `nombres`,`apellidos`,`correo`,`password`,`telefono`,`id_rol`,`estado`) VALUES (1, 'Luis','Chirinos Carranza','Chirinos@gmail.com','123456','123456789',1,'Activo');
+INSERT INTO `dbcaso`.`usuario` (`id`, `nombres`,`apellidos`,`correo`,`password`,`telefono`,`id_rol`,`estado`) VALUES (2, 'Axel','Gutierrez Lopez','axl@gmail.com','123456','123456789',2,'Activo');
 
 /* Rol */
 insert into `dbcaso`.`roles` (`id`, `nombre`) VALUES (1, 'Administrador');
@@ -92,4 +92,19 @@ INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (24, 'Comercial 
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (25, 'Comercial Piura', 'Activo');
 INSERT INTO `centro_de_costo` (`id`, `nombre`, `estado`) VALUES (26, 'Comercial', 'Activo');
 
+/* Proyectos */
+INSERT INTO `proyecto` (`id`, `nombre`, `ubicacion`) VALUES
+(2, 'Proyecto 1', 'Los Pinos'),
+(3, 'Proyecto 2', 'Las Malvinas'),
+(4, 'Proyecto 3', 'Lima'),
+(5, 'Proyecto 4', 'Mendoza');
 
+INSERT INTO `etapa` (`id`, `denominacion`, `duracion`, `Proyecto_id`) VALUES
+(4, 'Etapa1', 132, 2),
+(5, 'Etapa2', 12, 2),
+(6, 'Etapa3', 162, 2),
+(7, 'Etapa4', 65, 2),
+(8, 'Etapa1', 151, 3),
+(9, 'Etapa1', 155, 4),
+(10, 'Etapa2', 125, 4),
+(11, 'Etapa1', 156, 5);
