@@ -15,13 +15,9 @@
 					<p:panel id="pane" header="Listado de Areas de Negocio"
 						style="width:655px">
 						<p:dataTable id="dtAreaNegocio" var="a"
-							value="#{areaNegocioBean.all}" rows="10" paginator="true"
-							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15">
-
-
+							value="#{areaNegocioBean.all}" rows="10" >
 							<p:column style="width:20px; text-align: center;">
-								<f:facet name="header">
+								<f:facet name="header" sortBy="#{a.id}">
 									<h:outputText value="Id" />
 								</f:facet>
 								<h:outputText id="tid" value="#{a.id}" />
