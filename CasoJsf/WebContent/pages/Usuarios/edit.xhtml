@@ -42,14 +42,14 @@
 									type="email" required="true"/>
 
 								<p:outputLabel for="tpass" value="Contraseña:" />
-								<p:inputText id="tpass" value="#{usuarioBean.usuario.password}"
-									type="password" required="true">
+								<p:password id="tpass" value="#{usuarioBean.usuario.password}"
+									required="true"  feedback="true" inline="true">
 									<f:validateLength minimum="6"/>
-								</p:inputText>
+								</p:password>
 
 								<p:outputLabel for="tpassc" value="Confirmar Contraseña:" />
-								<p:inputText id="tpassc" value="#{usuarioBean.usuario.password}"
-									type="password" required="true"/>
+								<p:password id="tpassc" value="#{usuarioBean.usuario.password}"
+									match="tpass" required="true" validatorMessage="Las contraseñas no coinciden"/>
 
 								<p:outputLabel for="tphone" value="Telefono:" />
 								<p:inputMask id="tphone" mask="999-999999" required="true"
@@ -69,8 +69,6 @@
 							</h:panelGrid>
 							<p:commandButton action="#{usuarioBean.update}" type="submit"
 								value="Editar" />
-							<p:commandButton action="#{usuarioBean.index}" type="submit"
-								value="Salir" />
 						</h:form>
 					</p:panel>
 				</center>
