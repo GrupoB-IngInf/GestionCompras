@@ -26,11 +26,13 @@
 								<p:inputText id="tnombre" value="#{grupoBean.grupo.nombre}"
 									required="true">
 									<f:validateLength minimum="2" maximum="45" />
+									<p:clientValidator event="keyup" />
 								</p:inputText>
-								
+
 								<p:outputLabel for="tdescripcion" value="Descripcion:" />
-								<p:inputText id="tdescripcion"
+								<p:inputText id="tdescripcion" required="true"
 									value="#{grupoBean.grupo.descripcion}" />
+
 							</h:panelGrid>
 							<p:commandButton action="#{grupoBean.update}" type="submit"
 								value="Guardar" validateClient="true" />
