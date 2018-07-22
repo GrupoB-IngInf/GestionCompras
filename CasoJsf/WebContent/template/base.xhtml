@@ -38,67 +38,75 @@
 
 				<h:form>
 					<p:growl id="messages" showDetail="false" />
-
 					<p:menu size="250" style="width: 99%;     border: 0px;">
 						<p:menuitem value="Home" outcome="/index" update="messages"
 							icon="ui-icon-home" />
-						<p:submenu label="Gestion de Materiales">
-							<p:menuitem value="Grupos de Materiales"
-								outcome="/pages/grupo/index" update="messages"
-								icon="ui-icon-person" />
-							<p:menuitem value="Materiales" outcome="/pages/material/index"
-								update="messages" icon="ui-icon-contact" />
-							<p:menuitem value="Unidades de Medida"
-								outcome="/pages/unidades/index" update="messages"
-								icon="ui-icon-clipboard">
-								<p:submenu label="Gestion de Proveedores">
-									<p:menuitem value="Proveedores"
-										outcome="/pages/proveedor/index" update="messages"
-										icon="ui-icon-disk" />
-									<p:menuitem value="Bancos" outcome="/pages/banco/index"
-										update="messages" icon="ui-icon-disk" />
-								</p:submenu>
-							</p:menuitem>
-						</p:submenu>
-
-						<p:submenu label="Gestion de Proveedores">
-							<p:menuitem value="Proveedores" outcome="/pages/proveedor/index"
-								update="messages" icon="ui-icon-disk" />
-							<p:menuitem value="Bancos" outcome="/pages/banco/index"
-								update="messages" icon="ui-icon-disk" />
-						</p:submenu>
-
-						<p:submenu label="Gestion de Áreas de Negocio">
-							<p:menuitem value="Áreas de negocio"
-								outcome="/pages/areanegocio/index" update="messages"
-								icon="ui-icon-disk" />
-						</p:submenu>
-						<p:submenu label="Gestión de Centros de Costo">
+					</p:menu>
+					<p:accordionPanel multiple="true">
+						<p:tab title="Gestion de Materiales">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
+								<p:menuitem value="Grupos de Materiales"
+									outcome="/pages/grupo/index" update="messages"
+									icon="ui-icon-person" />
+								<p:menuitem value="Materiales" outcome="/pages/material/index"
+									update="messages" icon="ui-icon-contact" />
+								<p:menuitem value="Unidades de Medida"
+									outcome="/pages/unidades/index" update="messages"
+									icon="ui-icon-clipboard">></p:menuitem>
+							</p:menu>
+						</p:tab>
+						<p:tab title="Gestion de Proveedores">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
+								<p:menuitem value="Proveedores" outcome="/pages/proveedor/index"
+									update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="Bancos" outcome="/pages/banco/index"
+									update="messages" icon="ui-icon-disk" />
+							</p:menu>
+						</p:tab>
+						 <p:tab title="Gestion de Area de Negocio">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
+								<p:menuitem value="Áreas de negocio"
+									outcome="/pages/areanegocio/index" update="messages"
+									icon="ui-icon-disk" />
+							</p:menu>
+						</p:tab>
+						<p:tab title="Gestion de Centros de Costo">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
 							<p:menuitem value="Centro de Costo"
 								outcome="/pages/centrocosto/index" update="messages"
 								icon="ui-icon-disk" />
-						</p:submenu>
-						<p:submenu label="Gestión de Proyectos y Etapas">
-							<p:menuitem value="Proyectos" outcome="/pages/proyecto/index"
+							</p:menu>
+						</p:tab>
+						<p:tab title="Gestion de Proyectos y Etapas">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
+								<p:menuitem value="Proyectos" outcome="/pages/proyecto/index"
 								update="messages" icon="ui-icon-disk" />
-						</p:submenu>
-						<p:submenu label="Gestion de Usuarios">
-							<p:menuitem value="Usuarios" outcome="/pages/Usuarios/index"
+							</p:menu>
+						</p:tab>
+						<p:tab title="Gestion de Usuarios">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
+								<p:menuitem value="Usuarios" outcome="/pages/Usuarios/index"
 								update="messages" icon="ui-icon-disk" />
 							<p:menuitem value="Roles" outcome="/pages/rol/index"
 								update="messages" icon="ui-icon-disk" />
 							<p:menuitem value="Permisos" outcome="/pages/permisos/index"
 								update="messages" icon="ui-icon-disk" />
-						</p:submenu>
-						<p:submenu label="Reportes">
-							<p:menuitem value="Reportes" outcome="/pages/reportes/index"
+							</p:menu>
+						</p:tab>
+						<p:tab title="Reportes">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
+								<p:menuitem value="Reportes" outcome="/pages/reportes/index"
 								update="messages" icon="ui-icon-disk" />
-						</p:submenu>
-						<p:submenu label="Otros">
-							<p:menuitem value="Cerrar Session" update="messages"
+							</p:menu>
+						</p:tab>
+						<p:tab title="Otros">
+							<p:menu size="250" style="width: 99%;     border: 0px;">
+								<p:menuitem value="Cerrar Session" 
 								icon="ui-icon-close" />
-						</p:submenu>
-					</p:menu>
+							</p:menu>
+						</p:tab>
+					</p:accordionPanel>
+
 				</h:form>
 
 			</p:layoutUnit>
