@@ -13,21 +13,22 @@
 				<center>
 					<p:panel id="pane" header="Añadir Unidad" style="width:300px">
 						<h:form id="unidadesBeanForm">
-							<h:panelGrid columns="3" cellpadding="5">
+							<p:messages>
+								<p:autoUpdate />
+							</p:messages>
+							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel for="tid" value="Id:" />
 								<p:inputText id="tid"
 									value="#{unidadMedidaBean.unidadMedida.id}" disabled="true" />
-								<h:message for="tid"></h:message>
 
 								<p:outputLabel for="tnombre" value="Nombre:" />
-								<p:inputText id="tnombre"
-									value="#{unidadMedidaBean.unidadMedida.nombre}" />
-								<h:message for="tnombre"></h:message>
+								<p:inputText id="tnombre" required="true"
+									value="#{unidadMedidaBean.unidadMedida.nombre}">
+									<f:validateLength minimum="2" maximum="45"/>
+								</p:inputText>
 							</h:panelGrid>
 							<p:commandButton action="#{unidadMedidaBean.create}"
-								type="submit" value="Añadir" />
-							<p:commandButton action="#{unidadMedidaBean.index}" type="submit"
-								value="Regresar" />
+								type="submit" value="Añadir" update="pane"/>
 						</h:form>
 					</p:panel>
 				</center>

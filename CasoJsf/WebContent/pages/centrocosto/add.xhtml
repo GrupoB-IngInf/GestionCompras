@@ -11,23 +11,26 @@
 
 			<ui:define name="content">
 				<center>
-					<h:form id="centrocostoBeanForm">
-						<h:panelGrid columns="3" cellpadding="5">
-							<p:outputLabel for="tid" value="Id:" />
-							<p:inputText id="tid" value="#{centrocostoBean.centrocosto.id}"
-								disabled="true" />
-							<h:message for="tid"></h:message>
+					<p:panel id="pane" header="Crear Centro de Costo"
+						style="width:300px">
+						<h:form id="centrocostoBeanForm">
+							<p:messages>
+								<p:autoUpdate />
+							</p:messages>
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel for="tid" value="Id:" />
+								<p:inputText id="tid" value="#{centrocostoBean.centrocosto.id}"
+									disabled="true" />
 
-							<p:outputLabel for="tnombre" value="Nombre:" />
-							<p:inputText id="tnombre"
-								value="#{centrocostoBean.centrocosto.nombre}" />
-							<h:message for="tnombre"></h:message>
-						</h:panelGrid>
-						<p:commandButton action="#{centrocostoBean.create}" type="submit"
-							value="Añadir" />
-						<p:commandButton action="#{centrocostoBean.index}" type="submit"
-							value="Regresar" />
-					</h:form>
+								<p:outputLabel for="tnombre" value="Nombre:" />
+								<p:inputText id="tnombre" required="true"
+									value="#{centrocostoBean.centrocosto.nombre}">
+									<f:validateLength minimum="2" maximum="100" />
+								</p:inputText>
+							</h:panelGrid>
+							<p:commandButton action="#{centrocostoBean.create}" type="submit"
+								value="Añadir" update="pane" />
+						</h:form>
 					</p:panel>
 				</center>
 			</ui:define>
