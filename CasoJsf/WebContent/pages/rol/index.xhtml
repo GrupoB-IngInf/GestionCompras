@@ -13,15 +13,26 @@
 			<ui:define name="content">
 				<center>
 					<p:panel id="pane" header="Listado de Roles" style="width:500px">
-						<p:dataTable id="dtRol" var="m" value="#{rolBean.all}">
-							<p:column style="width:20px; text-align: center;">
+						<p:dataTable id="dtRol" var="m" value="#{rolBean.all}" emptyMessage="No se encontraron usuarios con el criterio."
+								selection="{rolBean.rol}"
+								widgetVar="dtu"
+								rowKey="#{m.id}">
+								
+								<f:facet name="header">
+									<p:outputPanel>
+										<h:outputText value="Buscar:" />
+										<p:inputText id="globalFilter" onkeyup="PF('dtu').filter()"
+											style="width:150px" placeholder="Ingresar Campo" />
+									</p:outputPanel>
+								</f:facet>
+							<p:column style="width:20px; text-align: center;" filterBy="#{m.id}">
 								<f:facet name="header">
 									<h:outputText value="Id" />
 								</f:facet>
 								<h:outputText id="tid" value="#{m.id}" />
 							</p:column>
 
-							<p:column style="width:140px; text-align: center;">
+							<p:column style="width:140px; text-align: center;"filterBy="#{m.nombre}">
 								<f:facet name="header">
 									<h:outputText value="Nombre" />
 								</f:facet>
@@ -53,9 +64,8 @@
 					</p:panel>
 					<h:form>
 						<p:commandButton action="#{rolBean.add}" value="Nuevo Rol" />
-						<p:commandButton value="Volver al Inicio"
-							action="#{usersBean.sessionHome}" />
-					</h:form>					
+						
+					</h:form>
 				</center>
 			</ui:define>
 

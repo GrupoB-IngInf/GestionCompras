@@ -12,24 +12,38 @@
 
 			<ui:define name="content">
 				<center>
+				<h:form>
 					<p:panel id="pane" header="Listado de Materiales"
 						style="width:870px">
-						<p:dataTable id="dtGrupo" var="m" value="#{materialBean.all}">
-							<p:column style="width:20px; text-align: center;">
+						<p:dataTable id="dtu" var="m" value="#{materialBean.all}"
+							emptyMessage="No se encontraron usuarios con el criterio."
+							selection="{materialBean.material}" widgetVar="dtu"
+							rowKey="#{m.id}">
+
+							<f:facet name="header">
+								<p:outputPanel>
+									<h:outputText value="Buscar:" />
+									<p:inputText id="globalFilter" onkeyup="PF('dtu').filter()"
+										style="width:150px" placeholder="Ingresar Campo" />
+								</p:outputPanel>
+							</f:facet>
+							
+							
+							<p:column style="width:20px; text-align: center;" filterBy="#{m.id}">
 								<f:facet name="header">
 									<h:outputText value="Id" />
 								</f:facet>
 								<h:outputText id="tid" value="#{m.id}" />
 							</p:column>
 
-							<p:column style="width:140px; text-align: center;">
+							<p:column style="width:140px; text-align: center;" filterBy="#{m.nombre}">
 								<f:facet name="header">
 									<h:outputText value="Nombre" />
 								</f:facet>
 								<h:outputText id="tnombre" value="#{m.nombre}" />
 							</p:column>
 
-							<p:column style="width:140px; text-align: center;">
+							<p:column style="width:140px; text-align: center;" filterBy="#{m.descripcion}">
 								<f:facet name="header">
 									<h:outputText value="Descripcion" />
 								</f:facet>
@@ -37,14 +51,14 @@
 							</p:column>
 
 
-							<p:column style="width:140px; text-align: center;">
+							<p:column style="width:140px; text-align: center;" filterBy="#{m.grupo.nombre}">
 								<f:facet name="header">
 									<h:outputText value="Grupo" />
 								</f:facet>
 								<h:outputText id="tgrupo" value="#{m.grupo.nombre}" />
 							</p:column>
 
-							<p:column style="width:70px; text-align: center;">
+							<p:column style="width:70px; text-align: center;" filterBy="#{m.estado}">
 								<f:facet name="header">
 									<h:outputText value="Estado" />
 								</f:facet>
@@ -73,11 +87,11 @@
 							</p:column>
 						</p:dataTable>
 					</p:panel>
+					</h:form>
 					<h:form>
 						<p:commandButton action="#{materialBean.add}"
 							value="Nuevo Material" />
-						<p:commandButton value="Volver al Inicio"
-							action="#{usersBean.sessionHome}" />
+						
 					</h:form>
 				</center>
 			</ui:define>
