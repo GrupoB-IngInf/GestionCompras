@@ -122,5 +122,7 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 		return DTO;
 	}
 	
+	
+	
 
 }
