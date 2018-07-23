@@ -15,6 +15,7 @@
 				<h:form>
 					<p:panel id="pane" header="Listado de Permisos" style="width:500px">
 						<p:dataTable id="dtu" var="m" value="#{permisosBean.all}"
+<<<<<<< HEAD
 						rows="10" paginator="true"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
 								rowsPerPageTemplate="5,10,15">
@@ -31,13 +32,28 @@
 									</h:commandLink>
 								</f:facet>
 							<p:column style="width:20px; text-align: center;">
+=======
+							emptyMessage="No se encontraron usuarios con el criterio."
+							selection="{permisosBean.permisos}" widgetVar="dtu"
+							rowKey="#{m.id}">
+							
+							<f:facet name="header">
+									<p:outputPanel>
+										<h:outputText value="Buscar:" />
+										<p:inputText id="globalFilter" onkeyup="PF('dtu').filter()"
+											style="width:150px" placeholder="Ingresar Campo" />
+									</p:outputPanel>
+								</f:facet>
+							
+							<p:column style="width:20px; text-align: center;" filterBy="#{m.id}">
+>>>>>>> 455661176c6c1a9e1b4f8d8bd2ac2713b00c91a3
 								<f:facet name="header">
 									<h:outputText value="Id" />
 								</f:facet>
 								<h:outputText id="tid" value="#{m.id}" />
 							</p:column>
 
-							<p:column style="width:140px; text-align: center;">
+							<p:column style="width:140px; text-align: center;" filterBy="#{m.nombre}">
 								<f:facet name="header">
 									<h:outputText value="Nombre" />
 								</f:facet>
@@ -71,8 +87,7 @@
 					<h:form>
 						<p:commandButton action="#{permisosBean.add}"
 							value="Nuevo Permiso" />
-						<p:commandButton value="Volver al Inicio"
-							action="#{usersBean.sessionHome}" />
+						
 					</h:form>
 				</center>
 			</ui:define>

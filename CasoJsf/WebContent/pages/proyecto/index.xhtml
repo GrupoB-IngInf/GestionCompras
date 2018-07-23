@@ -12,53 +12,67 @@
 
 			<ui:define name="content">
 				<center>
-					<p:panel id="pane" header="Listado de Proyectos"
-						style="width:800px">
-						<p:dataTable id="dtProyecto" var="m" value="#{proyectoBean.all}">
-							<p:column style="width:20px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Id" />
-								</f:facet>
-								<h:outputText id="tid" value="#{m.id}" />
-							</p:column>
+					<h:form>
+						<p:panel id="pane" header="Listado de Proyectos"
+							style="width:800px">
+							<p:dataTable id="dtu" var="m" value="#{proyectoBean.all}"
+								emptyMessage="No se encontraron usuarios con el criterio."
+								selection="{proyectoBean.proyecto}" widgetVar="dtu"
+								rowKey="#{m.id}">
 
-							<p:column style="width:140px; text-align: center;">
 								<f:facet name="header">
-									<h:outputText value="Nombre" />
+									<p:outputPanel>
+										<h:outputText value="Buscar:" />
+										<p:inputText id="globalFilter" onkeyup="PF('dtu').filter()"
+											style="width:150px" placeholder="Ingresar Campo" />
+									</p:outputPanel>
 								</f:facet>
-								<h:outputText id="tnombre" value="#{m.nombre}" />
-							</p:column>
 
-							<p:column style="width:140px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Ubicacion" />
-								</f:facet>
-								<h:outputText id="tubicacion" value="#{m.ubicacion}" />
-							</p:column>
+								<p:column style="width:20px; text-align: center;" filterBy="#{m.id}">
+									<f:facet name="header">
+										<h:outputText value="Id" />
+									</f:facet>
+									<h:outputText id="tid" value="#{m.id}" />
+								</p:column>
+
+								<p:column style="width:140px; text-align: center;" filterBy="#{m.nombre}">
+									<f:facet name="header">
+										<h:outputText value="Nombre" />
+									</f:facet>
+									<h:outputText id="tnombre" value="#{m.nombre}" />
+								</p:column>
+
+								<p:column style="width:140px; text-align: center;" filterBy="#{m.ubicacion}">
+									<f:facet name="header">
+										<h:outputText value="Ubicacion" />
+									</f:facet>
+									<h:outputText id="tubicacion" value="#{m.ubicacion}" />
+								</p:column>
 
 
-							<p:column tyle="width:100px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Operacion" />
-								</f:facet>
-								<h:form>
-									<p:commandButton action="#{proyectoBean.show}" value="Mostrar">
-										<f:setPropertyActionListener value="#{m.id}"
-											target="#{proyectoBean.proyecto.id}" />
-									</p:commandButton>
-									<p:commandButton action="#{proyectoBean.edit}" value="Editar">
-										<f:setPropertyActionListener value="#{m.id}"
-											target="#{proyectoBean.proyecto.id}" />
-									</p:commandButton>
-									<p:commandButton action="#{proyectoBean.delete}" value="Baja"
-										onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
-										<f:setPropertyActionListener value="#{m.id}"
-											target="#{proyectoBean.proyecto.id}" />
-									</p:commandButton>
-								</h:form>
-							</p:column>
-						</p:dataTable>
-					</p:panel>
+								<p:column tyle="width:100px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<h:form>
+										<p:commandButton action="#{proyectoBean.show}" value="Mostrar">
+											<f:setPropertyActionListener value="#{m.id}"
+												target="#{proyectoBean.proyecto.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{proyectoBean.edit}" value="Editar">
+											<f:setPropertyActionListener value="#{m.id}"
+												target="#{proyectoBean.proyecto.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{proyectoBean.delete}" value="Baja"
+											onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
+											<f:setPropertyActionListener value="#{m.id}"
+												target="#{proyectoBean.proyecto.id}" />
+										</p:commandButton>
+									</h:form>
+								</p:column>
+							</p:dataTable>
+						</p:panel>
+					</h:form>
 					<h:form>
 						<p:commandButton action="#{proyectoBean.add}"
 							value="Nuevo Proyecto" />
