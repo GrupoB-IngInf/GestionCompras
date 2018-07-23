@@ -41,18 +41,6 @@
 									</p:outputPanel>
 								</f:facet>
 
-								<f:facet name="{Exporters}">
-									<h:commandLink>
-										<h:graphicImage value="/images/pdf.png" width="24" />
-										<p:dataExporter type="pdf" target="dtu"
-											fileName="ReporteMaterial" />
-									</h:commandLink>
-									<h:commandLink>
-										<h:graphicImage value="/images/excel.png" width="24" />
-										<p:dataExporter type="xls" target="dtu"
-											fileName="ReporteMaterial" />
-									</h:commandLink>
-								</f:facet>
 								<p:column style="width:20px; text-align: center;"
 									filterBy="#{m.id}">
 									<f:facet name="header">
