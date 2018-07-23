@@ -12,18 +12,39 @@
 
 			<ui:define name="content">
 				<center>
-					<p:panel id="pane" header="Editar Rol" style="width:300px">
-						<h:form id="grupoBeanForm">
-							<h:panelGrid columns="3" cellpadding="5">
+					<p:panel id="pane" header="Editar Rol" style="width:600px">
+							<h:form id="frol">
+							<p:messages>
+								<p:autoUpdate />
+							</p:messages>
+							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel for="tid" value="Id:" />
 								<p:inputText id="tid" value="#{rolBean.rol.id}" disabled="true" />
-								<h:message for="tid"></h:message>
 
 								<p:outputLabel for="tnombre" value="Nombre:" />
-								<p:inputText id="tnombre" value="#{rolBean.rol.nombre}" />
-								<h:message for="tnombre"></h:message>
-
+								<p:inputText id="tnombre" value="#{rolBean.rol.nombre}" required="true">
+								<f:validateLength minimum="2" maximum="250"/>
+								</p:inputText>
 							</h:panelGrid>
+							<p:panel id="pane" header="Listado de Permisos"
+								style="width:500px">
+								<p:dataTable id="dp" var="m" value="#{permisosBean.all}">
+									<p:column style="width:20px; text-align: center;">
+										<f:facet name="header">
+											<h:outputText value="Id" />
+										</f:facet>
+										<h:outputText id="tid" value="#{m.id}" />
+									</p:column>
+
+									<p:column style="width:140px; text-align: center;">
+										<f:facet name="header">
+											<h:outputText value="Nombre" />
+										</f:facet>
+										<h:outputText id="tnombre" value="#{m.nombre}" />
+									</p:column>
+								</p:dataTable>
+							</p:panel>
+
 							<p:commandButton action="#{rolBean.update}" type="submit"
 								value="Editar" />
 							<p:commandButton action="#{rolBean.index}" type="submit"

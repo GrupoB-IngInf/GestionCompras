@@ -13,19 +13,20 @@
 			<ui:define name="content">
 				<center>
 					<p:panel id="pane" header="Editar Permiso" style="width:300px">
-						<h:form id="permisosBeanForm">
-							<h:panelGrid columns="3" cellpadding="5">
+												<h:form id="permisosBeanForm">
+							<p:messages>
+								<p:autoUpdate />
+							</p:messages>
+							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel for="tid" value="Id:" />
 								<p:inputText id="tid" value="#{permisosBean.permisos.id}"
 									disabled="true" />
-								<h:message for="tid"></h:message>
 
 								<p:outputLabel for="tnombre" value="Nombre:" />
-								<p:inputText id="tnombre"
-									value="#{permisosBean.permisos.nombre}" />
-								<h:message for="tnombre"></h:message>
-
-
+								<p:inputText id="tnombre" required="true"
+									value="#{permisosBean.permisos.nombre}">
+									<f:validateLength minimum="2" maximum="250"/>
+									</p:inputText>
 							</h:panelGrid>
 							<p:commandButton action="#{permisosBean.update}" type="submit"
 								value="Editar" />

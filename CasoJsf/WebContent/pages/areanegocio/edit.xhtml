@@ -14,26 +14,29 @@
 					<p:panel id="pane" header="Crear Area de Negocio"
 						style="width:300px">
 						<h:form id="areaNegocioBeanForm">
-							<h:panelGrid columns="3" cellpadding="5">
+							<p:messages>
+								<p:autoUpdate />
+							</p:messages>
+							<h:panelGrid columns="2" cellpadding="5">
 								<p:outputLabel for="tid" value="Id:" />
 								<p:inputText id="tid" value="#{areaNegocioBean.area.id}"
 									disabled="true" />
-								<h:message for="tid"></h:message>
 
 								<p:outputLabel for="tnombre" value="Nombre:" />
-								<p:inputText id="tnombre" value="#{areaNegocioBean.area.nombre}" />
-								<h:message for="tnombre"></h:message>
+								<p:inputText id="tnombre" value="#{areaNegocioBean.area.nombre}"
+									required="true">
+									<f:validateLength minimum="2" maximum="250" />
+								</p:inputText>
 
 								<p:outputLabel for="tprefijo" value="Prefijo:" />
-								<p:inputText id="tprefijo"
-									value="#{areaNegocioBean.area.prefijo}" />
-								<h:message for="tprefijo"></h:message>
-
+								<p:inputText id="tprefijo" required="true"
+									value="#{areaNegocioBean.area.prefijo}">
+									<f:validateLength minimum="1" maximum="10" />
+								</p:inputText>
 							</h:panelGrid>
-							<p:commandButton action="#{areaNegocioBean.create}" type="submit"
-								value="Añadir" />
-							<p:commandButton action="#{areaNegocioBean.index}" type="submit"
-								value="Regresar" />
+							<p:commandButton action="#{areaNegocioBean.update}" type="submit"
+								value="Editar" update="pane" />
+								<p:commandButton action="#{areaNegocioBean.index}" type="submit" value="Regresar" />
 						</h:form>
 					</p:panel>
 				</center>
