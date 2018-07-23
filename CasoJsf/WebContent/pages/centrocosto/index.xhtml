@@ -12,14 +12,25 @@
 
 			<ui:define name="content">
 				<center>
+				<h:form>
 					<p:panel id="pane" header="Listado de Centro de Costo"
-						style="width:655px">
+						style="width:490px">
 						<p:dataTable id="dtCentrocosto" var="a"
 							value="#{centrocostoBean.all}" rows="10" paginator="true"
-							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15">
-
-
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+								rowsPerPageTemplate="5,10,15">
+								<f:facet name="{Exporters}">
+									<h:commandLink>
+										<h:graphicImage value="/images/pdf.png" width="24"/>
+										<p:dataExporter type="pdf" target="dtCentroCosto"
+											fileName="ReporteCentroCosto" />
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage value="/images/excel.png" width="24" />
+										<p:dataExporter type="xls" target="dtCentroCosto"
+											fileName="ReporteCentroCosto" />
+									</h:commandLink>
+								</f:facet>
 							<p:column style="width:20px; text-align: center;">
 								<f:facet name="header">
 									<h:outputText value="Id" />
@@ -41,24 +52,24 @@
 								<h:outputText id="testado" value="#{a.estado}" />
 							</p:column>
 
-							<p:column style="width:200px; text-align: center;">
+							<p:column style="width:100px; text-align: center;">
 								<f:facet name="header">
 									<h:outputText value="Operacion" />
 								</f:facet>
 								<h:form>
 									<p:commandButton action="#{centrocostoBean.show}"
-										value="Mostrar">
+										icon="ui-icon-search" title="Mostrar">
 										<f:setPropertyActionListener value="#{a.id}"
 											target="#{centrocostoBean.centrocosto.id}" />
 									</p:commandButton>
 									<p:commandButton action="#{centrocostoBean.edit}"
-										value="Editar">
+										icon="ui-icon-pencil" title="Editar">
 										<f:setPropertyActionListener value="#{a.id}"
 											target="#{centrocostoBean.centrocosto.id}" />
 									</p:commandButton>
 
 									<p:commandButton action="#{centrocostoBean.unsuscribe}"
-										value="Baja"
+										icon="ui-icon-closethick" title="Eliminar"
 										onclick="return confirm('¿Confirma que desea dar de Baja este elemento?')">
 										<f:setPropertyActionListener value="#{a.id}"
 											target="#{centrocostoBean.centrocosto.id}" />
@@ -68,6 +79,7 @@
 							</p:column>
 						</p:dataTable>
 					</p:panel>
+					</h:form>
 					<h:form>
 						<p:commandButton action="#{centrocostoBean.add}"
 							value="Nuevo Centro Costo" />

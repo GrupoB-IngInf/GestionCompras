@@ -12,13 +12,24 @@
 
 			<ui:define name="content">
 				<center>
-					<p:panel id="pane" header="Listado de Grupos" style="width:655px">
+				<h:form>
+					<p:panel id="pane" header="Listado de Grupos" style="width:550px">
 						<p:dataTable id="dtGrupo" var="a" value="#{grupoBean.all}"
 							rows="10" paginator="true"
-							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15">
-
-
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+								rowsPerPageTemplate="5,10,15">
+								<f:facet name="{Exporters}">
+									<h:commandLink>
+										<h:graphicImage value="/images/pdf.png" width="24"/>
+										<p:dataExporter type="pdf" target="dtGrupo"
+											fileName="ReporteGrupo" />
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage value="/images/excel.png" width="24" />
+										<p:dataExporter type="xls" target="dtGrupo"
+											fileName="ReportGrupo" />
+									</h:commandLink>
+								</f:facet>
 							<p:column style="width:20px; text-align: center;">
 								<f:facet name="header">
 									<h:outputText value="Id" />
@@ -42,20 +53,20 @@
 
 
 
-							<p:column tyle="width:220px; text-align: center;">
+							<p:column tyle="width:100px; text-align: center;">
 								<f:facet name="header">
 									<h:outputText value="Operacion" />
 								</f:facet>
 								<h:form>
-									<p:commandButton action="#{grupoBean.show}" value="Mostrar">
+									<p:commandButton action="#{grupoBean.show}" icon="ui-icon-search" title="Mostrar">
 										<f:setPropertyActionListener value="#{a.id}"
 											target="#{grupoBean.grupo.id}" />
 									</p:commandButton>
-									<p:commandButton action="#{grupoBean.edit}" value="Editar">
+									<p:commandButton action="#{grupoBean.edit}" icon="ui-icon-pencil" title="Editar">
 										<f:setPropertyActionListener value="#{a.id}"
 											target="#{grupoBean.grupo.id}" />
 									</p:commandButton>
-									<p:commandButton action="#{grupoBean.delete}" value="Eliminar"
+									<p:commandButton action="#{grupoBean.delete}" icon="ui-icon-closethick" title="Eliminar"
 										onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
 										<f:setPropertyActionListener value="#{a.id}"
 											target="#{grupoBean.grupo.id}" />
@@ -64,10 +75,9 @@
 							</p:column>
 						</p:dataTable>
 					</p:panel>
+					</h:form>
 					<h:form>
 						<p:commandButton action="#{grupoBean.add}" value="Nuevo Grupo" />
-						<p:commandButton value="Volver al Inicio"
-							action="#{usersBean.sessionHome}" />
 					</h:form>
 				</center>
 			</ui:define>

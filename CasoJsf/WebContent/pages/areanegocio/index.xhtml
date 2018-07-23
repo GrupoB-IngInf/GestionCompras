@@ -13,21 +13,20 @@
 			<ui:define name="content">
 				<center>
 					<h:form>
-						<p:panel id="pane" header="Listado de Areas de Negocio"
-							style="width:655px">
-							<p:dataTable id="dtAreaNegocio" var="a"
+						<p:panel id="pane" header="Listado de Areas de Negocio" style="width:500px">
+							<p:dataTable id="dtu" var="a"
 								value="#{areaNegocioBean.all}" rows="10" paginator="true"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
 								rowsPerPageTemplate="5,10,15">
 								<f:facet name="{Exporters}">
 									<h:commandLink>
 										<h:graphicImage value="/images/pdf.png" width="24"/>
-										<p:dataExporter type="pdf" target="dtAreaNegocio"
+										<p:dataExporter type="pdf" target="dtu"
 											fileName="ReporteAreaNegocio" />
 									</h:commandLink>
 									<h:commandLink>
 										<h:graphicImage value="/images/excel.png" width="24" />
-										<p:dataExporter type="xls" target="dtAreaNegocio"
+										<p:dataExporter type="xls" target="dtu"
 											fileName="ReporteAreaNegocio" />
 									</h:commandLink>
 								</f:facet>
@@ -51,17 +50,17 @@
 									</f:facet>
 									<h:form>
 										<p:commandButton action="#{areaNegocioBean.show}"
-											value="Mostrar">
+											icon="ui-icon-search" title="Mostrar">
 											<f:setPropertyActionListener value="#{a.id}"
 												target="#{areaNegocioBean.area.id}" />
 										</p:commandButton>
 										<p:commandButton action="#{areaNegocioBean.edit}"
-											value="Editar">
+											icon="ui-icon-pencil" title="Editar">
 											<f:setPropertyActionListener value="#{a.id}"
 												target="#{areaNegocioBean.area.id}" />
 										</p:commandButton>
 										<p:commandButton action="#{areaNegocioBean.delete}"
-											value="Eliminar"
+											icon="ui-icon-closethick" title="Eliminar"
 											onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
 											<f:setPropertyActionListener value="#{a.id}"
 												target="#{grupoBean.grupo.id}" />
@@ -74,8 +73,6 @@
 					<h:form>
 						<p:commandButton action="#{areaNegocioBean.add}"
 							value="Nueva Area de negocio" />
-						<p:commandButton value="Volver al Inicio"
-							action="#{usersBean.sessionHome}" />
 					</h:form>
 				</center>
 			</ui:define>

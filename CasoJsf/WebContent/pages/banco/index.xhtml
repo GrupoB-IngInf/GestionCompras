@@ -12,54 +12,64 @@
 
 			<ui:define name="content">
 				<center>
-			<p:panel id="pane" header="Listado de Bancos" style="width:655px">
-				<p:dataTable id="dtBanco" var="a" value="#{bancoBean.all}" rows="10"
-					paginator="true"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15">
+					<h:form>
+						<p:panel id="pane" header="Listado de Bancos" style="width:500px">
+							<p:dataTable id="dtBanco" var="a" value="#{bancoBean.all}"
+								rows="10" paginator="true"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+								rowsPerPageTemplate="5,10,15">
+								<f:facet name="{Exporters}">
+									<h:commandLink>
+										<h:graphicImage value="/images/pdf.png" width="24" />
+										<p:dataExporter type="pdf" target="dtBanco"
+											fileName="ReporteBanco" />
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage value="/images/excel.png" width="24" />
+										<p:dataExporter type="xls" target="dtBanco"
+											fileName="ReporteBanco" />
+									</h:commandLink>
+								</f:facet>
+								<p:column style="width:20px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Id" />
+									</f:facet>
+									<h:outputText id="tid" value="#{a.id}" />
+								</p:column>
 
-									
-					<p:column style="width:20px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Id" />
-						</f:facet>
-						<h:outputText id="tid" value="#{a.id}" />
-					</p:column>
+								<p:column style="width:300px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Nombre" />
+									</f:facet>
+									<h:outputText id="tnombre" value="#{a.nombre}" />
+								</p:column>
 
-					<p:column style="width:300px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Nombre" />
-						</f:facet>
-						<h:outputText id="tnombre" value="#{a.nombre}" />
-					</p:column>
-
-					<p:column tyle="width:10px; text-align: center;">
-						<f:facet name="header">
-							<h:outputText value="Operacion" />
-						</f:facet>
-						<h:form>
-							<p:commandButton action="#{bancoBean.show}" value="Mostrar">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{bancoBean.banco.id}" />
-							</p:commandButton>
-							<p:commandButton action="#{bancoBean.edit}" value="Editar">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{bancoBean.banco.id}" />
-							</p:commandButton>
-							<p:commandButton action="#{bancoBean.delete}" value="Eliminar"
-								onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
-								<f:setPropertyActionListener value="#{a.id}"
-									target="#{bancoBean.banco.id}" />
-							</p:commandButton>
-						</h:form>
-					</p:column>
-				</p:dataTable>
-			</p:panel>
-			<h:form>
-				<p:commandButton action="#{bancoBean.add}" value="Nuevo Banco" />
-				<p:commandButton value="Volver al Inicio"
-					action="#{usersBean.sessionHome}" />
-			</h:form>
+								<p:column tyle="width:10px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<h:form>
+										<p:commandButton action="#{bancoBean.show}" icon="ui-icon-search" title="Mostrar">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{bancoBean.banco.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{bancoBean.edit}" icon="ui-icon-pencil" title="Editar">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{bancoBean.banco.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{bancoBean.delete}" icon="ui-icon-closethick" title="Eliminar"
+											onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{bancoBean.banco.id}" />
+										</p:commandButton>
+									</h:form>
+								</p:column>
+							</p:dataTable>
+						</p:panel>
+					</h:form>
+					<h:form>
+						<p:commandButton action="#{bancoBean.add}" value="Nuevo Banco" />
+					</h:form>
 				</center>
 			</ui:define>
 
