@@ -12,15 +12,15 @@
 
 			<ui:define name="content">
 				<center>
-				<h:form>
-					<p:panel id="pane" header="Listado de Unidades" style="width:655px">
-						<p:dataTable id="dtu" var="a" value="#{unidadMedidaBean.all}"
-							rows="10" paginator="true"
-							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15"
-							emptyMessage="No se encontraron usuarios con el criterio."
-								widgetVar="dtu"
-								rowKey="#{a.id}">
+					<h:form>
+						<p:panel id="pane" header="Listado de Unidades"
+							style="width:550px">
+							<p:dataTable id="dtu" var="a" value="#{unidadMedidaBean.all}"
+								rows="10" paginator="true"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+								rowsPerPageTemplate="5,10,15"
+								emptyMessage="No se encontraron usuarios con el criterio."
+								widgetVar="dtu" rowKey="#{a.id}">
 								<f:facet name="header">
 									<p:outputPanel>
 										<h:outputText value="Buscar:" />
@@ -28,52 +28,65 @@
 											style="width:150px" placeholder="Ingresar Campo" />
 									</p:outputPanel>
 								</f:facet>
-
-
-							<p:column style="width:20px; text-align: center;" filterBy="#{a.id}">
-								<f:facet name="header">
-									<h:outputText value="Id" />
+								<f:facet name="{Exporters}">
+									<h:commandLink>
+										<h:graphicImage value="/images/pdf.png" width="24" />
+										<p:dataExporter type="pdf" target="dtu"
+											fileName="ReporteUnidades" />
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage value="/images/excel.png" width="24" />
+										<p:dataExporter type="xls" target="dtu"
+											fileName="ReporteUnidades" />
+									</h:commandLink>
 								</f:facet>
-								<h:outputText id="tid" value="#{a.id}" />
-							</p:column>
 
-							<p:column style="width:300px; text-align: center;" filterBy="#{a.nombre}">
-								<f:facet name="header">
-									<h:outputText value="Nombre" />
-								</f:facet>
-								<h:outputText id="tnombre" value="#{a.nombre}" />
-							</p:column>
+								<p:column style="width:20px; text-align: center;"
+									filterBy="#{a.id}">
+									<f:facet name="header">
+										<h:outputText value="Id" />
+									</f:facet>
+									<h:outputText id="tid" value="#{a.id}" />
+								</p:column>
 
-							<p:column tyle="width:10px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Operacion" />
-								</f:facet>
-								<h:form>
-									<p:commandButton action="#{unidadMedidaBean.show}"
-										value="Mostrar">
-										<f:setPropertyActionListener value="#{a.id}"
-											target="#{unidadMedidaBean.unidadMedida.id}" />
-									</p:commandButton>
-									<p:commandButton action="#{unidadMedidaBean.edit}"
-										value="Editar">
-										<f:setPropertyActionListener value="#{a.id}"
-											target="#{unidadMedidaBean.unidadMedida.id}" />
-									</p:commandButton>
-									<p:commandButton action="#{unidadMedidaBean.delete}"
-										value="Eliminar"
-										onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
-										<f:setPropertyActionListener value="#{a.id}"
-											target="#{unidadMedidaBean.unidadMedida.id}" />
-									</p:commandButton>
-								</h:form>
-							</p:column>
-						</p:dataTable>
-					</p:panel>
+								<p:column style="width:300px; text-align: center;"
+									filterBy="#{a.nombre}">
+									<f:facet name="header">
+										<h:outputText value="Nombre" />
+									</f:facet>
+									<h:outputText id="tnombre" value="#{a.nombre}" />
+								</p:column>
+
+								<p:column tyle="width:10px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<h:form>
+										<p:commandButton action="#{unidadMedidaBean.show}"
+											icon="ui-icon-search" title="Mostrar">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{unidadMedidaBean.unidadMedida.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{unidadMedidaBean.edit}"
+											icon="ui-icon-pencil" title="Editar">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{unidadMedidaBean.unidadMedida.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{unidadMedidaBean.delete}"
+											icon="ui-icon-closethick" title="Eliminar"
+											onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{unidadMedidaBean.unidadMedida.id}" />
+										</p:commandButton>
+									</h:form>
+								</p:column>
+							</p:dataTable>
+						</p:panel>
 					</h:form>
 					<h:form>
 						<p:commandButton action="#{unidadMedidaBean.add}"
 							value="Nueva Unidad" />
-						
+
 					</h:form>
 				</center>
 			</ui:define>
