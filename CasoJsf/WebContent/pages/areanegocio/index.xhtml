@@ -17,17 +17,18 @@
 							style="width:655px">
 							<p:dataTable id="dtAreaNegocio" var="a"
 								value="#{areaNegocioBean.all}" rows="10" paginator="true"
-								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
 								rowsPerPageTemplate="5,10,15">
 								<f:facet name="{Exporters}">
 									<h:commandLink>
-										<p:graphicImage name="/images/pdf.png" />
+										<h:graphicImage value="/images/pdf.png" width="24"/>
 										<p:dataExporter type="pdf" target="dtAreaNegocio"
 											fileName="ReporteAreaNegocio" />
 									</h:commandLink>
 									<h:commandLink>
-										<p:graphicImage name="/images/excel.ico" width="24" />
-										<p:dataExporter type="xls" target="dtAreaNegocio" fileName="ReporteAreaNegocio" />
+										<h:graphicImage value="/images/excel.png" width="24" />
+										<p:dataExporter type="xls" target="dtAreaNegocio"
+											fileName="ReporteAreaNegocio" />
 									</h:commandLink>
 								</f:facet>
 								<p:column style="width:20px; text-align: center;">
