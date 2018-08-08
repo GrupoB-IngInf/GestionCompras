@@ -115,13 +115,13 @@
 											filterMatchMode="startsWith">
 														
 											<f:selectItems value="#{etapaBean.all}" var="p"
-												itemLabel="#{p}" itemValue="#{p}" />
+												itemLabel="#{p.proyecto.nombre} - #{p.denominacion}" itemValue="#{p}" />
 											<p:column style="width:10%">
 												<h:outputText value="#{t.id}" />
 											</p:column>
 											
 											<p:column style="width:10%">
-												<h:outputText value="#{t.proyecto.nombre}" />
+												<h:outputText value=" #{t.proyecto.nombre}" />
 											</p:column>
 											<p:column>
 												<h:outputText value="#{t.denominacion}" />
@@ -131,7 +131,7 @@
 									
 									<p:column>
 										<p:commandButton action="#{requerimientoBean.additem}"
-											update="dtalle" ajax="true" value="Añadir" />
+											update=":ffactura:dtalle" ajax="true" value="Añadir" />
 
 									</p:column>
 								</p:row>
