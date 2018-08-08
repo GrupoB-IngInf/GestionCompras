@@ -49,4 +49,12 @@ public class Centrocosto implements Serializable{
 		this.estado = estado;
 	}
 
+	@Override
+	public String toString() {
+		return "Centrocosto [id=" + id + ", nombre=" + nombre + ", estado=" + estado + "]";
+	}
+	
+	
+	
+
 }

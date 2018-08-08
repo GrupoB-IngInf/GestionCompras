@@ -88,11 +88,11 @@ public class Requerimiento implements Serializable{
 		this.centroCosto = centroCosto;
 	}
 		
-	public List<RequerimientoDetalle> getDetalle() {
+	public List<RequerimientoDetalle> getDetalles() {
 		return detalles;
 	}
 
-	public void setDetalle(List<RequerimientoDetalle> detalles) {
+	public void setDetalles(List<RequerimientoDetalle> detalles) {
 		this.detalles = detalles;
 	}
 
