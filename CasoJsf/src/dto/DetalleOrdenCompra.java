@@ -38,6 +38,10 @@ public class DetalleOrdenCompra implements Serializable {
 	@JoinColumn(name = "ordendecompra_id")
 	private OrdenCompra ordenCompra;
 	
+	@ManyToOne
+	@JoinColumn(name = "requerimientodetalle_id")
+	private RequerimientoDetalle requerimiento;
+	
 	public DetalleOrdenCompra() {
 		super();
 	}
@@ -96,6 +100,14 @@ public class DetalleOrdenCompra implements Serializable {
 
 	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
+	}
+
+	public RequerimientoDetalle getRequerimiento() {
+		return requerimiento;
+	}
+
+	public void setRequerimiento(RequerimientoDetalle requerimiento) {
+		this.requerimiento = requerimiento;
 	}
 
 	@Override

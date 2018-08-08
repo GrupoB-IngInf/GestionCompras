@@ -14,19 +14,19 @@
 		<managed-bean-class>bean.MaterialBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
+
 	<managed-bean>
 		<managed-bean-name>proyectoBean</managed-bean-name>
 		<managed-bean-class>bean.ProyectoBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
+
 	<managed-bean>
 		<managed-bean-name>etapaBean</managed-bean-name>
 		<managed-bean-class>bean.EtapaBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
+
 	<managed-bean>
 		<managed-bean-name>unidadMedidaBean</managed-bean-name>
 		<managed-bean-class>bean.UnidadMedidaBean</managed-bean-class>
@@ -44,13 +44,13 @@
 		<managed-bean-class>bean.ReportesBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
-		<managed-bean>
+
+	<managed-bean>
 		<managed-bean-name>centrocostoBean</managed-bean-name>
 		<managed-bean-class>bean.CentrocostoBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
+
 	<managed-bean>
 		<managed-bean-name>permisosBean</managed-bean-name>
 		<managed-bean-class>bean.PermisosBean</managed-bean-class>
@@ -62,16 +62,22 @@
 		<managed-bean-class>bean.RolBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
-		<managed-bean>
+
+	<managed-bean>
 		<managed-bean-name>bancoBean</managed-bean-name>
 		<managed-bean-class>bean.BancoBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	
-		<managed-bean>
+
+	<managed-bean>
 		<managed-bean-name>proveedorBean</managed-bean-name>
 		<managed-bean-class>bean.ProveedorBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>ordenCompraBean</managed-bean-name>
+		<managed-bean-class>bean.OrdenCompraBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 
