@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+
+<f:view contentType="text/html">
+	<h:body>
+
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
+					<h:form id="ffactura">
+						<p:panel id="pane" header="Crear factura" style="width:75vw">
+
+							<h:panelGrid columns="3" cellpadding="5">
+								
+								
+								<p:outputLabel for="tid" value="Id:" />
+								<p:inputText id="tid" value="#{requerimientoBean.requerimiento.id}"/>
+								<h:message for="tid"></h:message>
+								
+								<p:outputLabel for="tnombre" value="Id:" />
+								<p:inputText id="tnombre" value="#{requerimientoBean.requerimiento.nombre}"/>
+								<h:message for="tnombre"></h:message>
+			
+								<p:outputLabel for="cbcosto" value="Centro de Costos:" />				
+								<p:selectOneMenu id="cbcosto"
+									value="#{requerimientoBean.requerimiento.centroCosto}"
+									converter="omnifaces.SelectItemsConverter"
+									panelStyle="width:200px" effect="fade" var="t"
+									style="width:200px" filter="true"
+									filterMatchMode="startsWith">
+												
+									<f:selectItems value="#{centrocostoBean.all}" var="p"
+										itemLabel="#{p.nombre}" itemValue="#{p}" />
+									<p:column style="width:10%">
+										<h:outputText value="#{t.id}" />
+									</p:column>
+	
+									<p:column>
+										<h:outputText value="#{t.nombre}" />
+									</p:column>
+								</p:selectOneMenu>
+								<h:message for="cbcosto"></h:message>
+								
+								<p:outputLabel for="cbANegocio" value="Area de Negocio" />				
+								<p:selectOneMenu id="cbANegocio"
+									value="#{requerimientoBean.requerimiento.areaNegocio}"
+									converter="omnifaces.SelectItemsConverter"
+									panelStyle="width:200px" effect="fade" var="t"
+									style="width:200px" filter="true"
+									filterMatchMode="startsWith">
+												
+									<f:selectItems value="#{areaNegocioBean.all}" var="p"
+										itemLabel="#{p.nombre}" itemValue="#{p}" />
+									<p:column style="width:10%">
+										<h:outputText value="#{t.id}" />
+									</p:column>
+	
+									<p:column>
+										<h:outputText value="#{t.nombre}" />
+									</p:column>
+								</p:selectOneMenu>
+								<h:message for="cbANegocio"></h:message>
+								
+							</h:panelGrid>
+							<p:panelGrid>
+								<f:facet name="header">
+									<p:row>
+										<p:column style="font-weight: bold;">Material</p:column>										
+										<p:column style="font-weight: bold;">Cantidad</p:column>
+										<p:column style="font-weight: bold;">Etapa</p:column>
+										<p:column style="font-weight: bold;">Accion</p:column>
+										
+									</p:row>
+								</f:facet>
+								<p:row>
+								
+									<p:column>						
+										<p:selectOneMenu id="cbproducto"
+											value="#{requerimientoBean.material}"
+											converter="omnifaces.SelectItemsConverter"
+											panelStyle="width:200px" effect="fade" var="t"
+											style="width:200px" filter="true"
+											filterMatchMode="startsWith">
+														
+											<f:selectItems value="#{materialBean.all}" var="p"
+												itemLabel="#{p.nombre}" itemValue="#{p}"/>
+											<p:column style="width:10%">
+												<h:outputText value="#{t.id}" />
+											</p:column>
+			
+											<p:column>
+												<h:outputText value="#{t.nombre}" />
+											</p:column>
+										</p:selectOneMenu>
+									</p:column>
+									
+									<p:column>
+										<p:inputText id="tcantidad"
+											value="#{requerimientoBean.cantidad}" style="width:100px" />
+									</p:column>
+									
+									<p:column>						
+										<p:selectOneMenu id="cbetapa"
+											value="#{requerimientoBean.etapa}"
+											converter="omnifaces.SelectItemsConverter"
+											panelStyle="width:200px" effect="fade" var="t"
+											style="width:200px" filter="true"
+											filterMatchMode="startsWith">
+														
+											<f:selectItems value="#{etapaBean.all}" var="p"
+												itemLabel="#{p}" itemValue="#{p}" />
+											<p:column style="width:10%">
+												<h:outputText value="#{t.id}" />
+											</p:column>
+											
+											<p:column style="width:10%">
+												<h:outputText value="#{t.proyecto.nombre}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{t.denominacion}" />
+											</p:column>
+										</p:selectOneMenu>
+									</p:column>
+									
+									<p:column>
+										<p:commandButton action="#{requerimientoBean.additem}"
+											update="dtalle" ajax="true" value="Añadir" />
+
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:panel>
+						
+						<p:panel id="panedeta" style="width:600px">
+							<p:dataTable id="dtalle" var="a"
+								value="#{requerimientoBean.requerimiento.detalles}" rows="10">
+								
+								<p:column style="width:200px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Material" />
+									</f:facet>
+									<h:outputText id="tmaterialNombre" value="#{a.material.nombre}" />
+								</p:column>
+
+
+								<p:column style="width:50px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Cantidad" />
+									</f:facet>
+									<h:outputText id="tcant" value="#{a.cantidad}" />
+								</p:column>
+								
+								<p:column style="width:200px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Etapa" />
+									</f:facet>
+									<h:outputText id="tetapaDenominacion" value="#{a.etapa.denominacion}" />
+								</p:column>
+								
+
+
+								<p:column style="width:100px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Subtotal" />
+									</f:facet>
+									<h:outputText id="tsubtotal" value="#{a.subtotal}" />
+								</p:column>
+
+
+								<p:column tyle="width:30px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Ope" />
+									</f:facet>
+								
+									<p:commandLink	actionListener="#{requerimientoBean.removeItem(a)}" update=":ffactura" ajax="true" >
+										<span class="ui-icon ui-icon-trash"></span>
+									</p:commandLink>
+
+								</p:column>
+								
+								
+							</p:dataTable>
+
+						</p:panel>
+
+						<p:commandButton action="#{requerimientoBean.create}" type="submit"
+							value="Añadir" />
+						<p:commandButton action="#{requerimientoBean.index}" type="submit"
+							value="Regresar" />
+					</h:form>
+					
+				
+
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
+</html>

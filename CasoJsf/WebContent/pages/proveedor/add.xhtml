@@ -39,10 +39,15 @@
 					
 					<p:column style="width:20px; text-align: left;">
 					<p:outputLabel for="cbbanco" value="Banco:" />
-					<p:selectOneMenu id="cbbanco" value="#{proveedorBean.proveedor.banco.id}" converter="omnifaces.SelectItemsConverter" style="width:150px">
-					<f:selectItem itemLabel="[Seleccionar Banco]" itemValue="0" />
-					<f:selectItems value="#{bancoBean.all}" var="b" itemLabel="#{b.nombre}" itemValue="#{b.id}" />
+					
+					<p:selectOneMenu id="cbbanco" 
+					value="#{proveedorBean.proveedor.banco.id}" 
+					converter="omnifaces.SelectItemsConverter" 
+					style="width:150px">
+						<f:selectItem itemLabel="[Seleccionar Banco]" itemValue="0" />
+						<f:selectItems value="#{bancoBean.all}" var="b" itemLabel="#{b.nombre}" itemValue="#{b.id}" />
 					</p:selectOneMenu>
+					
 					<h:message for="cbbanco"></h:message>
 					</p:column>
 					

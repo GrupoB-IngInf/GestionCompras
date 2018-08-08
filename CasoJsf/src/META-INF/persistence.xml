@@ -17,6 +17,8 @@
 		<class>dto.Rol</class>
 		<class>dto.Permiso</class>
 		<class>dto.Centrocosto</class>
+		<class>dto.Requerimiento</class>
+		<class>dto.RequerimientoDetalle</class>
 				
 		<properties>
 			<property name="javax.persistence.jdbc.url"

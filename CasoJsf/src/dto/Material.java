@@ -87,4 +87,12 @@ public class Material implements Serializable {
 		this.unidadMedida = unidadMedida;
 	}
 
+	@Override
+	public String toString() {
+		return "Material [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", estado=" + estado
+				+ ", grupo=" + grupo + ", unidadMedida=" + unidadMedida + "]";
+	}
+	
+	
+
 }

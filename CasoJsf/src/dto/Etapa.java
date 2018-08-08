@@ -61,6 +61,14 @@ public class Etapa {
 	public void setDuracion(Long duracion) {
 		this.duracion = duracion;
 	}
+
+	@Override
+	public String toString() {
+		return "Etapa [id=" + id + ", denominacion=" + denominacion + ", duracion=" + duracion + ", proyecto="
+				+ proyecto + "]";
+	}
+	
+	
 	
 	
 }
