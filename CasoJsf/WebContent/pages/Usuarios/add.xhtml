@@ -6,68 +6,71 @@
 	xmlns:p="http://primefaces.org/ui">
 <f:view contentType="text/html">
 	<h:body>
-
 		<ui:composition template="/template/base.xhtml">
-
 			<ui:define name="content">
 				<center>
-				<p:panel id="pane" header="Crear Usuario" style="width:300px">
-				<h:form id="usuarioBeanForm">
-					<h:panelGrid columns="3" cellpadding="5">
-						<p:outputLabel for="tid" value="Id:" />
-						<p:inputText id="tid" value="#{usuarioBean.usuario.id}"
-							disabled="true" />
-						<h:message for="tid"></h:message>
+					<p:panel id="pane" header="Crear Usuario">
+						<h:form id="usuarioBeanForm">
+							<p:messages>
+								<p:autoUpdate />
+							</p:messages>
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel for="tid" value="Id:" />
+								<p:inputText id="tid" value="#{usuarioBean.usuario.id}"
+									disabled="true" />
 
-						<p:outputLabel for="tnombre" value="Nombre:" />
-						<p:inputText id="tnombre" value="#{usuarioBean.usuario.nombres}" />
-						<h:message for="tnombre"></h:message>
-						
-						<p:outputLabel for="tapellido" value="Apellido:" />
-						<p:inputText id="tapellido" value="#{usuarioBean.usuario.apellidos}" />
-						<h:message for="tapellido"></h:message>
-						
-						<p:outputLabel for="tcorreo" value="Email :" />
-						<p:inputText id="tcorreo" value="#{usuarioBean.usuario.correo}" />
-						<h:message for="tcorreo"></h:message>
-						
-						<p:outputLabel for="tpass" value="Contraseña :" />
-						<p:inputText id="tpass" value="#{usuarioBean.usuario.password}" />
-						<h:message for="tpass"></h:message>
-						
-						<p:outputLabel for="tpassc" value="Confirmar Contraseña :" />
-						<p:inputText id="tpassc" value="#{usuarioBean.usuario.password}" />
-						<h:message for="tpassc"></h:message>
-						
-						
-						<p:outputLabel for="tphone" value="Telefono :" />
-						<p:inputText id="tphone" value="#{usuarioBean.usuario.telefono}" />
-						<h:message for="tphone"></h:message>
-						
-						<p:outputLabel for="crol" value="Rol:" />
-					<p:selectOneMenu id="crol" value="#{usuarioBean.usuario.rol.id}" effect="fold" filter="true" filterMatchMode="startsWith" converter="omnifaces.SelectItemsConverter" style="width:150px">
-						<f:selectItem itemLabel="[Seleccionar Rol]" itemValue="0" />
-						<f:selectItems value="#{rolbean.all}" var="g" itemLabel="#{g.nombre}" itemValue="#{g.id}" />
-					</p:selectOneMenu>
-					<h:message for="crol"></h:message>
-					
-					<p:outputLabel for="testado" value="Estado :"  />
-						<p:inputText id="testado" value="Activo"  disabled="true"/>
-						<h:message for="tphone"></h:message>
-					
-					</h:panelGrid>
-					<p:commandButton action="#{usuarioBean.create}" type="submit"
-						value="Crear" />
-					<p:commandButton action="#{usuarioBean.index}" type="submit"
-						value="Salir" />
-				</h:form>
-			</p:panel>
+								<p:outputLabel for="tnombre" value="Nombres:" />
+								<p:inputText id="tnombre" value="#{usuarioBean.usuario.nombres}"
+									required="true" validatorMessage="Ingrese un nombre válido">
+									<f:validateLength maximum="250" />
+									<f:validateRegex pattern="[a-z A-ZñÑáéíóúÁÉÍÓÚ]+" />
+								</p:inputText>
+
+								<p:outputLabel for="tapellido" value="Apellidos:" />
+								<p:inputText id="tapellido" required="true"
+									value="#{usuarioBean.usuario.apellidos}"
+									validatorMessage="Ingrese un apellido válido">
+									<f:validateLength maximum="250" />
+									<f:validateRegex pattern="[a-z A-ZñÑáéíóúÁÉÍÓÚ]+" />
+								</p:inputText>
+
+								<p:outputLabel for="tcorreo" value="Email:" />
+								<p:inputText id="tcorreo" value="#{usuarioBean.usuario.correo}"
+									type="email" required="true"/>
+
+								<p:outputLabel for="tpass" value="Contraseña:" />
+								<p:password id="tpass" value="#{usuarioBean.usuario.password}"
+									required="true"  feedback="true" inline="true">
+									<f:validateLength minimum="6"/>
+								</p:password>
+
+								<p:outputLabel for="tpassc" value="Confirmar Contraseña:" />
+								<p:password id="tpassc" value="#{usuarioBean.usuario.password}"
+									match="tpass" required="true" validatorMessage="Las contraseñas no coinciden"/>
+
+								<p:outputLabel for="tphone" value="Telefono:" />
+								<p:inputMask id="tphone" mask="999-999999" required="true"
+									value="#{usuarioBean.usuario.telefono}" />
+
+								<p:outputLabel for="crol" value="Rol:" />
+								<p:selectOneMenu id="crol" value="#{usuarioBean.usuario.rol.id}"
+									effect="fold" filter="true" filterMatchMode="startsWith"
+									converter="omnifaces.SelectItemsConverter" style="width:150px"
+									validatorMessage="Seleccione un rol de la lista">
+									<f:selectItem itemLabel="[Seleccionar Rol]" itemValue="0" />
+									<f:selectItems value="#{rolbean.all}" var="g"
+										itemLabel="#{g.nombre}" itemValue="#{g.id}" />
+									<f:validateLongRange minimum="1" />
+								</p:selectOneMenu>
+
+							</h:panelGrid>
+							<p:commandButton action="#{usuarioBean.create}" type="submit"
+								value="Crear" update="pane" />
+						</h:form>
+					</p:panel>
 				</center>
 			</ui:define>
-
 		</ui:composition>
-
 	</h:body>
-
 </f:view>
 </html>

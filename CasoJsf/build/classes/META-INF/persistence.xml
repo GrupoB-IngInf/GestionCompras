@@ -17,6 +17,11 @@
 		<class>dto.Rol</class>
 		<class>dto.Permiso</class>
 		<class>dto.Centrocosto</class>
+<<<<<<< HEAD
+=======
+		<class>dto.OrdenCompra</class>
+		<class>dto.DetalleOrdenCompra</class>
+>>>>>>> a5bd8fe004e334dbb07fd9401beb2d8d2aba6316
 		<class>dto.Requerimiento</class>
 		<class>dto.RequerimientoDetalle</class>
 				

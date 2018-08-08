@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+<f:view contentType="text/html">
+	<h:body>
+		<ui:composition template="/template/base.xhtml">
+			<ui:define name="content">
+				<center>
+					<p:panel id="pane" header="Crear Orden de Compra">
+						<h:form id="forden">
+							<p:messages>
+								<p:autoUpdate />
+							</p:messages>
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel value="Id:" />
+								<p:outputLabel value="#{ordenCompraBean.orden.id}" />
+
+								<p:outputLabel for="codigo" value="Código:" />
+								<p:inputText id="codigo" value="#{ordenCompraBean.orden.codigo}" />
+
+								<p:outputLabel for="version" value="Versión:" />
+								<p:inputText id="version"
+									value="#{ordenCompraBean.orden.version}" />
+
+								<p:outputLabel for="f_emision" value="Fecha de emisión:" />
+								<p:calendar id="f_emision"
+									value="#{ordenCompraBean.orden.fechaEmision}"
+									pattern="dd/MM/yyyy" readonlyInput="true" required="true"
+									size="10" />
+
+								<p:outputLabel for="f_entrega" value="Fecha de entrega" />
+								<p:calendar id="f_entrega"
+									value="#{ordenCompraBean.orden.fechaEntrega}"
+									pattern="dd/MM/yyyy" readonlyInput="true" required="true"
+									size="10" />
+
+								<p:column />
+								<p:column />
+
+								<p:outputLabel for="moneda" value="Moneda:" />
+								<p:selectOneMenu id="moneda"
+									value="#{ordenCompraBean.orden.moneda}">
+									<f:selectItems value="#{ordenCompraBean.monedas}" var="moneda"
+										itemValue="#{moneda}" itemLabel="#{moneda.etiqueta}" />
+								</p:selectOneMenu>
+
+								<p:outputLabel for="pago" value="Pago:" />
+								<p:selectOneMenu id="pago" value="#{ordenCompraBean.orden.pago}">
+									<f:selectItems value="#{ordenCompraBean.pagos}" var="pago"
+										itemValue="#{pago}" itemLabel="#{pago.etiqueta}" />
+								</p:selectOneMenu>
+
+								<p:outputLabel for="f_pago" value="Forma de Pago:" />
+								<p:selectOneMenu id="f_pago"
+									value="#{ordenCompraBean.orden.formaPago}">
+									<f:selectItems value="#{ordenCompraBean.formaPagos}"
+										var="forma_pago" itemValue="#{forma_pago}"
+										itemLabel="#{forma_pago.etiqueta}" />
+								</p:selectOneMenu>
+
+								<p:outputLabel for="cbproveedor" value="Proveedor:" />
+								<p:selectOneMenu id="cbproveedor"
+									value="#{ordenCompraBean.orden.proveedor}"
+									converter="omnifaces.SelectItemsConverter"
+									panelStyle="width:300px" effect="fade" var="t" filter="true"
+									style="width:300px" filterMatchMode="startsWith">
+
+									<f:selectItems value="#{proveedorBean.all}" var="p"
+										itemLabel="#{p.nombre}" itemValue="#{p}" />
+
+									<p:column style="width:20%">
+										<h:outputText value="#{t.ruc}" />
+									</p:column>
+
+									<p:column>
+										<h:outputText value="#{t.nombre}" />
+									</p:column>
+								</p:selectOneMenu>
+							</h:panelGrid>
+
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel for="observaciones" value="Observaciones:" />
+								<p:inputTextarea id="observaciones" cols="100" rows="3"
+									value="#{ordenCompraBean.orden.observaciones}" />
+
+								<p:outputLabel value="Responsable:" />
+								<p:outputLabel value="#{ordenCompraBean.orden.responsable}" />
+							</h:panelGrid>
+							<p:commandButton action="#{ordenCompraBean.create}" type="submit"
+								update="pane" value="Añadir" icon="ui-icon-check"
+								validateClient="true" />
+						</h:form>
+					</p:panel>
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
+</html>

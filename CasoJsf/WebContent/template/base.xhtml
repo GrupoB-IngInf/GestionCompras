@@ -38,10 +38,12 @@
 
 				<h:form>
 					<p:growl id="messages" showDetail="false" />
-
 					<p:menu size="250" style="width: 99%;     border: 0px;">
 						<p:menuitem value="Home" outcome="/index" update="messages"
 							icon="ui-icon-home" />
+					</p:menu>
+
+					<p:panelMenu>
 						<p:submenu label="Gestion de Materiales">
 							<p:menuitem value="Grupos de Materiales"
 								outcome="/pages/grupo/index" update="messages"
@@ -50,55 +52,45 @@
 								update="messages" icon="ui-icon-contact" />
 							<p:menuitem value="Unidades de Medida"
 								outcome="/pages/unidades/index" update="messages"
-								icon="ui-icon-clipboard">
-								<p:submenu label="Gestion de Proveedores">
-									<p:menuitem value="Proveedores"
-										outcome="/pages/proveedor/index" update="messages"
-										icon="ui-icon-disk" />
-									<p:menuitem value="Bancos" outcome="/pages/banco/index"
-										update="messages" icon="ui-icon-disk" />
-								</p:submenu>
-							</p:menuitem>
+								icon="ui-icon-clipboard"/>
 						</p:submenu>
-
 						<p:submenu label="Gestion de Proveedores">
-							<p:menuitem value="Proveedores" outcome="/pages/proveedor/index"
-								update="messages" icon="ui-icon-disk" />
-							<p:menuitem value="Bancos" outcome="/pages/banco/index"
-								update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Proveedores" outcome="/pages/proveedor/index"
+									update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="Bancos" outcome="/pages/banco/index"
+									update="messages" icon="ui-icon-disk" />
 						</p:submenu>
-
-						<p:submenu label="Gestion de Áreas de Negocio">
-							<p:menuitem value="Áreas de negocio"
-								outcome="/pages/areanegocio/index" update="messages"
-								icon="ui-icon-disk" />
+						<p:submenu label="Gestion de Area de Negocio">
+						<p:menuitem value="Áreas de negocio"
+									outcome="/pages/areanegocio/index" update="messages"
+									icon="ui-icon-disk" />
 						</p:submenu>
-						<p:submenu label="Gestión de Centros de Costo">
-							<p:menuitem value="Centro de Costo"
-								outcome="/pages/centrocosto/index" update="messages"
-								icon="ui-icon-disk" />
+						<p:submenu label="Gestion de Centro de Costo">
+						<p:menuitem value="Centro de Costo"
+									outcome="/pages/centrocosto/index" update="messages"
+									icon="ui-icon-disk" />
 						</p:submenu>
-						<p:submenu label="Gestión de Proyectos y Etapas">
-							<p:menuitem value="Proyectos" outcome="/pages/proyecto/index"
-								update="messages" icon="ui-icon-disk" />
+						<p:submenu label="Gestion de Proyectos y Etapas">
+						<p:menuitem value="Proyectos" outcome="/pages/proyecto/index"
+									update="messages" icon="ui-icon-disk" />
 						</p:submenu>
 						<p:submenu label="Gestion de Usuarios">
-							<p:menuitem value="Usuarios" outcome="/pages/Usuarios/index"
-								update="messages" icon="ui-icon-disk" />
-							<p:menuitem value="Roles" outcome="/pages/rol/index"
-								update="messages" icon="ui-icon-disk" />
-							<p:menuitem value="Permisos" outcome="/pages/permisos/index"
-								update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Usuarios" outcome="/pages/Usuarios/index"
+									update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="Roles" outcome="/pages/rol/index"
+									update="messages" icon="ui-icon-disk" />
+								<p:menuitem value="Permisos" outcome="/pages/permisos/index"
+									update="messages" icon="ui-icon-disk" />
 						</p:submenu>
 						<p:submenu label="Reportes">
-							<p:menuitem value="Reportes" outcome="/pages/reportes/index"
-								update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Reportes" outcome="/pages/reportes/index"
+									update="messages" icon="ui-icon-disk" />
 						</p:submenu>
 						<p:submenu label="Otros">
-							<p:menuitem value="Cerrar Session" update="messages"
-								icon="ui-icon-close" />
+								<p:menuitem value="Cerrar Session"  update="messages" icon="ui-icon-close" />
 						</p:submenu>
-					</p:menu>
+					</p:panelMenu>
+
 				</h:form>
 
 			</p:layoutUnit>

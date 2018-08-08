@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -20,6 +21,9 @@ public class UsuarioBean implements Serializable{
 
 	//Model
 	private Usuario usuario= new Usuario();
+	
+	//filtrado	
+	private List<Usuario> usuariofiltrado = new ArrayList<>();
 	//DAO implementation
 	private UsuarioImpl usuarioimpl = new UsuarioImpl();
 	
@@ -100,6 +104,20 @@ public class UsuarioBean implements Serializable{
 		
 		public String index() {
 			return "/pages/usuario/index";
+		}
+		
+		//SIEMPRE ENVIARA TODOS LOS USUARIOS , EN EL USUARIOIMPL DEBERIA HABER UN METODO DE GET POR FILTRO :C
+		public List<Usuario> getUsuariofiltrado() {
+			try {
+				List<Usuario> list = usuarioimpl.getAll();
+				return list;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		public void setUsuariofiltrado(List<Usuario> usuariofiltrado) {
+			this.usuariofiltrado = usuariofiltrado;
 		}
 
 }

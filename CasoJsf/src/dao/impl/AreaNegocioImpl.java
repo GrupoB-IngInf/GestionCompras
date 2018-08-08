@@ -1,13 +1,13 @@
 package dao.impl;
 
-import java.awt.geom.Area;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
-import base.*;
-import dao.*;
-import dto.*;
+import base.JPA;
+import dao.DAO;
+import dto.AreaNegocio;
 
 public class AreaNegocioImpl extends JPA implements DAO<AreaNegocio> {
 

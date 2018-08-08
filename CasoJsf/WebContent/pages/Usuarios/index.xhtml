@@ -12,75 +12,101 @@
 
 			<ui:define name="content">
 				<center>
-					<p:panel id="pane" header="Listado de Usuarios" style="width:655px">
-						<p:dataTable id="dtusuario" var="a" value="#{usuarioBean.all}"
-							rows="10" paginator="true"
-							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15">
+					<p:panel id="pane" header="Listado de Usuarios" style="width:900px">
+						<h:form>
+							<p:dataTable id="dtu" var="a" value="#{usuarioBean.all}"
+								rows="10" paginator="true"
+								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
+								rowsPerPageTemplate="5,10,15"
+								emptyMessage="No se encontraron usuarios con el criterio."
+								widgetVar="dtu" rowKey="#{a.id}">
 
-
-							<p:column style="width:20px; text-align: center;">
 								<f:facet name="header">
-									<h:outputText value="Id" />
+									<p:outputPanel>
+										<h:outputText value="Buscar:" />
+										<p:inputText id="globalFilter" onkeyup="PF('dtu').filter()"
+											style="width:150px" placeholder="Ingresar Campo" />
+									</p:outputPanel>
 								</f:facet>
-								<h:outputText id="tid" value="#{a.id}" />
-							</p:column>
+								<f:facet name="{Exporters}">
+									<h:commandLink>
+										<h:graphicImage value="/images/pdf.png" width="24" />
+										<p:dataExporter type="pdf" target="dtu"
+											fileName="ReporteUsuarios" />
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage value="/images/excel.png" width="24" />
+										<p:dataExporter type="xls" target="dtu"
+											fileName="ReporteUsuarios" />
+									</h:commandLink>
+								</f:facet>
+								<p:column style="width:20px; text-align: center;"
+									filterBy="#{a.id}">
+									<f:facet name="header">
+										<h:outputText value="Id" />
+									</f:facet>
+									<h:outputText id="tid" value="#{a.id}" />
+								</p:column>
 
-							<p:column style="width:140px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Nombre" />
-								</f:facet>
-								<h:outputText id="tnombre" value="#{a.nombres}" />
-							</p:column>
+								<p:column style="width:140px; text-align: center;"
+									filterBy="#{a.nombres}">
+									<f:facet name="header">
+										<h:outputText value="Nombre" />
+									</f:facet>
+									<h:outputText id="tnombre" value="#{a.nombres}" />
+								</p:column>
 
-							<p:column style="width:140px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Apellido " />
-								</f:facet>
-								<h:outputText id="tapellido" value="#{a.apellidos}" />
-							</p:column>
+								<p:column style="width:140px; text-align: center;"
+									filterBy="#{a.apellidos}">
+									<f:facet name="header">
+										<h:outputText value="Apellido " />
+									</f:facet>
+									<h:outputText id="tapellido" value="#{a.apellidos}" />
+								</p:column>
 
-							<p:column style="width:140px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Email" />
-								</f:facet>
-								<h:outputText id="tcorreo" value="#{a.correo}" />
-							</p:column>
+								<p:column style="width:140px; text-align: center;"
+									filterBy="#{a.correo}">
+									<f:facet name="header">
+										<h:outputText value="Email" />
+									</f:facet>
+									<h:outputText id="tcorreo" value="#{a.correo}" />
+								</p:column>
 
-							<p:column style="width:140px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Rol" />
-								</f:facet>
-								<h:outputText id="trol" value="#{a.rol.nombre}" />
-							</p:column>
+								<p:column style="width:140px; text-align: center;"
+									filterBy="#{a.rol.nombre}">
+									<f:facet name="header">
+										<h:outputText value="Rol" />
+									</f:facet>
+									<h:outputText id="trol" value="#{a.rol.nombre}" />
+								</p:column>
 
-							<p:column style="width:100px; text-align: center;">
-								<f:facet name="header">
-									<h:outputText value="Operacion" />
-								</f:facet>
-								<h:form>
-									<p:commandButton action="#{usuarioBean.show}" value="Mostrar">
-										<f:setPropertyActionListener value="#{a.id}"
-											target="#{usuarioBean.usuario.id}" />
-									</p:commandButton>
-									<p:commandButton action="#{usuarioBean.edit}" value="Editar">
-										<f:setPropertyActionListener value="#{a.id}"
-											target="#{usuarioBean.usuario.id}" />
-									</p:commandButton>
-									<p:commandButton action="#{usuarioBean.delete}"
-										value="Eliminar"
-										onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
-										<f:setPropertyActionListener value="#{a.id}"
-											target="#{usuarioBean.usuario.id}" />
-									</p:commandButton>
-								</h:form>
-							</p:column>
-						</p:dataTable>
+								<p:column style="width:150px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<h:form>
+										<p:commandButton action="#{usuarioBean.show}"  icon="ui-icon-search" title="Mostrar">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{usuarioBean.usuario.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{usuarioBean.edit}" icon="ui-icon-pencil" title="Editar">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{usuarioBean.usuario.id}" />
+										</p:commandButton>
+										<p:commandButton action="#{usuarioBean.delete}"
+											icon="ui-icon-closethick" title="Eliminar"
+											onclick="return confirm('¿Confirma que desea eliminar este elemento?')">
+											<f:setPropertyActionListener value="#{a.id}"
+												target="#{usuarioBean.usuario.id}" />
+										</p:commandButton>
+									</h:form>
+								</p:column>
+							</p:dataTable>
+						</h:form>
 					</p:panel>
 					<h:form>
 						<p:commandButton action="#{usuarioBean.add}" value="Nuevo Usuario" />
-						<p:commandButton value="Volver al Inicio"
-							action="#{usersBean.sessionHome}" />
+
 					</h:form>
 				</center>
 			</ui:define>

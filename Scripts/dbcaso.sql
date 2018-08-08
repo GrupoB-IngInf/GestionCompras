@@ -122,16 +122,18 @@ CREATE TABLE `material` (
 
 CREATE TABLE `ordendecompra` (
   `id` int(11) NOT NULL,
-  `codigo` char(1) DEFAULT NULL,
-  `Fecha_emision` date DEFAULT NULL,
-  `Fecha_entrega` date DEFAULT NULL,
+  `codigo` varchar(45) DEFAULT NULL,
+  `fecha_emision` date DEFAULT NULL,
+  `fecha_entrega` date DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
-  `forma_pago` varchar(45) DEFAULT NULL,
-  `tipo_pago` varchar(45) DEFAULT NULL,
-  `moneda` varchar(45) DEFAULT NULL,
-  `estado` varchar(45) DEFAULT NULL,
+  `forma_pago` enum('CONTADO','CONTRAENTREGA','FACTURA_7_DIAS','FACTURA_15_DIAS',
+				'FACTURA_30_DIAS','LETRA_30_DIAS','LETRA_45_DIAS','LETRA_60_DIAS'),
+  `tipo_pago` enum('CHEQUE','EFECTIVO','PAGARE','TRANSFERENCIA'),
+  `moneda` enum('SOLES','DOLARES','EUROS'),
+  `estado` enum('PENDIENTE','APROBADO','ANULADO'),
   `observaciones` varchar(45) DEFAULT NULL,
-  `id_proveedor` int(11) NOT NULL
+  `proveedor_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -143,9 +145,9 @@ CREATE TABLE `ordendecompra` (
 CREATE TABLE `ordendecompradetalle` (
   `id` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  `precio_unitario` int(11) DEFAULT NULL,
+  `precio_unitario` decimal(6,2) DEFAULT NULL,
   `familia` int(11) DEFAULT NULL,
-  `OrdendeCompra_id` int(11) NOT NULL
+  `ordendecompra_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -302,7 +304,7 @@ ALTER TABLE `etapa`
 -- Indexes for table `factura`
 --
 ALTER TABLE `factura`
-  ADD PRIMARY KEY (`id`,`OrdendeCompra_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_Factura_OrdendeCompra1_idx` (`OrdendeCompra_id`),
   ADD KEY `fk_Factura_Usuario_idx` (`id_usuario`);
 
@@ -330,8 +332,7 @@ ALTER TABLE `ordendecompra`
 -- Indexes for table `ordendecompradetalle`
 --
 ALTER TABLE `ordendecompradetalle`
-  ADD PRIMARY KEY (`id`,`OrdendeCompra_id`),
-  ADD KEY `fk_OrdendeCompraDetalle_OrdendeCompra1_idx` (`OrdendeCompra_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `permisos`
@@ -431,7 +432,19 @@ ALTER TABLE `etapa`
 --
 ALTER TABLE `material`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+--
+-- AUTO_INCREMENT for table `material`
+--
+ALTER TABLE `ordendecompra`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+--
+-- AUTO_INCREMENT for table `material`
+--
+ALTER TABLE `ordendecompradetalle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
 --
 -- AUTO_INCREMENT for table `permisos`
 --
@@ -495,8 +508,15 @@ ALTER TABLE `material`
 --
 -- Constraints for table `ordendecompradetalle`
 --
+ALTER TABLE `ordendecompra`
+  ADD CONSTRAINT `fk_OrdendeCompra_Proveedor` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedor` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_OrdendeCompra_Usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `ordendecompradetalle`
+--
 ALTER TABLE `ordendecompradetalle`
-  ADD CONSTRAINT `fk_OrdendeCompraDetalle_OrdendeCompra1` FOREIGN KEY (`OrdendeCompra_id`) REFERENCES `ordendecompra` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_OrdendeCompraDetalle_OrdendeCompra1` FOREIGN KEY (`ordendecompra_id`) REFERENCES `ordendecompra` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `requerimiento`
@@ -514,18 +534,6 @@ ALTER TABLE `requerimientodetalle`
   ADD CONSTRAINT `fk_RequerimientoDetalle_Material1` FOREIGN KEY (`Material_id`) REFERENCES `material` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_RequerimientoDetalle_OrdendeCompraDetalle1` FOREIGN KEY (`OrdendeCompraDetalle_id`) REFERENCES `ordendecompradetalle` (`id`),
   ADD CONSTRAINT `fk_RequerimientoDetalle_Requerimiento1` FOREIGN KEY (`Requerimiento_id`) REFERENCES `requerimiento` (`id`);
-
---
--- Constraints for table `proveedor`
---
-ALTER TABLE `proveedor`
-  ADD CONSTRAINT `fk_ProveedorBanco`FOREIGN KEY (`id_banco`) REFERENCES `banco` (`id`) on DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `ordendecompra`
---
-ALTER TABLE `ordendecompra`
-  ADD CONSTRAINT `fk_OrdenDeCompra_proveedor`FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id`) on DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `roles_permisos`

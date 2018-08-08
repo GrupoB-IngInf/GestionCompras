@@ -1,26 +1,30 @@
 package dao.impl;
+
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
-import base.*;
-import dao.*;
-import dto.*;
+import base.JPA;
+import dao.DAO;
+import dto.Estado;
+import dto.OrdenCompra;
 
-public class UsuarioImpl extends JPA implements DAO<Usuario>{
+public class OrdenCompraImpl extends JPA implements DAO<OrdenCompra> {
 
 	@Override
-	public Usuario getById(Long id) {
-		Usuario result = getEntityManager().find(Usuario.class, id);
+	public OrdenCompra getById(Long id) {
+		OrdenCompra result = getEntityManager().find(OrdenCompra.class, id);
 		closeEntityManager();
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Usuario> getAll() {
-		String sql = "SELECT g FROM Usuario g";
+	public List<OrdenCompra> getAll() {
+		String sql = "SELECT o FROM OrdenCompra o";
 		Query query = getEntityManager().createQuery(sql, Long.class);
-		List<Usuario> list = query.getResultList();
+		List<OrdenCompra> list = query.getResultList();
 		if (list.size() != 0) {
 			closeEntityManager();
 			return list;
@@ -31,24 +35,28 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 	}
 
 	@Override
-	public Usuario update(Usuario DTO) {
+	public OrdenCompra update(OrdenCompra DTO) {
 		if (DTO == null && DTO.getId() != 0) {
 			return null;
 		}
 
 		EntityTransaction t = getEntityManager().getTransaction();
-		Usuario updateObj = getEntityManager().find(Usuario.class, DTO.getId());
+		OrdenCompra updateObj = getEntityManager().find(OrdenCompra.class, DTO.getId());
 		if (!t.isActive()) {
 			t.begin();
 		}
-		updateObj.setNombres(DTO.getNombres());
-		updateObj.setApellidos(DTO.getApellidos());
-		updateObj.setCorreo(DTO.getCorreo());
-		updateObj.setPassword(DTO.getPassword());
-		updateObj.setTelefono(DTO.getTelefono());
+		updateObj.setCodigo(DTO.getCodigo());
+		updateObj.setFechaEmision(DTO.getFechaEmision());
+		updateObj.setFechaEntrega(DTO.getFechaEntrega());
+		updateObj.setVersion(DTO.getVersion());
+		updateObj.setMoneda(DTO.getMoneda());
+		updateObj.setPago(DTO.getPago());
+		updateObj.setFormaPago(DTO.getFormaPago());
+		updateObj.setObservaciones(DTO.getObservaciones());
 		updateObj.setEstado(DTO.getEstado());
-		updateObj.setRol(DTO.getRol());
-		
+		updateObj.setProveedor(DTO.getProveedor());
+		updateObj.setResponsable(DTO.getResponsable());
+		updateObj.setDetalle(DTO.getDetalle());
 		
 		t.commit();
 		closeEntityManager();
@@ -56,12 +64,12 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 	}
 
 	@Override
-	public Usuario create(Usuario DTO) {
+	public OrdenCompra create(OrdenCompra DTO) {
 		EntityTransaction t = getEntityManager().getTransaction();
 		if (!t.isActive()) {
 			t.begin();
 		}
-		DTO.setEstado("Activo");
+		DTO.setEstado(Estado.PENDIENTE);
 		getEntityManager().persist(DTO);
 		t.commit();
 		closeEntityManager();
@@ -74,7 +82,7 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 			return false;
 		}
 
-		Usuario obj = getById(id);
+		OrdenCompra obj = getById(id);
 		if (obj == null) {
 			return false;
 		}
@@ -91,38 +99,28 @@ public class UsuarioImpl extends JPA implements DAO<Usuario>{
 
 	@Override
 	public Long getMaxId() {
-		String sql = "SELECT max(g.id) + 1 FROM Usuario g";
+		String sql = "SELECT max(o.id) + 1 FROM OrdenCompra o";
 		Query query = getEntityManager().createQuery(sql, Long.class);
 		Long maxId = (query.getSingleResult() == null) ? 1L : (Long) query.getSingleResult();
 		closeEntityManager();
 		return maxId;
 	}
 	
-	public Usuario unSuscribe(Usuario DTO) {
+	public OrdenCompra unSuscribe(OrdenCompra DTO) {
 		if (DTO == null && DTO.getId() != 0) {
 			return null;
 		}
 
 		EntityTransaction t = getEntityManager().getTransaction();
-		Usuario updateObj = getEntityManager().find(Usuario.class, DTO.getId());
+		OrdenCompra updateObj = getEntityManager().find(OrdenCompra.class, DTO.getId());
 		if (!t.isActive()) {
 			t.begin();
 		}
-		updateObj.setNombres(DTO.getNombres());
-		updateObj.setApellidos(DTO.getApellidos());
-		updateObj.setCorreo(DTO.getCorreo());
-		updateObj.setPassword(DTO.getPassword());
-		updateObj.setTelefono(DTO.getTelefono());
-		updateObj.setEstado("Baja");
-		updateObj.setRol(DTO.getRol());
-		
+		updateObj.setEstado(Estado.ANULADO);
 		
 		t.commit();
 		closeEntityManager();
 		return DTO;
 	}
-	
-	
-	
 
 }
