@@ -154,7 +154,7 @@ public class RequerimientoBean implements Serializable{
 	public String additem() {
 		RequerimientoDetalle requerimientoDeta = new RequerimientoDetalle(this.requerimientoDetalle.getRequerimiento(),this.requerimientoDetalle.getEtapa(), this.requerimientoDetalle.getMaterial(), this.requerimientoDetalle.getCantidad());
 		this.requerimiento.addDetail(requerimientoDeta);
-		this.requerimientoDetalle.setCantidad(0.0);
+		this.requerimientoDetalle.setCantidad(0);
 		return null;
 	}
 	

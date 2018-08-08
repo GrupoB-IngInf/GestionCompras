@@ -13,6 +13,7 @@ import dto.FormaPago;
 import dto.Moneda;
 import dto.OrdenCompra;
 import dto.Pago;
+import dto.RequerimientoDetalle;
 
 @ManagedBean(name = "ordenCompraBean")
 @SessionScoped
@@ -22,7 +23,7 @@ public class OrdenCompraBean implements Serializable {
 
 	// Model
 	private OrdenCompra orden = new OrdenCompra();
-	//private List<DetalleRequerimiento> aprobados;
+	private List<RequerimientoDetalle> aprobados;
 
 	// DAO Implementation
 	private OrdenCompraImpl ordenImpl = new OrdenCompraImpl();
@@ -71,23 +72,23 @@ public class OrdenCompraBean implements Serializable {
 	public FormaPago[] getFormaPagos() {
 		return FormaPago.values();
 	}
-	/*
-	public List<DetalleRequerimiento> getAprobados() {
+	
+	public List<RequerimientoDetalle> getAprobados() {
 		return aprobados;
 	}
 
-	public void setAprobados(List<DetalleRequerimiento> aprobados) {
+	public void setAprobados(List<RequerimientoDetalle> aprobados) {
 		this.aprobados = aprobados;
 	}
 
-	public void addReq(DetalleRequerimiento requerimiento) {
+	public void addReq(RequerimientoDetalle requerimiento) {
 		DetalleOrdenCompra itemOrden = new DetalleOrdenCompra();
-		itemOrden.setDetalleRequerimiento(requerimiento);
+		itemOrden.setRequerimiento(requerimiento);
 		itemOrden.setCantidad(requerimiento.getCantidad());
 		
 		aprobados.remove(requerimiento);
 		orden.addDetail(itemOrden);
-	}*/
+	}
 
 	// CRUD
 	public List<OrdenCompra> getAll() {

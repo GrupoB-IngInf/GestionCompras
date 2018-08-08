@@ -147,7 +147,8 @@ CREATE TABLE `ordendecompradetalle` (
   `cantidad` int(11) DEFAULT NULL,
   `precio_unitario` decimal(6,2) DEFAULT NULL,
   `familia` int(11) DEFAULT NULL,
-  `ordendecompra_id` int(11) NOT NULL
+  `ordendecompra_id` int(11) NOT NULL,
+  `requerimientodetalle_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -216,7 +217,6 @@ CREATE TABLE `requerimientodetalle` (
   `id` int(11) NOT NULL,
   `Requerimiento_id` int(11) NOT NULL,
   `Etapa_id` int(11) NOT NULL,
-  `OrdendeCompraDetalle_id` int(11) NOT NULL,
   `Material_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=REDUNDANT;
 
@@ -366,11 +366,7 @@ ALTER TABLE `requerimiento`
 -- Indexes for table `requerimientodetalle`
 --
 ALTER TABLE `requerimientodetalle`
-  ADD PRIMARY KEY (`id`,`Requerimiento_id`,`Etapa_id`,`OrdendeCompraDetalle_id`,`Material_id`),
-  ADD KEY `fk_RequerimientoDetalle_Requerimiento1_idx` (`Requerimiento_id`),
-  ADD KEY `fk_RequerimientoDetalle_Etapa1_idx` (`Etapa_id`),
-  ADD KEY `fk_RequerimientoDetalle_OrdendeCompraDetalle1_idx` (`OrdendeCompraDetalle_id`),
-  ADD KEY `fk_RequerimientoDetalle_Material1_idx` (`Material_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `roles`
@@ -382,9 +378,7 @@ ALTER TABLE `roles`
 -- Indexes for table `roles_permisos`
 --
 ALTER TABLE `roles_permisos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_rol` (`id_rol`),
-  ADD KEY `id_permiso` (`id_permiso`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `unidadmedida`
@@ -516,7 +510,8 @@ ALTER TABLE `ordendecompra`
 -- Constraints for table `ordendecompradetalle`
 --
 ALTER TABLE `ordendecompradetalle`
-  ADD CONSTRAINT `fk_OrdendeCompraDetalle_OrdendeCompra1` FOREIGN KEY (`ordendecompra_id`) REFERENCES `ordendecompra` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_OrdendeCompraDetalle_OrdendeCompra1` FOREIGN KEY (`ordendecompra_id`) REFERENCES `ordendecompra` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_OrdendeCompraDetalle_RequerimientoDetalle` FOREIGN KEY (`requerimientodetalle_id`) REFERENCES `requerimientodetalle` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `requerimiento`
@@ -532,7 +527,6 @@ ALTER TABLE `requerimiento`
 ALTER TABLE `requerimientodetalle`
   ADD CONSTRAINT `fk_RequerimientoDetalle_Etapa1` FOREIGN KEY (`Etapa_id`) REFERENCES `etapa` (`id`),
   ADD CONSTRAINT `fk_RequerimientoDetalle_Material1` FOREIGN KEY (`Material_id`) REFERENCES `material` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_RequerimientoDetalle_OrdendeCompraDetalle1` FOREIGN KEY (`OrdendeCompraDetalle_id`) REFERENCES `ordendecompradetalle` (`id`),
   ADD CONSTRAINT `fk_RequerimientoDetalle_Requerimiento1` FOREIGN KEY (`Requerimiento_id`) REFERENCES `requerimiento` (`id`);
 
 --

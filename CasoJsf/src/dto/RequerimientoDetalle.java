@@ -28,19 +28,19 @@ public class RequerimientoDetalle implements Serializable{
 	@JoinColumn(name = "Etapa_id")
 	private Etapa etapa;
 	
-	//private OrdendeCompraDetalle ordenCompraDetalle;
+	private DetalleOrdenCompra ordenCompraDetalle;
 	
 	@ManyToOne
 	@JoinColumn(name = "Material_id")
 	private Material material;
 	
 	@Column(name = "cantidad")
-	private double cantidad; 
+	private int cantidad;
 	
 	public RequerimientoDetalle() {
 		super();
 	}
-	public RequerimientoDetalle(Requerimiento requerimiento, Etapa etapa, Material material, double cantidad) {
+	public RequerimientoDetalle(Requerimiento requerimiento, Etapa etapa, Material material, int cantidad) {
 		super();
 		this.requerimiento = requerimiento;
 		this.etapa = etapa;
@@ -73,11 +73,17 @@ public class RequerimientoDetalle implements Serializable{
 		this.material = material;
 	}
 	
-	public double getCantidad() {
+	public int getCantidad() {
 		return cantidad;
 	}
-	public void setCantidad(double cantidad) {
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}	
+	public DetalleOrdenCompra getOrdenCompraDetalle() {
+		return ordenCompraDetalle;
+	}
+	public void setOrdenCompraDetalle(DetalleOrdenCompra ordenCompraDetalle) {
+		this.ordenCompraDetalle = ordenCompraDetalle;
 	}
 	@Override
 	public int hashCode() {
@@ -106,7 +112,7 @@ public class RequerimientoDetalle implements Serializable{
 	}
 	
 	/*
-	 * Añadir a este metodo "orden de compra detalle"
+	 * Aï¿½adir a este metodo "orden de compra detalle"
 	 */
 	
 	
