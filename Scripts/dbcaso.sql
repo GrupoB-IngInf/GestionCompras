@@ -33,7 +33,8 @@ USE dbcaso;
 CREATE TABLE `areanegocio` (
   `id` int(11) NOT NULL,
   `nombre` varchar(250) NOT NULL,
-  `prefijo` varchar(10) NOT NULL
+  `prefijo` varchar(10) NOT NULL,
+  `estado` enum('Activo','Baja') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -83,6 +84,7 @@ CREATE TABLE `factura` (
   `id` int(11) NOT NULL,
   `fecha_emision` date DEFAULT NULL,
   `fecha_remision` date DEFAULT NULL,
+  `estado` enum('Activo','Baja') NOT NULL,
   `OrdendeCompra_id` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -96,7 +98,8 @@ CREATE TABLE `factura` (
 CREATE TABLE `grupo` (
   `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `descripcion` text
+  `descripcion` text,
+  `estado` enum('Activo','Baja') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -159,7 +162,8 @@ CREATE TABLE `ordendecompradetalle` (
 
 CREATE TABLE `permisos` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(250) NOT NULL
+  `nombre` varchar(250) NOT NULL,
+  `estado` enum('Activo','Baja') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -190,7 +194,8 @@ CREATE TABLE `proveedor` (
 CREATE TABLE `proyecto` (
   `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `ubicacion` varchar(45) DEFAULT NULL
+  `ubicacion` varchar(45) DEFAULT NULL,
+  `estado` enum('Activo','Baja') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -201,7 +206,8 @@ CREATE TABLE `proyecto` (
 
 CREATE TABLE `requerimiento` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
+  `fecha` DATETIME NOT NULL,
+  `estado` enum('PENDIENTE','APROBADO', 'CERRADO') NOT NULL,
   `id_areanegocio` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_centrocosto` int(11) NOT NULL
@@ -215,9 +221,13 @@ CREATE TABLE `requerimiento` (
 
 CREATE TABLE `requerimientodetalle` (
   `id` int(11) NOT NULL,
+  `cantidad` INT(11) NOT NULL,
+  `cantidad_atendida` INT(11) NOT NULL DEFAULT 0,
+  `atendido` BOOLEAN NOT NULL DEFAULT 0,
+  `observaciones` TEXT NULL,
   `Requerimiento_id` int(11) NOT NULL,
   `Etapa_id` int(11) NOT NULL,
-  `Material_id` int(11) NOT NULL
+  `Material_id` int(11) NOT NULL  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=REDUNDANT;
 
 -- --------------------------------------------------------
@@ -251,7 +261,8 @@ CREATE TABLE `roles_permisos` (
 
 CREATE TABLE `unidadmedida` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL
+  `nombre` varchar(45) DEFAULT NULL,
+  `estado` enum('Activo','Baja') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

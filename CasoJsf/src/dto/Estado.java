@@ -2,6 +2,6 @@ package dto;
 
 public enum Estado {
 
-	PENDIENTE, APROBADO, ANULADO;
+	PENDIENTE, APROBADO, ANULADO, CERRADO;
 
 }
