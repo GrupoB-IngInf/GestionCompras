@@ -24,9 +24,9 @@
 								<p:inputText id="tid" value="#{requerimientoBean.requerimiento.id}"/>
 								<h:message for="tid"></h:message>
 								
-								<p:outputLabel for="tnombre" value="Id:" />
-								<p:inputText id="tnombre" value="#{requerimientoBean.requerimiento.nombre}"/>
-								<h:message for="tnombre"></h:message>
+								<p:outputLabel for="tfecha" value="Fecha:" />
+								<p:inputText id="tfecha" value="#{requerimientoBean.requerimiento.fecha}"/>
+								<h:message for="tfecha"></h:message>
 			
 								<p:outputLabel for="cbcosto" value="Centro de Costos:" />				
 								<p:selectOneMenu id="cbcosto"
@@ -74,6 +74,7 @@
 									<p:row>
 										<p:column style="font-weight: bold;">Material</p:column>										
 										<p:column style="font-weight: bold;">Cantidad</p:column>
+										<p:column style="font-weight: bold;">Observacion</p:column>
 										<p:column style="font-weight: bold;">Etapa</p:column>
 										<p:column style="font-weight: bold;">Accion</p:column>
 										
@@ -106,6 +107,12 @@
 											value="#{requerimientoBean.cantidad}" style="width:100px" />
 									</p:column>
 									
+									 
+									<p:column>
+										<p:inputText id="tobservacion"
+											value="#{requerimientoBean.requerimientoDetalle.observacion}" style="width:200px" />
+									</p:column>
+									 
 									<p:column>						
 										<p:selectOneMenu id="cbetapa"
 											value="#{requerimientoBean.etapa}"
@@ -138,7 +145,7 @@
 							</p:panelGrid>
 						</p:panel>
 						
-						<p:panel id="panedeta" style="width:600px">
+						<p:panel id="panedeta" style="width:1100px">
 							<p:dataTable id="dtalle" var="a"
 								value="#{requerimientoBean.requerimiento.detalles}" rows="10">
 								
@@ -150,11 +157,18 @@
 								</p:column>
 
 
-								<p:column style="width:50px; text-align: left;">
+								<p:column style="width:80px; text-align: left;">
 									<f:facet name="header">
 										<h:outputText value="Cantidad" />
 									</f:facet>
 									<h:outputText id="tcant" value="#{a.cantidad}" />
+								</p:column>
+								
+								<p:column style="width:200px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Observaciones" />
+									</f:facet>
+									<h:outputText id="tobser" value="#{a.observacion}" />
 								</p:column>
 								
 								<p:column style="width:200px; text-align: left;">

@@ -20,6 +20,18 @@ public class RequerimientoDetalle implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(name = "cantidad")
+	private int cantidad;
+	
+	@Column(name = "cantidad_atendida")
+	private int cantidadAtendida;
+	
+	@Column(name = "atendido")
+	private boolean atendido;
+	
+	@Column(name = "observaciones")
+	private String observaciones;
+	
 	@ManyToOne
 	@JoinColumn(name = "Requerimiento_id")
 	private Requerimiento requerimiento;
@@ -28,26 +40,31 @@ public class RequerimientoDetalle implements Serializable{
 	@JoinColumn(name = "Etapa_id")
 	private Etapa etapa;
 	
-	private DetalleOrdenCompra ordenCompraDetalle;
 	
 	@ManyToOne
 	@JoinColumn(name = "Material_id")
 	private Material material;
 	
-	@Column(name = "cantidad")
-	private int cantidad;
+	
 	
 	public RequerimientoDetalle() {
 		super();
 	}
-	public RequerimientoDetalle(Requerimiento requerimiento, Etapa etapa, Material material, int cantidad) {
+	
+	
+	public RequerimientoDetalle(int cantidad, int cantidadAtendida, boolean atendido, String observaciones,
+			Requerimiento requerimiento, Etapa etapa,  Material material) {
 		super();
+		this.cantidad = cantidad;
+		this.cantidadAtendida = cantidadAtendida;
+		this.atendido = atendido;
+		this.observaciones = observaciones;
 		this.requerimiento = requerimiento;
 		this.etapa = etapa;
 		this.material = material;
-		this.cantidad = cantidad;
 	}
-	
+
+
 	public long getId() {
 		return id;
 	}
@@ -79,11 +96,26 @@ public class RequerimientoDetalle implements Serializable{
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}	
-	public DetalleOrdenCompra getOrdenCompraDetalle() {
-		return ordenCompraDetalle;
+	
+	
+	
+	public int getCantidadAtendida() {
+		return cantidadAtendida;
 	}
-	public void setOrdenCompraDetalle(DetalleOrdenCompra ordenCompraDetalle) {
-		this.ordenCompraDetalle = ordenCompraDetalle;
+	public void setCantidadAtendida(int cantidadAtendida) {
+		this.cantidadAtendida = cantidadAtendida;
+	}
+	public boolean isAtendido() {
+		return atendido;
+	}
+	public void setAtendido(boolean atendido) {
+		this.atendido = atendido;
+	}
+	public String getObservaciones() {
+		return observaciones;
+	}
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 	@Override
 	public int hashCode() {
@@ -105,15 +137,17 @@ public class RequerimientoDetalle implements Serializable{
 			return false;
 		return true;
 	}
+
+
 	@Override
 	public String toString() {
-		return "RequerimientoDetalle [id=" + id + ", requerimiento=" + requerimiento + ", etapa=" + etapa
-				+ ", material=" + material + ", cantidad=" + cantidad + "]";
+		return "RequerimientoDetalle [id=" + id + ", cantidad=" + cantidad + ", cantidadAtendida=" + cantidadAtendida
+				+ ", atendido=" + atendido + ", observaciones=" + observaciones + ", requerimiento=" + requerimiento
+				+ ", etapa=" + etapa + ", material=" + material + "]";
 	}
 	
-	/*
-	 * A�adir a este metodo "orden de compra detalle"
-	 */
+	
+	
 	
 	
 	

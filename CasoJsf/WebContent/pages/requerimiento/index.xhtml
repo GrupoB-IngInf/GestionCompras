@@ -16,10 +16,10 @@
 				<center>
 
 					<p:panel id="pane" header="Listado de Requerimientos"
-						style="width:900px">
+						style="width:1100px">
 						<h:form>
 							<p:dataTable id="dtRequerimientos" var="m"
-								value="#{requerimientoBean.all}" rows="10" paginator="true"
+								value="#{requerimientoBean.all}" rows="8" paginator="true"
 								paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								rowsPerPageTemplate="5,10,15">
 
@@ -40,17 +40,25 @@
 									<h:outputText id="tid" value="#{m.id}" />
 								</p:column>
 
-								<p:column filterBy="#{m.nombre}" filterStyle="display:none"
-									style="width:20px; text-align: center;">
+								<p:column filterBy="#{m.fecha}" filterStyle="display:none"
+									style="width:50px; text-align: center;">
 									<f:facet name="header">
-										<h:outputText value="Nombre" />
+										<h:outputText value="Fecha" />
 									</f:facet>
-									<h:outputText id="tnom" value="#{m.nombre}" />
+									<h:outputText id="tfecha" value="#{m.fecha}" />
+								</p:column>
+								
+								<p:column filterBy="#{m.estado}" filterStyle="display:none"
+									style="width:50px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Estado" />
+									</f:facet>
+									<h:outputText id="testado" value="#{m.estado}" />
 								</p:column>
 
 								<p:column filterBy="#{m.areaNegocio.nombre}"
 									filterStyle="display:none"
-									style="width:80px; text-align: center;">
+									style="width:100px; text-align: center;">
 									<f:facet name="header">
 										<h:outputText value="AreaNegocio" />
 									</f:facet>
@@ -60,7 +68,7 @@
 
 								<p:column filterBy="#{m.usuario.nombres}"
 									filterStyle="display:none"
-									style="width:140px; text-align: left;">
+									style="width:70px; text-align: left;">
 									<f:facet name="header">
 										<h:outputText value="Usuario" />
 									</f:facet>
@@ -82,7 +90,7 @@
 
 								
 
-								<p:column style="width:150px; text-align: center;">
+								<p:column style="width:130px; text-align: center;">
 									<f:facet name="header">
 										<h:outputText value="Operacion" />
 									</f:facet>
