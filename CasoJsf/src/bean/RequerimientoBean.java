@@ -19,7 +19,8 @@ public class RequerimientoBean implements Serializable{
 	private Usuario usuario;
 	private Material material;
 	private Etapa etapa;
-	private double cantidad; 
+	private int cantidad;
+	private int cantidadAtendida;
 	//Dao Impl
 	private RequerimientoImpl requerimientoImpl = new RequerimientoImpl();
 
@@ -53,17 +54,29 @@ public class RequerimientoBean implements Serializable{
 	}
 
 
-	
-
-	public double getCantidad() {
+	public int getCantidad() {
 		return cantidad;
 	}
 
 
 
 
-	public void setCantidad(double cantidad) {
+	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	
+
+
+	public int getCantidadAtendida() {
+		return cantidadAtendida;
+	}
+
+
+
+
+	public void setCantidadAtendida(int cantidadAtendida) {
+		this.cantidadAtendida = cantidadAtendida;
 	}
 
 
@@ -152,7 +165,8 @@ public class RequerimientoBean implements Serializable{
 	//Detalles add  
 	
 	public String additem() {
-		RequerimientoDetalle requerimientoDeta = new RequerimientoDetalle(this.requerimientoDetalle.getRequerimiento(),this.requerimientoDetalle.getEtapa(), this.requerimientoDetalle.getMaterial(), this.requerimientoDetalle.getCantidad());
+		RequerimientoDetalle requerimientoDeta = new RequerimientoDetalle(this.requerimientoDetalle.getCantidad(), this.requerimientoDetalle.getCantidadAtendida(), this.requerimientoDetalle.isAtendido(), this.requerimientoDetalle.getObservaciones(),
+				this.requerimientoDetalle.getRequerimiento(), this.requerimientoDetalle.getEtapa(), this.requerimientoDetalle.getMaterial());
 		this.requerimiento.addDetail(requerimientoDeta);
 		this.requerimientoDetalle.setCantidad(0);
 		return null;

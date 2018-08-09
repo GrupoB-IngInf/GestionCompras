@@ -1,6 +1,7 @@
 package dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +35,10 @@ public class Requerimiento implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
+	@Column(name = "estado")
+	@Enumerated(EnumType.STRING)
+	private Estado estado;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_areanegocio")
 	private AreaNegocio areaNegocio;
@@ -53,19 +60,41 @@ public class Requerimiento implements Serializable{
 		super();
 	}
 	
-	public Requerimiento(String nombre, AreaNegocio areaNegocio, Usuario usuario, Centrocosto centroCosto) {
+	
+	public Requerimiento(Date fecha, Estado estado, AreaNegocio areaNegocio, Usuario usuario, Centrocosto centroCosto,
+			List<RequerimientoDetalle> detalles) {
 		super();
+		this.fecha = fecha;
+		this.estado = estado;
 		this.areaNegocio = areaNegocio;
 		this.usuario = usuario;
 		this.centroCosto = centroCosto;
+		this.detalles = detalles;
 	}
-	
+
+
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
+	public Date getFecha() {
+		return fecha;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+	
+	
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
 	public AreaNegocio getAreaNegocio() {
 		return areaNegocio;
 	}
@@ -130,10 +159,13 @@ public class Requerimiento implements Serializable{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Requerimiento [id=" + id + ", areaNegocio=" + areaNegocio + ", usuario="
-				+ usuario + ", centroCosto=" + centroCosto + "]";
+		return "Requerimiento [id=" + id + ", fecha=" + fecha + ", estado=" + estado + ", areaNegocio=" + areaNegocio
+				+ ", usuario=" + usuario + ", centroCosto=" + centroCosto + ", detalles=" + detalles + "]";
 	}
+	
+	
 	
 }
