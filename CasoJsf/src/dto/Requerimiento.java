@@ -2,6 +2,7 @@ package dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table (name = "requerimiento")
@@ -24,9 +27,10 @@ public class Requerimiento implements Serializable{
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	
-	@Column(name = "nombre")
-	private String nombre;
+		
+	@Column(name = "fecha")
+	@Temporal(TemporalType.DATE)
+	private Date fecha;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_areanegocio")
@@ -51,7 +55,6 @@ public class Requerimiento implements Serializable{
 	
 	public Requerimiento(String nombre, AreaNegocio areaNegocio, Usuario usuario, Centrocosto centroCosto) {
 		super();
-		this.nombre = nombre;
 		this.areaNegocio = areaNegocio;
 		this.usuario = usuario;
 		this.centroCosto = centroCosto;
@@ -62,12 +65,6 @@ public class Requerimiento implements Serializable{
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 	public AreaNegocio getAreaNegocio() {
 		return areaNegocio;
@@ -86,8 +83,15 @@ public class Requerimiento implements Serializable{
 	}
 	public void setCentroCosto(Centrocosto centroCosto) {
 		this.centroCosto = centroCosto;
+	}	
+	public Date getFecha() {
+		return fecha;
 	}
-		
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
 	public List<RequerimientoDetalle> getDetalles() {
 		return detalles;
 	}
@@ -128,7 +132,7 @@ public class Requerimiento implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Requerimiento [id=" + id + ", nombre=" + nombre + ", areaNegocio=" + areaNegocio + ", usuario="
+		return "Requerimiento [id=" + id + ", areaNegocio=" + areaNegocio + ", usuario="
 				+ usuario + ", centroCosto=" + centroCosto + "]";
 	}
 	

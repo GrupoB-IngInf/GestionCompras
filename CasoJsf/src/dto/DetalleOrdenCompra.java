@@ -95,6 +95,7 @@ public class DetalleOrdenCompra implements Serializable {
 	}
 	
 	public double getSubtotal() {
+		subtotal = precioUnitario * cantidad;
 		return subtotal;
 	}
 

@@ -1,6 +1,8 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,15 +29,14 @@ public class RequerimientoDetalle implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "Etapa_id")
 	private Etapa etapa;
-	
-	private DetalleOrdenCompra ordenCompraDetalle;
-	
+		
 	@ManyToOne
 	@JoinColumn(name = "Material_id")
 	private Material material;
 	
 	@Column(name = "cantidad")
 	private int cantidad;
+	
 	
 	public RequerimientoDetalle() {
 		super();
@@ -78,13 +79,8 @@ public class RequerimientoDetalle implements Serializable{
 	}
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
-	}	
-	public DetalleOrdenCompra getOrdenCompraDetalle() {
-		return ordenCompraDetalle;
 	}
-	public void setOrdenCompraDetalle(DetalleOrdenCompra ordenCompraDetalle) {
-		this.ordenCompraDetalle = ordenCompraDetalle;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

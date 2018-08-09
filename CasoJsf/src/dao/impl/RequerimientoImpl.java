@@ -90,5 +90,17 @@ public class RequerimientoImpl extends JPA implements DAO<Requerimiento> {
 		return maxId;
 	}
 	
+	public List<RequerimientoDetalle> getAllApproved() {
+		String sql = "SELECT r FROM RequerimientoDetalle r";
+		Query query = getEntityManager().createQuery(sql, Long.class);
+		List<RequerimientoDetalle> list = query.getResultList();
+		if (list.size() != 0) {
+			closeEntityManager();
+			return list;
+		} else {
+			closeEntityManager();
+			return null;
+		}
+	}	
 
 }
