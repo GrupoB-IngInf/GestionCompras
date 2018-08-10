@@ -12,9 +12,14 @@ import dao.impl.AreaNegocioImpl;
 import dao.impl.CentrocostoImpl;
 import dao.impl.EtapaImpl;
 import dao.impl.MaterialImpl;
-import dao.impl.RequerimientoDetalleImpl;
 import dao.impl.RequerimientoImpl;
-import dto.*;
+import dto.AreaNegocio;
+import dto.Centrocosto;
+import dto.Etapa;
+import dto.Material;
+import dto.Requerimiento;
+import dto.RequerimientoDetalle;
+import dto.Usuario;
 
 @ManagedBean(name = "requerimientoBean")
 @SessionScoped
@@ -36,7 +41,6 @@ public class RequerimientoBean implements Serializable{
 	//Dao Impl
 	
 	private RequerimientoImpl requerimientoImpl = new RequerimientoImpl();
-	private RequerimientoDetalleImpl requerimientoDetalleImpl = new RequerimientoDetalleImpl();
 	private EtapaImpl etapaImpl = new EtapaImpl();
 	private CentrocostoImpl centrocostoImpl = new CentrocostoImpl();
 	private AreaNegocioImpl areaNegocioImpl = new AreaNegocioImpl();
@@ -242,8 +246,7 @@ public class RequerimientoBean implements Serializable{
 		return null;
 	}
 	
-	public String removeItem(Long id) {
-		  RequerimientoDetalle item = (RequerimientoDetalle)this.requerimientoDetalleImpl.getById(id);
+	public String removeItem(RequerimientoDetalle item) {
 	      this.requerimiento.removeDetail(item);
 	      return null;
 	}
