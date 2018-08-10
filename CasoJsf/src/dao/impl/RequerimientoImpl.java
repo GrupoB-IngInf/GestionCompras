@@ -34,6 +34,7 @@ public class RequerimientoImpl extends JPA implements DAO<Requerimiento> {
 
 	@Override
 	public Requerimiento update(Requerimiento DTO) {
+		
 		if (DTO == null && DTO.getId() != 0) {
 			return null;
 		}
@@ -42,6 +43,13 @@ public class RequerimientoImpl extends JPA implements DAO<Requerimiento> {
 		if (!t.isActive()) {
 			t.begin();
 		}
+		
+		updateObj.setFecha(DTO.getFecha());
+		updateObj.setAreaNegocio(DTO.getAreaNegocio());
+		updateObj.setCentroCosto(DTO.getCentroCosto());
+		updateObj.setDetalles(DTO.getDetalles());
+		
+		
 		t.commit();
 		closeEntityManager();
 		return DTO;

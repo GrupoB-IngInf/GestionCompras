@@ -3,11 +3,16 @@ package bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import dao.impl.RequerimientoImpl;
 import dto.*;
 
+@ManagedBean(name = "requerimientoBean")
+@SessionScoped
 public class RequerimientoBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -22,8 +27,18 @@ public class RequerimientoBean implements Serializable{
 	private int cantidad;
 	private int cantidadAtendida;
 	//Dao Impl
+	
 	private RequerimientoImpl requerimientoImpl = new RequerimientoImpl();
-
+	
+	
+	@PostConstruct
+	public void init() {
+		requerimiento = new Requerimiento();
+		requerimiento.setUsuario(new Usuario());
+		requerimiento.setAreaNegocio(new AreaNegocio());
+		requerimiento.setCentroCosto(new Centrocosto());
+		
+	}
 	
 	//Beans inyectados
 	
@@ -248,6 +263,7 @@ public class RequerimientoBean implements Serializable{
 	}
 	
 	public String update() {
+		
 		requerimientoImpl.update(requerimiento);
 		return "index";
 	}

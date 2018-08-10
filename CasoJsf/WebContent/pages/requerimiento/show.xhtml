@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+
+<f:view contentType="text/html">
+	<h:body>
+
+		<ui:composition template="/template/base.xhtml">
+
+			<ui:define name="content">
+				<center>
+					<h:form id="ffactura">
+						<p:panel id="pane" header="Editar requerimiento" style="width:75vw">
+
+							<h:panelGrid columns="3" cellpadding="5">
+								
+								
+								<p:outputLabel for="tid" value="Id:" />
+								<p:inputText id="tid" value="#{requerimientoBean.requerimiento.id}" disabled="true"/>
+								<h:message for="tid"></h:message>
+								
+								<p:outputLabel for="tusuario" value="Usuario:" />
+								<p:inputText id="tusuario" value="#{requerimientoBean.requerimiento.usuario.nombres}" disabled="true"/>
+								<h:message for="tusuario"></h:message>
+								
+								<p:outputLabel for="tfecha" value="Fecha:" />
+								<p:inputText id="tfecha" value="#{requerimientoBean.requerimiento.fecha}" disabled="true"/>
+								<h:message for="tfecha"></h:message>
+			
+								<p:outputLabel for="cbcosto" value="Centro de Costos:" />				
+								<p:inputText id="cbcosto" value="#{requerimientoBean.requerimiento.centroCosto.nombre}" disabled="true"/>
+								<h:message for="cbcosto"></h:message>
+								
+								<p:outputLabel for="cbANegocio" value="Area de Negocio" />				
+								<p:inputText id="cbANegocio" value="#{requerimientoBean.requerimiento.areaNegocio.nombre}" disabled="true"/>
+								<h:message for="cbANegocio"></h:message>
+								
+							</h:panelGrid>
+							
+						</p:panel>
+						
+						<p:panel id="panedeta" style="width:1100px">
+							<p:dataTable id="dtalle" var="a"
+								value="#{requerimientoBean.requerimiento.detalles}" rows="10">
+								
+								<p:column style="width:200px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Material" />
+									</f:facet>
+									<h:outputText id="tmaterialNombre" value="#{a.material.nombre}" />
+								</p:column>
+
+
+								<p:column style="width:80px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Cantidad" />
+									</f:facet>
+									<h:outputText id="tcant" value="#{a.cantidad}" />
+								</p:column>
+								
+								<p:column style="width:200px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Observaciones" />
+									</f:facet>
+									<h:outputText id="tobser" value="#{a.observaciones}" />
+								</p:column>
+								
+								<p:column style="width:200px; text-align: left;">
+									<f:facet name="header">
+										<h:outputText value="Etapa" />
+									</f:facet>
+									<h:outputText id="tetapaDenominacion" value="#{a.etapa.denominacion}" />
+								</p:column>
+								
+
+
+							
+
+
+								<p:column tyle="width:30px; text-align: center;">
+									<f:facet name="header">
+										<h:outputText value="Ope" />
+									</f:facet>
+								
+									<p:commandLink	actionListener="#{requerimientoBean.removeItem(a)}" update=":ffactura:dtalle" ajax="true" >
+										<span class="ui-icon ui-icon-trash"></span>
+									</p:commandLink>
+
+								</p:column>
+								
+								
+							</p:dataTable>
+
+						</p:panel>
+
+						
+						
+					</h:form>
+					
+				
+
+				</center>
+			</ui:define>
+
+		</ui:composition>
+
+	</h:body>
+
+</f:view>
+</html>

@@ -15,14 +15,18 @@
 			<ui:define name="content">
 				<center>
 					<h:form id="ffactura">
-						<p:panel id="pane" header="Crear factura" style="width:75vw">
+						<p:panel id="pane" header="Editar requerimiento" style="width:75vw">
 
 							<h:panelGrid columns="3" cellpadding="5">
 								
 								
 								<p:outputLabel for="tid" value="Id:" />
-								<p:inputText id="tid" value="#{requerimientoBean.requerimiento.id}"/>
+								<p:inputText id="tid" value="#{requerimientoBean.requerimiento.id}" disabled="true"/>
 								<h:message for="tid"></h:message>
+								
+								<p:outputLabel for="tusuario" value="Usuario:" />
+								<p:inputText id="tusuario" value="#{requerimientoBean.requerimiento.usuario.nombres}" disabled="true"/>
+								<h:message for="tusuario"></h:message>
 								
 								<p:outputLabel for="tfecha" value="Fecha:" />
 								<p:inputText id="tfecha" value="#{requerimientoBean.requerimiento.fecha}"/>
@@ -178,16 +182,6 @@
 									<h:outputText id="tetapaDenominacion" value="#{a.etapa.denominacion}" />
 								</p:column>
 								
-
-
-								<p:column style="width:100px; text-align: left;">
-									<f:facet name="header">
-										<h:outputText value="Subtotal" />
-									</f:facet>
-									<h:outputText id="tsubtotal" value="#{a.subtotal}" />
-								</p:column>
-
-
 								<p:column tyle="width:30px; text-align: center;">
 									<f:facet name="header">
 										<h:outputText value="Ope" />
@@ -204,10 +198,8 @@
 
 						</p:panel>
 
-						<p:commandButton action="#{requerimientoBean.create}" type="submit"
-							value="Añadir" />
-						<p:commandButton action="#{requerimientoBean.index}" type="submit"
-							value="Regresar" />
+						<p:commandButton action="#{requerimientoBean.update}" type="submit"
+								value="Actualizar" />
 					</h:form>
 					
 				

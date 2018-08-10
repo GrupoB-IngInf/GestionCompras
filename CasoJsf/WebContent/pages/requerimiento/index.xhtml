@@ -27,7 +27,7 @@
 									<p:outputPanel>
 										<h:outputText value="Buscar:" />
 										<p:inputText id="globalFilter"
-											onkeyup="PF('facturaWidget').filter()" style="width:150px"
+											onkeyup="PF('requerimientoWidget').filter()" style="width:150px"
 											placeholder="Buscar Texto" />
 									</p:outputPanel>
 								</f:facet>
@@ -104,11 +104,11 @@
 									<p:commandButton action="#{requerimientoBean.edit}"
 										icon="ui-icon-pencil" title="Editar" rendered="#{true}">
 										<f:setPropertyActionListener value="#{m.id}"
-											target="#{requerimientoBean.factura.id}" />
+											target="#{requerimientoBean.requerimiento.id}" />
 									</p:commandButton>
 
-									<p:commandButton action="#{requerimientoBean.unsuscribe}"
-										onclick="return confirm('¿Confirma que desea anular esta factura?')"
+									<p:commandButton action="#{requerimientoBean.delete}"
+										onclick="return confirm('¿Confirma que desea anular este requerimiento?')"
 										icon="ui-icon-closethick" title="Eliminar" rendered="#{true}">
 										<f:setPropertyActionListener value="#{m.id}"
 											target="#{requerimientoBean.requerimiento.id}" />

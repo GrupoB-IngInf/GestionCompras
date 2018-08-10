@@ -48,6 +48,7 @@ public class MaterialImpl extends JPA implements DAO<Material>{
 		updateObj.setDescripcion(DTO.getDescripcion());
 		updateObj.setEstado(DTO.getEstado());
 		updateObj.setGrupo(DTO.getGrupo());
+		updateObj.setUnidadMedida(DTO.getUnidadMedida());
 		
 		t.commit();
 		closeEntityManager();
