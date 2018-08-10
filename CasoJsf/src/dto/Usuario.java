@@ -107,5 +107,7 @@ public class Usuario implements Serializable{
 		this.estado = estado;
 	}
 	
-	
+	public String getNombreCompleto() {
+		return this.nombres + " " + this.apellidos;
+	}
 }

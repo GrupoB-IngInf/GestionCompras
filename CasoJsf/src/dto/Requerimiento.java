@@ -3,6 +3,7 @@ package dto;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,7 +30,7 @@ public class Requerimiento implements Serializable{
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	
+		
 	@Column(name = "fecha")
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
@@ -114,8 +115,8 @@ public class Requerimiento implements Serializable{
 	}
 	public void setCentroCosto(Centrocosto centroCosto) {
 		this.centroCosto = centroCosto;
-	}
-		
+	}	
+
 	public List<RequerimientoDetalle> getDetalles() {
 		return detalles;
 	}

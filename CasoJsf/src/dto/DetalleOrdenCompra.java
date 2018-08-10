@@ -30,10 +30,7 @@ public class DetalleOrdenCompra implements Serializable {
 	
 	@Column(name = "precio_unitario")
 	private double precioUnitario;
-	
-	@Transient
-	private double subtotal;
-	
+		
 	@ManyToOne
 	@JoinColumn(name = "ordendecompra_id")
 	private OrdenCompra ordenCompra;
@@ -95,11 +92,7 @@ public class DetalleOrdenCompra implements Serializable {
 	}
 	
 	public double getSubtotal() {
-		return subtotal;
-	}
-
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
+		return precioUnitario * cantidad;
 	}
 
 	public RequerimientoDetalle getRequerimiento() {

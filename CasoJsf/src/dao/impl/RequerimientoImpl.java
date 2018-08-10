@@ -98,5 +98,18 @@ public class RequerimientoImpl extends JPA implements DAO<Requerimiento> {
 		return maxId;
 	}
 	
+	public List<RequerimientoDetalle> getAllApproved() {
+		String sql = "SELECT d FROM RequerimientoDetalle d JOIN d.requerimiento r WHERE r.estado=:estado AND d.atendido=false";
+		Query query = getEntityManager().createQuery(sql, Long.class);
+		query.setParameter("estado", Estado.APROBADO);
+		List<RequerimientoDetalle> list = query.getResultList();
+		if (list.size() != 0) {
+			closeEntityManager();
+			return list;
+		} else {
+			closeEntityManager();
+			return null;
+		}
+	}	
 
 }

@@ -8,6 +8,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import dao.impl.OrdenCompraImpl;
+import dao.impl.ProveedorImpl;
+import dao.impl.RequerimientoImpl;
+import dao.impl.UsuarioImpl;
 import dto.DetalleOrdenCompra;
 import dto.FormaPago;
 import dto.Moneda;
@@ -22,11 +25,15 @@ public class OrdenCompraBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	// Model
-	private OrdenCompra orden = new OrdenCompra();
+	private OrdenCompra orden;
+	private Long proveedor;
 	private List<RequerimientoDetalle> aprobados;
 
 	// DAO Implementation
 	private OrdenCompraImpl ordenImpl = new OrdenCompraImpl();
+	private RequerimientoImpl reqImpl = new RequerimientoImpl();
+	private UsuarioImpl userImpl = new UsuarioImpl();
+	private ProveedorImpl provImpl = new ProveedorImpl();
 
 	// Bean Inyectado
 	@ManagedProperty(value = "#{mUsuarioBean}")
@@ -34,7 +41,10 @@ public class OrdenCompraBean implements Serializable {
 
 	@ManagedProperty(value = "#{mProveedorBean}")
 	private ProveedorBean proveedorBean;
-
+	
+	@ManagedProperty(value = "#{mRequerimientoBean}")
+	private RequerimientoBean requerimientoBean;
+	
 	// Getters & Setters
 
 	public Moneda[] getMonedas() {
@@ -80,14 +90,30 @@ public class OrdenCompraBean implements Serializable {
 	public void setAprobados(List<RequerimientoDetalle> aprobados) {
 		this.aprobados = aprobados;
 	}
+	
+	
 
-	public void addReq(RequerimientoDetalle requerimiento) {
+	public Long getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Long proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public void add(RequerimientoDetalle requerimiento) {
 		DetalleOrdenCompra itemOrden = new DetalleOrdenCompra();
 		itemOrden.setRequerimiento(requerimiento);
 		itemOrden.setCantidad(requerimiento.getCantidad());
-		
+		requerimiento.setAtendido(true);
+		reqImpl.update(requerimiento.getRequerimiento());
 		aprobados.remove(requerimiento);
 		orden.addDetail(itemOrden);
+	}
+	
+	public void remove(DetalleOrdenCompra itemOrden) {
+		orden.removeDetail(itemOrden);
+		aprobados.add(itemOrden.getRequerimiento());
 	}
 
 	// CRUD
@@ -102,6 +128,7 @@ public class OrdenCompraBean implements Serializable {
 	}
 
 	public String create() {
+		orden.setProveedor(provImpl.getById(proveedor));
 		ordenImpl.create(orden);
 		return "index";
 	}
@@ -132,6 +159,8 @@ public class OrdenCompraBean implements Serializable {
 		this.orden = new OrdenCompra();
 		long max = ordenImpl.getMaxId();
 		this.orden.setId(max);
+		this.orden.setResponsable(userImpl.getById(1L));
+		this.aprobados = reqImpl.getAllApproved(); 
 		return "add";
 	}
 

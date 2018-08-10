@@ -205,6 +205,7 @@ public class OrdenCompra implements Serializable {
 	public void addDetail(DetalleOrdenCompra detalle) {
 		this.detalle.add(detalle);
 		detalle.setOrdenCompra(this);
+		
 	}
 	
 	public void removeDetail(DetalleOrdenCompra detalle) {
@@ -254,12 +255,5 @@ public class OrdenCompra implements Serializable {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "OrdenCompra [id=" + id + ", codigo=" + codigo + ", fechaEmision=" + fechaEmision + ", fechaEntrega="
-				+ fechaEntrega + ", version=" + version + ", moneda=" + moneda + ", pago=" + pago + ", formaPago="
-				+ formaPago + ", observaciones=" + observaciones + ", estado=" + estado + ", proveedor=" + proveedor
-				+ ", responsable=" + responsable + ", detalle=" + detalle + "]";
-	}
 	
 }
