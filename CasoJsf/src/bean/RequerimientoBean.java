@@ -5,6 +5,11 @@ import java.util.List;
 
 import javax.faces.bean.ManagedProperty;
 
+import dao.impl.AreaNegocioImpl;
+import dao.impl.CentrocostoImpl;
+import dao.impl.EtapaImpl;
+import dao.impl.MaterialImpl;
+import dao.impl.RequerimientoDetalleImpl;
 import dao.impl.RequerimientoImpl;
 import dto.*;
 
@@ -19,12 +24,17 @@ public class RequerimientoBean implements Serializable{
 	private Usuario usuario;
 	private Material material;
 	private Etapa etapa;
-	private int cantidad;
-	private int cantidadAtendida;
+	private long idEtapa;
+	private long idCentroCosto;
+	private long idAreaNegocio;
+	private long idMaterial;
 	//Dao Impl
 	private RequerimientoImpl requerimientoImpl = new RequerimientoImpl();
-
-	
+	private RequerimientoDetalleImpl requerimientoDetalleImpl = new RequerimientoDetalleImpl();
+	private EtapaImpl etapaImpl = new EtapaImpl();
+	private CentrocostoImpl centrocostoImpl = new CentrocostoImpl();
+	private AreaNegocioImpl areaNegocioImpl = new AreaNegocioImpl();
+	private MaterialImpl materialImpl = new MaterialImpl();
 	//Beans inyectados
 	
 	@ManagedProperty(value = "#{mMaterialBean}")
@@ -49,35 +59,67 @@ public class RequerimientoBean implements Serializable{
 	
 	
 	
+	
+	
+	public long getIdEtapa() {
+		return idEtapa;
+	}
+
+
+
+
+
+
+	public void setIdEtapa(long idEtapa) {
+		this.idEtapa = idEtapa;
+	}
+
+
+
+
+
+
+	public long getIdCentroCosto() {
+		return idCentroCosto;
+	}
+
+
+
+
+
+
+	public void setIdCentroCosto(long idCentroCosto) {
+		this.idCentroCosto = idCentroCosto;
+	}
+
+
+
+
+
+
 	public Etapa getEtapa() {
 		return etapa;
 	}
 
 
-	public int getCantidad() {
-		return cantidad;
+
+
+
+
+	public long getIdAreaNegocio() {
+		return idAreaNegocio;
 	}
 
 
 
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	
 
 
-	public int getCantidadAtendida() {
-		return cantidadAtendida;
+	public void setIdAreaNegocio(long idAreaCosto) {
+		this.idAreaNegocio = idAreaCosto;
 	}
 
 
-
-
-	public void setCantidadAtendida(int cantidadAtendida) {
-		this.cantidadAtendida = cantidadAtendida;
-	}
 
 
 
@@ -163,16 +205,28 @@ public class RequerimientoBean implements Serializable{
 	
 	
 	//Detalles add  
+
 	
 	public String additem() {
-		RequerimientoDetalle requerimientoDeta = new RequerimientoDetalle(this.requerimientoDetalle.getCantidad(), this.requerimientoDetalle.getCantidadAtendida(), this.requerimientoDetalle.isAtendido(), this.requerimientoDetalle.getObservaciones(),
-				this.requerimientoDetalle.getRequerimiento(), this.requerimientoDetalle.getEtapa(), this.requerimientoDetalle.getMaterial());
+		Etapa etapa = (Etapa) etapaImpl.getById(this.idEtapa);
+		Centrocosto centrocosto = (Centrocosto) centrocostoImpl.getById(this.idCentroCosto);
+		AreaNegocio areaNegocio = (AreaNegocio) areaNegocioImpl.getById(this.idAreaNegocio);
+		Material material = (Material) materialImpl.getById(this.idMaterial);
+		System.out.println(etapa);
+		System.out.println(centrocosto);
+		System.out.println(areaNegocio);
+		System.out.println(material);
+		RequerimientoDetalle requerimientoDeta = new RequerimientoDetalle(this.requerimientoDetalle.getCantidad(), this.requerimientoDetalle.getObservaciones(),
+				this.requerimientoDetalle.getRequerimiento(), etapa, material);
+		
 		this.requerimiento.addDetail(requerimientoDeta);
 		this.requerimientoDetalle.setCantidad(0);
+		
 		return null;
 	}
 	
-	public String removeItem(RequerimientoDetalle item) {
+	public String removeItem(Long id) {
+		  RequerimientoDetalle item = (RequerimientoDetalle)this.requerimientoDetalleImpl.getById(id);
 	      this.requerimiento.removeDetail(item);
 	      return null;
 	}
@@ -200,6 +254,96 @@ public class RequerimientoBean implements Serializable{
 	public AreaNegocioBean getAreaNegocioBean() {
 		return areaNegocioBean;
 	}
+
+	public long getIdMaterial() {
+		return idMaterial;
+	}
+
+
+
+
+
+
+	public void setIdMaterial(long idMaterial) {
+		this.idMaterial = idMaterial;
+	}
+
+
+
+
+
+
+	public EtapaImpl getEtapaImpl() {
+		return etapaImpl;
+	}
+
+
+
+
+
+
+	public void setEtapaImpl(EtapaImpl etapaImpl) {
+		this.etapaImpl = etapaImpl;
+	}
+
+
+
+
+
+
+	public CentrocostoImpl getCentrocostoImpl() {
+		return centrocostoImpl;
+	}
+
+
+
+
+
+
+	public void setCentrocostoImpl(CentrocostoImpl centrocostoImpl) {
+		this.centrocostoImpl = centrocostoImpl;
+	}
+
+
+
+
+
+
+	public AreaNegocioImpl getAreaNegocioImpl() {
+		return areaNegocioImpl;
+	}
+
+
+
+
+
+
+	public void setAreaNegocioImpl(AreaNegocioImpl areaNegocioImpl) {
+		this.areaNegocioImpl = areaNegocioImpl;
+	}
+
+
+
+
+
+
+	public MaterialImpl getMaterialImpl() {
+		return materialImpl;
+	}
+
+
+
+
+
+
+	public void setMaterialImpl(MaterialImpl materialImpl) {
+		this.materialImpl = materialImpl;
+	}
+
+
+
+
+
 
 	public void setAreaNegocioBean(AreaNegocioBean areaNegocioBean) {
 		this.areaNegocioBean = areaNegocioBean;
@@ -262,6 +406,7 @@ public class RequerimientoBean implements Serializable{
 	//Redirecciones
 	public String add() {
 		this.requerimiento = new Requerimiento();
+		this.requerimientoDetalle = new RequerimientoDetalle();
 		long max = requerimientoImpl.getMaxId();
 		this.requerimiento.setId(max);
 		return "add";

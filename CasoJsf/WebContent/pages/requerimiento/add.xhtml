@@ -21,49 +21,52 @@
 								
 								
 								<p:outputLabel for="tid" value="Id:" />
-								<p:inputText id="tid" value="#{requerimientoBean.requerimiento.id}"/>
+								<p:inputText id="tid" value="#{requerimientoBean.requerimiento.id}" disabled="true" />
 								<h:message for="tid"></h:message>
 								
 								<p:outputLabel for="tfecha" value="Fecha:" />
-								<p:inputText id="tfecha" value="#{requerimientoBean.requerimiento.fecha}"/>
-								<h:message for="tfecha"></h:message>
-			
+								<p:calendar id="tfecha"
+									value="#{requerimientoBean.requerimiento.fecha}"
+									pattern="dd/MM/yyyy" readonlyInput="true" required="true"
+									size="10" />
+								<h:message for="tfecha" value="Fecha:"></h:message>
+									
 								<p:outputLabel for="cbcosto" value="Centro de Costos:" />				
 								<p:selectOneMenu id="cbcosto"
-									value="#{requerimientoBean.requerimiento.centroCosto}"
+									value="#{requerimientoBean.idCentroCosto}"
 									converter="omnifaces.SelectItemsConverter"
 									panelStyle="width:200px" effect="fade" var="t"
 									style="width:200px" filter="true"
 									filterMatchMode="startsWith">
 												
 									<f:selectItems value="#{centrocostoBean.all}" var="p"
-										itemLabel="#{p.nombre}" itemValue="#{p}" />
+										itemLabel="#{p.nombre}" itemValue="#{p.id}" />
 									<p:column style="width:10%">
-										<h:outputText value="#{t.id}" />
+										<h:outputText value="#{p.id}" />
 									</p:column>
 	
 									<p:column>
-										<h:outputText value="#{t.nombre}" />
+										<h:outputText value="#{p.nombre}" />
 									</p:column>
 								</p:selectOneMenu>
 								<h:message for="cbcosto"></h:message>
 								
 								<p:outputLabel for="cbANegocio" value="Area de Negocio" />				
 								<p:selectOneMenu id="cbANegocio"
-									value="#{requerimientoBean.requerimiento.areaNegocio}"
+									value="#{requerimientoBean.idAreaNegocio}"
 									converter="omnifaces.SelectItemsConverter"
 									panelStyle="width:200px" effect="fade" var="t"
 									style="width:200px" filter="true"
 									filterMatchMode="startsWith">
 												
 									<f:selectItems value="#{areaNegocioBean.all}" var="p"
-										itemLabel="#{p.nombre}" itemValue="#{p}" />
+										itemLabel="#{p.nombre}" itemValue="#{p.id}" />
 									<p:column style="width:10%">
-										<h:outputText value="#{t.id}" />
+										<h:outputText value="#{p.id}" />
 									</p:column>
 	
 									<p:column>
-										<h:outputText value="#{t.nombre}" />
+										<h:outputText value="#{p.nombre}" />
 									</p:column>
 								</p:selectOneMenu>
 								<h:message for="cbANegocio"></h:message>
@@ -84,62 +87,63 @@
 								
 									<p:column>						
 										<p:selectOneMenu id="cbproducto"
-											value="#{requerimientoBean.material}"
+											value="#{requerimientoBean.idMaterial}"
 											converter="omnifaces.SelectItemsConverter"
 											panelStyle="width:200px" effect="fade" var="t"
 											style="width:200px" filter="true"
 											filterMatchMode="startsWith">
 														
 											<f:selectItems value="#{materialBean.all}" var="p"
-												itemLabel="#{p.nombre}" itemValue="#{p}"/>
+												itemLabel="#{p.nombre}" itemValue="#{p.id}"/>
 											<p:column style="width:10%">
-												<h:outputText value="#{t.id}" />
+												<h:outputText value="#{p.id}" />
 											</p:column>
 			
 											<p:column>
-												<h:outputText value="#{t.nombre}" />
+												<h:outputText value="#{p.nombre}" />
 											</p:column>
 										</p:selectOneMenu>
 									</p:column>
 									
 									<p:column>
 										<p:inputText id="tcantidad"
-											value="#{requerimientoBean.cantidad}" style="width:100px" />
+											value="#{requerimientoBean.requerimientoDetalle.cantidad}" style="width:100px" />
 									</p:column>
 									
 									 
 									<p:column>
 										<p:inputText id="tobservacion"
-											value="#{requerimientoBean.requerimientoDetalle.observacion}" style="width:200px" />
+											value="#{requerimientoBean.requerimientoDetalle.observaciones}" style="width:200px" />
 									</p:column>
 									 
 									<p:column>						
 										<p:selectOneMenu id="cbetapa"
-											value="#{requerimientoBean.etapa}"
+											value="#{requerimientoBean.idEtapa}"
 											converter="omnifaces.SelectItemsConverter"
 											panelStyle="width:200px" effect="fade" var="t"
 											style="width:200px" filter="true"
 											filterMatchMode="startsWith">
 														
 											<f:selectItems value="#{etapaBean.all}" var="p"
-												itemLabel="#{p.proyecto.nombre} - #{p.denominacion}" itemValue="#{p}" />
+												itemLabel="#{p.proyecto.nombre} - #{p.denominacion}" itemValue="#{p.id}" />
 											<p:column style="width:10%">
-												<h:outputText value="#{t.id}" />
+												<h:outputText value="#{p.id}" />
 											</p:column>
 											
 											<p:column style="width:10%">
-												<h:outputText value=" #{t.proyecto.nombre}" />
+												<h:outputText value=" #{p.proyecto.nombre}" />
 											</p:column>
 											<p:column>
-												<h:outputText value="#{t.denominacion}" />
+												<h:outputText value="#{p.denominacion}" />
 											</p:column>
 										</p:selectOneMenu>
 									</p:column>
 									
 									<p:column>
-										<p:commandButton action="#{requerimientoBean.additem}"
-											update=":ffactura:dtalle" ajax="true" value="Añadir" />
-
+										<p:commandButton actionListener="#{requerimientoBean.additem()}"
+											update=":ffactura:dtalle :ffactura:panedeta" ajax="true" value="Añadir" />
+										
+										
 									</p:column>
 								</p:row>
 							</p:panelGrid>
@@ -168,7 +172,7 @@
 									<f:facet name="header">
 										<h:outputText value="Observaciones" />
 									</f:facet>
-									<h:outputText id="tobser" value="#{a.observacion}" />
+									<h:outputText id="tobser" value="#{a.observaciones}" />
 								</p:column>
 								
 								<p:column style="width:200px; text-align: left;">
@@ -180,20 +184,13 @@
 								
 
 
-								<p:column style="width:100px; text-align: left;">
-									<f:facet name="header">
-										<h:outputText value="Subtotal" />
-									</f:facet>
-									<h:outputText id="tsubtotal" value="#{a.subtotal}" />
-								</p:column>
-
 
 								<p:column tyle="width:30px; text-align: center;">
 									<f:facet name="header">
 										<h:outputText value="Ope" />
 									</f:facet>
 								
-									<p:commandLink	actionListener="#{requerimientoBean.removeItem(a)}" update=":ffactura" ajax="true" >
+									<p:commandLink	actionListener="#{requerimientoBean.removeItem(a.id)}" update=":ffactura" ajax="true" >
 										<span class="ui-icon ui-icon-trash"></span>
 									</p:commandLink>
 
