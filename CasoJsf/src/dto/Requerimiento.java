@@ -1,7 +1,7 @@
 package dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,26 +31,29 @@ public class Requerimiento implements Serializable{
 	private long id;
 	
 	@Column(name = "fecha")
-//	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	@Column(name = "estado")
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	//@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_areanegocio")
 	private AreaNegocio areaNegocio;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	//@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	//@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_centrocosto")
 	private Centrocosto centroCosto;
 	
-	@OneToMany(mappedBy = "requerimiento", cascade = CascadeType.PERSIST, orphanRemoval = true)
+	@OneToMany(targetEntity = RequerimientoDetalle.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "Requerimiento_id")
 	private List<RequerimientoDetalle> detalles = new ArrayList<RequerimientoDetalle>();
 	
@@ -124,6 +127,7 @@ public class Requerimiento implements Serializable{
 	public void addDetail(RequerimientoDetalle rDetalle) {
 		this.detalles.add(rDetalle);
 		rDetalle.setRequerimiento(this);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+this.detalles.size());
 	}
 
 	public void removeDetail(RequerimientoDetalle rDetalle) {
