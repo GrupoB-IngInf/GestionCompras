@@ -1,7 +1,6 @@
 package dto;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -113,13 +112,6 @@ public class Requerimiento implements Serializable{
 	public void setCentroCosto(Centrocosto centroCosto) {
 		this.centroCosto = centroCosto;
 	}	
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
 
 	public List<RequerimientoDetalle> getDetalles() {
 		return detalles;

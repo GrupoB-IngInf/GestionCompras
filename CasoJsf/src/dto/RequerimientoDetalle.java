@@ -45,14 +45,11 @@ public class RequerimientoDetalle implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "Material_id")
 	private Material material;
-	
-	
-	
+		
 	public RequerimientoDetalle() {
 		super();
 	}
-	
-	
+		
 	public RequerimientoDetalle(int cantidad, int cantidadAtendida, boolean atendido, String observaciones,
 			Requerimiento requerimiento, Etapa etapa,  Material material) {
 		super();
@@ -64,7 +61,6 @@ public class RequerimientoDetalle implements Serializable{
 		this.etapa = etapa;
 		this.material = material;
 	}
-
 
 	public long getId() {
 		return id;
@@ -96,11 +92,12 @@ public class RequerimientoDetalle implements Serializable{
 	}
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
 	
 	public int getCantidadAtendida() {
 		return cantidadAtendida;
 	}	
-	}
+	
 	public void setCantidadAtendida(int cantidadAtendida) {
 		this.cantidadAtendida = cantidadAtendida;
 	}
@@ -144,10 +141,5 @@ public class RequerimientoDetalle implements Serializable{
 				+ ", atendido=" + atendido + ", observaciones=" + observaciones + ", requerimiento=" + requerimiento
 				+ ", etapa=" + etapa + ", material=" + material + "]";
 	}
-	
-	
-	
-	
-	
 	
 }
