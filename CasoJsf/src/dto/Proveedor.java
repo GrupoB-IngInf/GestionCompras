@@ -5,17 +5,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "proveedor")
-
 public class Proveedor implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
 	public Proveedor() {
 		super();
-		banco = new Banco();
 	}
-	
-	
+
 	@Id
 	@Basic(optional = false)
 	@Column(name = "id")
@@ -128,8 +126,37 @@ public class Proveedor implements Serializable {
 	public void setBanco(Banco banco) {
 		this.banco = banco;
 	}
-	
-	
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Proveedor other = (Proveedor) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Proveedor [id=" + id + ", nombre=" + nombre + ", ruc=" + ruc + ", direccion=" + direccion
+				+ ", contacto=" + contacto + ", correo=" + correo + ", cuenta_corriente=" + cuenta_corriente
+				+ ", telefono=" + telefono + ", estado=" + estado + ", banco=" + banco + "]";
+	}	
 
 }
