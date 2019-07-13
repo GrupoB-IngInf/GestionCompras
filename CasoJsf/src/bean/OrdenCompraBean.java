@@ -159,7 +159,7 @@ public class OrdenCompraBean implements Serializable {
 		this.orden = new OrdenCompra();
 		long max = ordenImpl.getMaxId();
 		this.orden.setId(max);
-		this.orden.setResponsable(userImpl.getById(1L));
+		this.orden.setResponsable(userImpl.getById(2L));
 		this.aprobados = reqImpl.getAllApproved(); 
 		return "add";
 	}
